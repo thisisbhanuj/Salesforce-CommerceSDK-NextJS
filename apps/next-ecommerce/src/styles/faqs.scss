@@ -1,0 +1,33 @@
+.faqs-block {
+  .tab-question {
+    display: none;
+
+    &.active {
+      display: flex;
+    }
+
+    .question-item {
+      transition: all ease 0.5s;
+
+      .content {
+        opacity: 0;
+        visibility: hidden;
+        max-height: 0;
+        transform: scaleY(0);
+        transform-origin: top center;
+        transition: all ease 0.5s;
+      }
+
+      &.open {
+        padding-bottom: 44px;
+
+        .content {
+          max-height: max-content;
+          opacity: 1;
+          visibility: visible;
+          transform: scaleY(1) translateY(24px);
+        }
+      }
+    }
+  }
+}

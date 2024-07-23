@@ -1,0 +1,32 @@
+.style-watch {
+  .footer {
+    .footer-main {
+      background: var(--surface1);
+      color: var(--white);
+    }
+
+    .has-line-before {
+      &::before {
+        background-color: var(--white);
+      }
+    }
+
+    .input-block {
+      input {
+        background: rgba($color: #ffffff, $alpha: 0.2);
+      }
+    }
+
+    .text-black {
+      color: var(--white);
+    }
+
+    .text-secondary {
+      color: var(--white);
+    }
+
+    svg {
+      fill: var(--white);
+    }
+  }
+}

@@ -1,0 +1,216 @@
+{
+    "home": {
+        "name": "home",
+        "id": "home",
+        "componentPath": "/",
+        "sections": [
+          {
+            "id": "section1",
+            "componentPath": "/components/standalone/Carousel",
+            "order": 1
+          },
+          {
+            "id": "section2",
+            "componentPath": "/components/home/Collection",
+            "order": 2
+          },
+          {
+            "id": "section3",
+            "componentPath": "/components/home/Banner",
+            "order": 3
+          },
+          {
+            "id": "section4",
+            "componentPath": "/components/home/Benefit",
+            "order": 4
+          },
+          {
+            "id": "section5",
+            "componentPath": "/components/home/Testimonial",
+            "order": 5
+          },
+          {
+            "id": "section6",
+            "componentPath": "/components/home/Instagram",
+            "order": 6
+          },
+          {
+            "id": "section7",
+            "componentPath": "/components/footer/Footer",
+            "order": 7
+          }
+        ],
+        "gridContainers": [
+          {
+            "id": "container1",
+            "name": "Hero",
+            "sections": [
+              "section1"
+            ],
+            "layout": {
+              "columns": 1
+            }
+          },
+          {
+            "id": "container2",
+            "name": "Collections",
+            "sections": [
+              "section2"
+            ],
+            "layout": {
+              "columns": 1
+            }
+          },
+          {
+            "id": "container3",
+            "name": "Slots",
+            "sections": [
+              "section3"
+            ],
+            "layout": {
+              "columns": 2
+            }
+          },
+          {
+            "id": "container4",
+            "name": "Benefits",
+            "sections": [
+              "section4"
+            ],
+            "layout": {
+              "columns": 1
+            }
+          },
+          {
+            "id": "container5",
+            "name": "Testimonial",
+            "sections": [
+              "section5"
+            ],
+            "layout": {
+              "columns": 1
+            }
+          },
+          {
+            "id": "container6",
+            "name": "Instagram",
+            "sections": [
+              "section6"
+            ],
+            "layout": {
+              "columns": 1
+            }
+          },
+          {
+            "id": "container7",
+            "name": "Footer",
+            "sections": [
+              "section7"
+            ],
+            "layout": {
+              "columns": 1
+            }
+          }
+        ],
+        "order": [
+          "container1",
+          "container2",
+          "container3",
+          "container4",
+          "container5",
+          "container6",
+          "container7"
+        ]
+    },
+    "pdp": {
+        "name": "pdp",
+        "id": "pdp",
+        "componentPath": "/",
+        "sections": [
+          {
+            "id": "section1",
+            "componentPath": "/components/product/Detail/ImageContainer",
+            "order": 1
+          },
+          {
+            "id": "section2",
+            "componentPath": "/components/product/Detail/PurchaseView",
+            "order": 2
+          },
+          {
+            "id": "section3",
+            "componentPath": "/components/product/Detail/SubjectiveInformation",
+            "order": 3
+          },
+          {
+            "id": "section4",
+            "componentPath": "/components/product/Detail/RelatedProducts",
+            "order": 4
+          },
+          {
+            "id": "section5",
+            "componentPath": "/components/product/Detail/Reviews",
+            "order": 5
+          }
+        ],
+        "gridContainers": [
+          {
+            "id": "container1",
+            "name": "ImageContainer",
+            "sections": [
+              "section1"
+            ],
+            "layout": {
+              "columns": 1
+            }
+          },
+          {
+            "id": "container2",
+            "name": "PurchaseView",
+            "sections": [
+              "section2"
+            ],
+            "layout": {
+              "columns": 1
+            }
+          },
+          {
+            "id": "container3",
+            "name": "SubjectiveInformation",
+            "sections": [
+              "section3"
+            ],
+            "layout": {
+              "columns": 2
+            }
+          },
+          {
+            "id": "container4",
+            "name": "RelatedProducts",
+            "sections": [
+              "section4"
+            ],
+            "layout": {
+              "columns": 1
+            }
+          },
+          {
+            "id": "container5",
+            "name": "Reviews",
+            "sections": [
+              "section5"
+            ],
+            "layout": {
+              "columns": 1
+            }
+          }
+        ],
+        "order": [
+          "container1",
+          "container2",
+          "container3",
+          "container4",
+          "container5"
+        ]
+    }
+}

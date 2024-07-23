@@ -1,0 +1,2341 @@
+[
+  {
+    "objectID": "SKU001_2",
+    "id": "SKU001_2",
+    "name": "cotton top",
+    "master": false,
+    "parentProduct": "SKU001",
+    "skuId": "SKU001_2",
+    "variation": [],
+    "images": [
+      "/images/product/product-1-large.webp",
+      "/images/product/product-1-large-1.webp",
+      "/images/product/product-1-large-2.webp",
+      "/images/product/product-2-large-1.webp"
+    ],
+    "color": "yellow",
+    "colorCode": "#ECB018",
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ],
+    "gender": "women",
+    "new": true,
+    "sale": false,
+    "category": "women",
+    "material": "cotton",
+    "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
+    "price": {
+      "listPrice": 50,
+      "salesPrice": 0,
+      "embroideryLogoPrice": 10,
+      "embroiderySleevePrice": 8,
+      "A3Price": 15,
+      "A4Price": 20
+    },
+    "available": true,
+    "inStock": 10,
+    "sold": 12,
+    "quantity": 100,
+    "quantityPurchase": 1,
+    "isCustom": false,
+    "options": {
+      "frontprint": {
+        "selected": false
+      },
+      "backprint": {
+        "selected": false
+      }
+    },
+    "action": "add to cart",
+    "slug": "cotton-shirt",
+    "reviews": [],
+    "createdAt": {
+      "$date": "2024-04-09T05:14:31.282Z"
+    },
+    "updatedAt": {
+      "$date": "2024-04-09T05:14:31.282Z"
+    },
+    "productType": "tops"
+  },
+  {
+    "objectID": "SKU002_1",
+    "id": "SKU002_1",
+    "name": "cotton top",
+    "master": false,
+    "parentProduct": "SKU002",
+    "skuId": "SKU002_1",
+    "variation": [],
+    "images": [
+      "/images/product/product-1-large.webp",
+      "/images/product/product-1-large-1.webp",
+      "/images/product/product-1-large-2.webp",
+      "/images/product/product-2-large-1.webp"
+    ],
+    "color": "yellow",
+    "colorCode": "#ECB018",
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ],
+    "gender": "women",
+    "new": true,
+    "sale": false,
+    "category": "women",
+    "material": "cotton",
+    "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
+    "price": {
+      "listPrice": 50,
+      "salesPrice": 0,
+      "embroideryLogoPrice": 10,
+      "embroiderySleevePrice": 8,
+      "A3Price": 15,
+      "A4Price": 20
+    },
+    "available": true,
+    "inStock": 10,
+    "sold": 12,
+    "quantity": 100,
+    "quantityPurchase": 1,
+    "isCustom": false,
+    "options": {
+      "frontprint": {
+        "selected": false
+      },
+      "backprint": {
+        "selected": false
+      }
+    },
+    "action": "add to cart",
+    "slug": "cotton-shirt",
+    "reviews": [],
+    "createdAt": {
+      "$date": "2024-04-09T05:14:31.282Z"
+    },
+    "updatedAt": {
+      "$date": "2024-04-09T05:14:31.282Z"
+    },
+    "productType": "tops"
+  },
+  {
+    "objectID": "SKU002_2",
+    "id": "SKU002_2",
+    "name": "cotton dress",
+    "master": false,
+    "parentProduct": "SKU002",
+    "skuId": "SKU002_2",
+    "variation": [],
+    "images": [
+      "/images/product/product-1-large.webp",
+      "/images/product/product-1-large-1.webp",
+      "/images/product/product-1-large-2.webp",
+      "/images/product/product-2-large-1.webp"
+    ],
+    "color": "purple",
+    "colorCode": "#8684D4",
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ],
+    "gender": "women",
+    "new": true,
+    "sale": false,
+    "category": "women",
+    "material": "cotton",
+    "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
+    "price": {
+      "listPrice": 50,
+      "salesPrice": 0,
+      "embroideryLogoPrice": 10,
+      "embroiderySleevePrice": 8,
+      "A3Price": 15,
+      "A4Price": 20
+    },
+    "available": true,
+    "inStock": 10,
+    "sold": 12,
+    "quantity": 100,
+    "quantityPurchase": 1,
+    "isCustom": false,
+    "options": {
+      "frontprint": {
+        "selected": false
+      },
+      "backprint": {
+        "selected": false
+      }
+    },
+    "action": "add to cart",
+    "slug": "cotton-shirt",
+    "reviews": [],
+    "createdAt": {
+      "$date": "2024-04-09T05:14:31.282Z"
+    },
+    "updatedAt": {
+      "$date": "2024-04-09T05:14:31.282Z"
+    },
+    "productType": "tops"
+  },
+  {
+    "objectID": "SKU002_3",
+    "id": "SKU002_3",
+    "name": "cotton top",
+    "master": false,
+    "parentProduct": "SKU002",
+    "skuId": "SKU002_3",
+    "variation": [],
+    "images": [
+      "/images/product/product-1-large.webp",
+      "/images/product/product-1-large-1.webp",
+      "/images/product/product-1-large-2.webp",
+      "/images/product/product-2-large-1.webp"
+    ],
+    "color": "black",
+    "colorCode": "#1F1F1F",
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ],
+    "gender": "women",
+    "new": true,
+    "sale": false,
+    "category": "women",
+    "material": "cotton",
+    "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
+    "price": {
+      "listPrice": 50,
+      "salesPrice": 0,
+      "embroideryLogoPrice": 10,
+      "embroiderySleevePrice": 8,
+      "A3Price": 15,
+      "A4Price": 20
+    },
+    "available": true,
+    "inStock": 10,
+    "sold": 12,
+    "quantity": 100,
+    "quantityPurchase": 1,
+    "isCustom": false,
+    "options": {
+      "frontprint": {
+        "selected": false
+      },
+      "backprint": {
+        "selected": false
+      }
+    },
+    "action": "add to cart",
+    "slug": "cotton-shirt",
+    "reviews": [],
+    "createdAt": {
+      "$date": "2024-04-09T05:14:31.282Z"
+    },
+    "updatedAt": {
+      "$date": "2024-04-09T05:14:31.282Z"
+    },
+    "productType": "tops"
+  },
+  {
+    "objectID": "SKU001_1",
+    "id": "SKU001_1",
+    "name": "cotton top",
+    "master": false,
+    "parentProduct": "SKU001",
+    "skuId": "SKU001_1",
+    "variation": [],
+    "images": [
+      "/images/product/product-1-large.webp",
+      "/images/product/product-1-large-1.webp",
+      "/images/product/product-1-large-2.webp",
+      "/images/product/product-2-large-1.webp"
+    ],
+    "color": "red",
+    "colorCode": "#DB4444",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "gender": "women",
+    "new": true,
+    "sale": false,
+    "category": "women",
+    "material": "cotton",
+    "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
+    "price": {
+      "listPrice": 45,
+      "salesPrice": 0,
+      "embroideryLogoPrice": 10,
+      "embroiderySleevePrice": 8,
+      "A3Price": 15,
+      "A4Price": 20
+    },
+    "available": true,
+    "inStock": 10,
+    "sold": 12,
+    "quantity": 100,
+    "quantityPurchase": 1,
+    "isCustom": false,
+    "options": {
+      "frontprint": {
+        "selected": false
+      },
+      "backprint": {
+        "selected": false
+      }
+    },
+    "action": "add to cart",
+    "slug": "cotton-shirt",
+    "reviews": [],
+    "createdAt": {
+      "$date": "2024-04-09T05:14:31.281Z"
+    },
+    "updatedAt": {
+      "$date": "2024-04-09T05:14:31.281Z"
+    },
+    "productType": "tops"
+  },
+  {
+    "objectID": "SKU003_1",
+    "id": "SKU003_1",
+    "name": "cotton tshirt",
+    "master": false,
+    "parentProduct": "SKU003",
+    "skuId": "SKU003_1",
+    "variation": [],
+    "images": [
+      "/images/product/product-1-large.webp",
+      "/images/product/product-1-large-1.webp",
+      "/images/product/product-1-large-2.webp",
+      "/images/product/product-2-large-1.webp"
+    ],
+    "color": "green",
+    "colorCode": "#D2EF9A",
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ],
+    "gender": "women",
+    "new": true,
+    "sale": false,
+    "category": "women",
+    "material": "cotton",
+    "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
+    "price": {
+      "listPrice": 50,
+      "salesPrice": 0,
+      "embroideryLogoPrice": 10,
+      "embroiderySleevePrice": 8,
+      "A3Price": 15,
+      "A4Price": 20
+    },
+    "available": true,
+    "inStock": 10,
+    "sold": 12,
+    "quantity": 100,
+    "quantityPurchase": 1,
+    "isCustom": false,
+    "options": {
+      "frontprint": {
+        "selected": false
+      },
+      "backprint": {
+        "selected": false
+      }
+    },
+    "action": "add to cart",
+    "slug": "cotton-shirt",
+    "reviews": [],
+    "createdAt": {
+      "$date": "2024-04-09T05:14:31.283Z"
+    },
+    "updatedAt": {
+      "$date": "2024-04-09T05:14:31.283Z"
+    },
+    "productType": "tops"
+  },
+  {
+    "objectID": "SKU003_2",
+    "id": "SKU003_2",
+    "name": "cotton top",
+    "master": false,
+    "parentProduct": "SKU003",
+    "skuId": "SKU003_2",
+    "variation": [],
+    "images": [
+      "/images/product/product-1-large.webp",
+      "/images/product/product-1-large-1.webp",
+      "/images/product/product-1-large-2.webp",
+      "/images/product/product-2-large-1.webp"
+    ],
+    "color": "red",
+    "colorCode": "#DB4444",
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ],
+    "gender": "women",
+    "new": true,
+    "sale": false,
+    "category": "women",
+    "material": "cotton",
+    "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
+    "price": {
+      "listPrice": 50,
+      "salesPrice": 0,
+      "embroideryLogoPrice": 10,
+      "embroiderySleevePrice": 8,
+      "A3Price": 15,
+      "A4Price": 20
+    },
+    "available": true,
+    "inStock": 10,
+    "sold": 12,
+    "quantity": 100,
+    "quantityPurchase": 1,
+    "isCustom": false,
+    "options": {
+      "frontprint": {
+        "selected": false
+      },
+      "backprint": {
+        "selected": false
+      }
+    },
+    "action": "add to cart",
+    "slug": "cotton-shirt",
+    "reviews": [],
+    "createdAt": {
+      "$date": "2024-04-09T05:14:31.283Z"
+    },
+    "updatedAt": {
+      "$date": "2024-04-09T05:14:31.283Z"
+    },
+    "productType": "tops"
+  },
+  {
+    "objectID": "SKU003_3",
+    "id": "SKU003_3",
+    "name": "cotton top",
+    "master": false,
+    "parentProduct": "SKU003",
+    "skuId": "SKU003_3",
+    "variation": [],
+    "images": [
+      "/images/product/product-1-large.webp",
+      "/images/product/product-1-large-1.webp",
+      "/images/product/product-1-large-2.webp",
+      "/images/product/product-2-large-1.webp"
+    ],
+    "color": "white",
+    "colorCode": "#F6EFDD",
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ],
+    "gender": "women",
+    "new": true,
+    "sale": false,
+    "category": "women",
+    "material": "cotton",
+    "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
+    "price": {
+      "listPrice": 50,
+      "salesPrice": 0,
+      "embroideryLogoPrice": 10,
+      "embroiderySleevePrice": 8,
+      "A3Price": 15,
+      "A4Price": 20
+    },
+    "available": true,
+    "inStock": 10,
+    "sold": 12,
+    "quantity": 100,
+    "quantityPurchase": 1,
+    "isCustom": false,
+    "options": {
+      "frontprint": {
+        "selected": false
+      },
+      "backprint": {
+        "selected": false
+      }
+    },
+    "action": "add to cart",
+    "slug": "cotton-shirt",
+    "reviews": [],
+    "createdAt": {
+      "$date": "2024-04-09T05:14:31.283Z"
+    },
+    "updatedAt": {
+      "$date": "2024-04-09T05:14:31.283Z"
+    },
+    "productType": "tops"
+  },
+  {
+    "objectID": "SKU001",
+    "id": "SKU001",
+    "name": "cotton top",
+    "master": true,
+    "skuId": "SKU001",
+    "variation": [
+      {
+        "color": "red",
+        "colorCode": "#DB4444",
+        "colorImage": "",
+        "image": "/images/product/product-2-large-2.webp",
+        "_id": {
+          "$oid": "6614ceb72b7dee6aad364e6b"
+        },
+        "skuId": "SKU001_1"
+      },
+      {
+        "color": "yellow",
+        "colorCode": "#ECB018",
+        "colorImage": "",
+        "image": "/images/product/product-2-large-2.webp",
+        "_id": {
+          "$oid": "6614ceb72b7dee6aad364e6c"
+        },
+        "skuId": "SKU001_2"
+      }
+    ],
+    "images": [
+      "/images/product/product-1-large.webp",
+      "/images/product/product-1-large-1.webp",
+      "/images/product/product-1-large-2.webp",
+      "/images/product/product-2-large-1.webp"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "gender": "women",
+    "new": true,
+    "sale": false,
+    "category": "women",
+    "material": "cotton",
+    "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
+    "price": {
+      "listPrice": 45,
+      "salesPrice": 0,
+      "embroideryLogoPrice": 10,
+      "embroiderySleevePrice": 8,
+      "A3Price": 15,
+      "A4Price": 20
+    },
+    "available": false,
+    "inStock": 10,
+    "sold": 12,
+    "quantity": 100,
+    "quantityPurchase": 1,
+    "isCustom": false,
+    "options": {
+      "frontprint": {
+        "selected": false
+      },
+      "backprint": {
+        "selected": false
+      }
+    },
+    "action": "add to cart",
+    "slug": "cotton-shirt",
+    "reviews": [],
+    "createdAt": {
+      "$date": "2024-04-09T05:14:31.299Z"
+    },
+    "updatedAt": {
+      "$date": "2024-04-09T05:14:31.299Z"
+    },
+    "productType": "tops"
+  },
+  {
+    "objectID": "SKU002",
+    "id": "SKU002",
+    "name": "cotton dress",
+    "master": true,
+    "skuId": "SKU002",
+    "variation": [
+      {
+        "color": "black",
+        "colorCode": "#1F1F1F",
+        "colorImage": "",
+        "image": "/images/product/product-2-large-2.webp",
+        "_id": {
+          "$oid": "6614ceb72b7dee6aad364e70"
+        },
+        "skuId": "SKU002_1"
+      },
+      {
+        "color": "yellow",
+        "colorCode": "#ECB018",
+        "colorImage": "",
+        "image": "/images/product/product-2-large-2.webp",
+        "_id": {
+          "$oid": "6614ceb72b7dee6aad364e71"
+        },
+        "skuId": "SKU002_2"
+      },
+      {
+        "color": "purple",
+        "colorCode": "#8684D4",
+        "colorImage": "",
+        "image": "/images/product/product-2-large-2.webp",
+        "_id": {
+          "$oid": "6614ceb72b7dee6aad364e72"
+        },
+        "skuId": "SKU002_3"
+      }
+    ],
+    "images": [
+      "/images/product/product-1-large.webp",
+      "/images/product/product-1-large-1.webp",
+      "/images/product/product-2-large-2.webp"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "gender": "women",
+    "new": true,
+    "sale": false,
+    "category": "women",
+    "material": "cotton",
+    "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
+    "price": {
+      "listPrice": 35,
+      "salesPrice": 0,
+      "embroideryLogoPrice": 12,
+      "embroiderySleevePrice": 9,
+      "A3Price": 18,
+      "A4Price": 22
+    },
+    "available": false,
+    "inStock": 10,
+    "sold": 21,
+    "quantity": 100,
+    "quantityPurchase": 1,
+    "isCustom": false,
+    "options": {
+      "frontprint": {
+        "selected": false
+      },
+      "backprint": {
+        "selected": false
+      }
+    },
+    "action": "quick shop",
+    "slug": "cotton-shirt",
+    "reviews": [],
+    "createdAt": {
+      "$date": "2024-04-09T05:14:31.299Z"
+    },
+    "updatedAt": {
+      "$date": "2024-04-09T05:14:31.299Z"
+    },
+    "productType": "tops"
+  },
+  {
+    "objectID": "SKU003",
+    "id": "SKU003",
+    "name": "cotton shirt",
+    "master": true,
+    "skuId": "SKU003",
+    "variation": [
+      {
+        "color": "green",
+        "colorCode": "#D2EF9A",
+        "colorImage": "",
+        "image": "/images/product/product-2-large-2.webp",
+        "_id": {
+          "$oid": "6614ceb72b7dee6aad364e77"
+        },
+        "skuId": "SKU003_1"
+      },
+      {
+        "color": "red",
+        "colorCode": "#DB4444",
+        "colorImage": "",
+        "image": "/images/product/product-2-large-2.webp",
+        "_id": {
+          "$oid": "6614ceb72b7dee6aad364e78"
+        },
+        "skuId": "SKU003_2"
+      },
+      {
+        "color": "white",
+        "colorCode": "#F6EFDD",
+        "colorImage": "",
+        "image": "/images/product/product-2-large-2.webp",
+        "_id": {
+          "$oid": "6614ceb72b7dee6aad364e79"
+        },
+        "skuId": "SKU003_3"
+      }
+    ],
+    "images": [
+      "/images/product/product-1-large.webp",
+      "/images/product/product-1-large-1.webp",
+      "/images/product/product-1-large-2.webp",
+      "/images/product/product-2-large-1.webp"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "gender": "men",
+    "new": false,
+    "sale": true,
+    "category": "men",
+    "material": "cotton",
+    "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
+    "price": {
+      "listPrice": 35,
+      "salesPrice": 30,
+      "embroideryLogoPrice": 12,
+      "embroiderySleevePrice": 9,
+      "A3Price": 18,
+      "A4Price": 22
+    },
+    "available": false,
+    "inStock": 10,
+    "sold": 12,
+    "quantity": 100,
+    "quantityPurchase": 1,
+    "isCustom": false,
+    "options": {
+      "frontprint": {
+        "selected": false
+      },
+      "backprint": {
+        "selected": false
+      }
+    },
+    "action": "add to cart",
+    "slug": "cotton-shirt",
+    "reviews": [],
+    "createdAt": {
+      "$date": "2024-04-09T05:14:31.299Z"
+    },
+    "updatedAt": {
+      "$date": "2024-04-09T05:14:31.299Z"
+    },
+    "productType": "tshirts"
+  },
+  {
+    "objectID": "SKU004",
+    "id": "SKU004",
+    "name": "cotton top",
+    "master": true,
+    "skuId": "SKU004",
+    "variation": [
+      {
+        "color": "red",
+        "colorCode": "#DB4444",
+        "colorImage": "",
+        "image": "/images/product/product-2-large-2.webp",
+        "_id": {
+          "$oid": "6614ceb72b7dee6aad364e6b"
+        },
+        "skuId": "SKU004_1"
+      },
+      {
+        "color": "yellow",
+        "colorCode": "#ECB018",
+        "colorImage": "",
+        "image": "/images/product/product-2-large-2.webp",
+        "_id": {
+          "$oid": "6614ceb72b7dee6aad364e6c"
+        },
+        "skuId": "SKU003_2"
+      }
+    ],
+    "images": [
+      "/images/product/product-1-large.webp",
+      "/images/product/product-1-large-1.webp",
+      "/images/product/product-1-large-2.webp",
+      "/images/product/product-2-large-1.webp"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "gender": "women",
+    "new": true,
+    "sale": true,
+    "category": "women",
+    "material": "cotton",
+    "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
+    "price": {
+      "listPrice": 45,
+      "salesPrice": 30,
+      "embroideryLogoPrice": 10,
+      "embroiderySleevePrice": 8,
+      "A3Price": 15,
+      "A4Price": 20
+    },
+    "available": false,
+    "inStock": 10,
+    "sold": 12,
+    "quantity": 100,
+    "quantityPurchase": 1,
+    "isCustom": false,
+    "options": {
+      "frontprint": {
+        "selected": false
+      },
+      "backprint": {
+        "selected": false
+      }
+    },
+    "action": "add to cart",
+    "slug": "cotton-shirt",
+    "reviews": [],
+    "createdAt": {
+      "$date": "2024-04-09T05:14:31.299Z"
+    },
+    "updatedAt": {
+      "$date": "2024-04-09T05:14:31.299Z"
+    },
+    "productType": "tops"
+  },
+  {
+    "objectID": "SKU004_1",
+    "id": "SKU004_1",
+    "name": "cotton top",
+    "master": false,
+    "parentProduct": "SKU004",
+    "skuId": "SKU004_1",
+    "variation": [],
+    "images": [
+      "/images/product/product-1-large.webp",
+      "/images/product/product-1-large-1.webp",
+      "/images/product/product-1-large-2.webp",
+      "/images/product/product-2-large-1.webp"
+    ],
+    "color": "yellow",
+    "colorCode": "#ECB018",
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ],
+    "gender": "women",
+    "new": true,
+    "sale": true,
+    "category": "women",
+    "material": "cotton",
+    "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
+    "price": {
+      "listPrice": 50,
+      "salesPrice": 0,
+      "embroideryLogoPrice": 10,
+      "embroiderySleevePrice": 8,
+      "A3Price": 15,
+      "A4Price": 20
+    },
+    "available": true,
+    "inStock": 10,
+    "sold": 12,
+    "quantity": 100,
+    "quantityPurchase": 1,
+    "isCustom": false,
+    "options": {
+      "frontprint": {
+        "selected": false
+      },
+      "backprint": {
+        "selected": false
+      }
+    },
+    "action": "add to cart",
+    "slug": "cotton-shirt",
+    "reviews": [],
+    "createdAt": {
+      "$date": "2024-04-09T05:14:31.282Z"
+    },
+    "updatedAt": {
+      "$date": "2024-04-09T05:14:31.282Z"
+    },
+    "productType": "tops"
+  },
+  {
+    "objectID": "SKU004_2",
+    "id": "SKU004_2",
+    "name": "cotton top",
+    "master": false,
+    "parentProduct": "SKU004",
+    "skuId": "SKU004_2",
+    "variation": [],
+    "images": [
+      "/images/product/product-1-large.webp",
+      "/images/product/product-1-large-1.webp",
+      "/images/product/product-1-large-2.webp",
+      "/images/product/product-2-large-1.webp"
+    ],
+    "color": "red",
+    "colorCode": "#DB4444",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "gender": "women",
+    "new": true,
+    "sale": true,
+    "category": "women",
+    "material": "cotton",
+    "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
+    "price": {
+      "listPrice": 45,
+      "salesPrice": 0,
+      "embroideryLogoPrice": 10,
+      "embroiderySleevePrice": 8,
+      "A3Price": 15,
+      "A4Price": 20
+    },
+    "available": true,
+    "inStock": 10,
+    "sold": 12,
+    "quantity": 100,
+    "quantityPurchase": 1,
+    "isCustom": false,
+    "options": {
+      "frontprint": {
+        "selected": false
+      },
+      "backprint": {
+        "selected": false
+      }
+    },
+    "action": "add to cart",
+    "slug": "cotton-shirt",
+    "reviews": [],
+    "createdAt": {
+      "$date": "2024-04-09T05:14:31.281Z"
+    },
+    "updatedAt": {
+      "$date": "2024-04-09T05:14:31.281Z"
+    },
+    "productType": "tops"
+  },
+  {
+    "objectID": "SKU005_1",
+    "id": "SKU005_1",
+    "name": "cotton dress",
+    "master": false,
+    "parentProduct": "SKU005",
+    "skuId": "SKU005_1",
+    "variation": [],
+    "images": [
+      "/images/product/product-1-large.webp",
+      "/images/product/product-1-large-1.webp",
+      "/images/product/product-1-large-2.webp",
+      "/images/product/product-2-large-1.webp"
+    ],
+    "color": "red",
+    "colorCode": "#DB4444",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "gender": "women",
+    "new": true,
+    "sale": false,
+    "category": "women",
+    "material": "cotton",
+    "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
+    "price": {
+      "listPrice": 45,
+      "salesPrice": 0,
+      "embroideryLogoPrice": 10,
+      "embroiderySleevePrice": 8,
+      "A3Price": 15,
+      "A4Price": 20
+    },
+    "available": true,
+    "inStock": 10,
+    "sold": 12,
+    "quantity": 100,
+    "quantityPurchase": 1,
+    "isCustom": false,
+    "options": {
+      "frontprint": {
+        "selected": false
+      },
+      "backprint": {
+        "selected": false
+      }
+    },
+    "action": "add to cart",
+    "slug": "cotton-shirt",
+    "createdAt": {
+      "$date": "2024-04-24T08:03:20.904Z"
+    },
+    "updatedAt": {
+      "$date": "2024-04-24T08:03:20.904Z"
+    },
+    "productType": "tops"
+  },
+  {
+    "objectID": "SKU006_1",
+    "id": "SKU006_1",
+    "name": "cotton tshirt",
+    "master": false,
+    "parentProduct": "SKU006",
+    "skuId": "SKU006_1",
+    "variation": [],
+    "images": [
+      "/images/product/product-1-large.webp",
+      "/images/product/product-1-large-1.webp",
+      "/images/product/product-1-large-2.webp",
+      "/images/product/product-2-large-1.webp"
+    ],
+    "color": "red",
+    "colorCode": "#DB4444",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "gender": "men",
+    "new": true,
+    "sale": false,
+    "category": "men",
+    "material": "cotton",
+    "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
+    "price": {
+      "listPrice": 45,
+      "salesPrice": 0,
+      "embroideryLogoPrice": 10,
+      "embroiderySleevePrice": 8,
+      "A3Price": 15,
+      "A4Price": 20
+    },
+    "available": true,
+    "inStock": 10,
+    "sold": 12,
+    "quantity": 100,
+    "quantityPurchase": 1,
+    "isCustom": false,
+    "options": {
+      "frontprint": {
+        "selected": false
+      },
+      "backprint": {
+        "selected": false
+      }
+    },
+    "action": "add to cart",
+    "slug": "cotton-shirt",
+    "createdAt": {
+      "$date": "2024-04-24T08:03:20.904Z"
+    },
+    "updatedAt": {
+      "$date": "2024-04-24T08:03:20.904Z"
+    },
+    "productType": "tshirts"
+  },
+  {
+    "objectID": "SKU005_2",
+    "id": "SKU005_2",
+    "name": "cotton top",
+    "master": false,
+    "parentProduct": "SKU005",
+    "skuId": "SKU005_2",
+    "variation": [],
+    "images": [
+      "/images/product/product-1-large.webp",
+      "/images/product/product-1-large-1.webp",
+      "/images/product/product-1-large-2.webp",
+      "/images/product/product-2-large-1.webp"
+    ],
+    "color": "yellow",
+    "colorCode": "#ECB018",
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ],
+    "gender": "women",
+    "new": true,
+    "sale": false,
+    "category": "women",
+    "material": "cotton",
+    "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
+    "price": {
+      "listPrice": 50,
+      "salesPrice": 0,
+      "embroideryLogoPrice": 10,
+      "embroiderySleevePrice": 8,
+      "A3Price": 15,
+      "A4Price": 20
+    },
+    "available": true,
+    "inStock": 10,
+    "sold": 12,
+    "quantity": 100,
+    "quantityPurchase": 1,
+    "isCustom": false,
+    "options": {
+      "frontprint": {
+        "selected": false
+      },
+      "backprint": {
+        "selected": false
+      }
+    },
+    "action": "add to cart",
+    "slug": "cotton-shirt",
+    "createdAt": {
+      "$date": "2024-04-24T08:03:20.904Z"
+    },
+    "updatedAt": {
+      "$date": "2024-04-24T08:03:20.904Z"
+    },
+    "productType": "tops"
+  },
+  {
+    "objectID": "SKU007_2",
+    "id": "SKU007_2",
+    "name": "cotton tshirt",
+    "master": false,
+    "parentProduct": "SKU007",
+    "skuId": "SKU007_2",
+    "variation": [],
+    "images": [
+      "/images/product/product-1-large.webp",
+      "/images/product/product-1-large-1.webp",
+      "/images/product/product-1-large-2.webp",
+      "/images/product/product-2-large-1.webp"
+    ],
+    "color": "yellow",
+    "colorCode": "#ECB018",
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ],
+    "gender": "men",
+    "new": true,
+    "sale": false,
+    "category": "men",
+    "material": "cotton",
+    "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
+    "price": {
+      "listPrice": 50,
+      "salesPrice": 0,
+      "embroideryLogoPrice": 10,
+      "embroiderySleevePrice": 8,
+      "A3Price": 15,
+      "A4Price": 20
+    },
+    "available": true,
+    "inStock": 10,
+    "sold": 12,
+    "quantity": 100,
+    "quantityPurchase": 1,
+    "isCustom": false,
+    "options": {
+      "frontprint": {
+        "selected": false
+      },
+      "backprint": {
+        "selected": false
+      }
+    },
+    "action": "add to cart",
+    "slug": "cotton-shirt",
+    "createdAt": {
+      "$date": "2024-04-24T08:03:20.905Z"
+    },
+    "updatedAt": {
+      "$date": "2024-04-24T08:03:20.905Z"
+    },
+    "productType": "tshirts"
+  },
+  {
+    "objectID": "SKU008_1",
+    "id": "SKU008_1",
+    "name": "cotton tshirt",
+    "master": false,
+    "parentProduct": "SKU008",
+    "skuId": "SKU008_1",
+    "variation": [],
+    "images": [
+      "/images/product/product-1-large.webp",
+      "/images/product/product-1-large-1.webp",
+      "/images/product/product-1-large-2.webp",
+      "/images/product/product-2-large-1.webp"
+    ],
+    "color": "red",
+    "colorCode": "#DB4444",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "gender": "men",
+    "new": true,
+    "sale": false,
+    "category": "men",
+    "material": "cotton",
+    "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
+    "price": {
+      "listPrice": 45,
+      "salesPrice": 0,
+      "embroideryLogoPrice": 10,
+      "embroiderySleevePrice": 8,
+      "A3Price": 15,
+      "A4Price": 20
+    },
+    "available": true,
+    "inStock": 10,
+    "sold": 12,
+    "quantity": 100,
+    "quantityPurchase": 1,
+    "isCustom": false,
+    "options": {
+      "frontprint": {
+        "selected": false
+      },
+      "backprint": {
+        "selected": false
+      }
+    },
+    "action": "add to cart",
+    "slug": "cotton-shirt",
+    "createdAt": {
+      "$date": "2024-04-24T08:03:20.905Z"
+    },
+    "updatedAt": {
+      "$date": "2024-04-24T08:03:20.905Z"
+    },
+    "productType": "tshirts"
+  },
+  {
+    "objectID": "SKU008_2",
+    "id": "SKU008_2",
+    "name": "cotton tshirt",
+    "master": false,
+    "parentProduct": "SKU008",
+    "skuId": "SKU008_2",
+    "variation": [],
+    "images": [
+      "/images/product/product-1-large.webp",
+      "/images/product/product-1-large-1.webp",
+      "/images/product/product-1-large-2.webp",
+      "/images/product/product-2-large-1.webp"
+    ],
+    "color": "yellow",
+    "colorCode": "#ECB018",
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ],
+    "gender": "men",
+    "new": true,
+    "sale": false,
+    "category": "men",
+    "material": "cotton",
+    "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
+    "price": {
+      "listPrice": 50,
+      "salesPrice": 0,
+      "embroideryLogoPrice": 10,
+      "embroiderySleevePrice": 8,
+      "A3Price": 15,
+      "A4Price": 20
+    },
+    "available": true,
+    "inStock": 10,
+    "sold": 12,
+    "quantity": 100,
+    "quantityPurchase": 1,
+    "isCustom": false,
+    "options": {
+      "frontprint": {
+        "selected": false
+      },
+      "backprint": {
+        "selected": false
+      }
+    },
+    "action": "add to cart",
+    "slug": "cotton-shirt",
+    "createdAt": {
+      "$date": "2024-04-24T08:03:20.905Z"
+    },
+    "updatedAt": {
+      "$date": "2024-04-24T08:03:20.905Z"
+    },
+    "productType": "tshirts"
+  },
+  {
+    "objectID": "SKU009_1",
+    "id": "SKU009_1",
+    "name": "cotton tshirt",
+    "master": false,
+    "parentProduct": "SKU009",
+    "skuId": "SKU009_1",
+    "variation": [],
+    "images": [
+      "/images/product/product-1-large.webp",
+      "/images/product/product-1-large-1.webp",
+      "/images/product/product-1-large-2.webp",
+      "/images/product/product-2-large-1.webp"
+    ],
+    "color": "red",
+    "colorCode": "#DB4444",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "gender": "men",
+    "new": true,
+    "sale": false,
+    "category": "men",
+    "material": "cotton",
+    "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
+    "price": {
+      "listPrice": 45,
+      "salesPrice": 0,
+      "embroideryLogoPrice": 10,
+      "embroiderySleevePrice": 8,
+      "A3Price": 15,
+      "A4Price": 20
+    },
+    "available": true,
+    "inStock": 10,
+    "sold": 12,
+    "quantity": 100,
+    "quantityPurchase": 1,
+    "isCustom": false,
+    "options": {
+      "frontprint": {
+        "selected": false
+      },
+      "backprint": {
+        "selected": false
+      }
+    },
+    "action": "add to cart",
+    "slug": "cotton-shirt",
+    "createdAt": {
+      "$date": "2024-04-24T08:03:20.905Z"
+    },
+    "updatedAt": {
+      "$date": "2024-04-24T08:03:20.905Z"
+    },
+    "productType": "tshirts"
+  },
+  {
+    "objectID": "SKU009_2",
+    "id": "SKU009_2",
+    "name": "cotton tshirt",
+    "master": false,
+    "parentProduct": "SKU009",
+    "skuId": "SKU009_2",
+    "variation": [],
+    "images": [
+      "/images/product/product-1-large.webp",
+      "/images/product/product-1-large-1.webp",
+      "/images/product/product-1-large-2.webp",
+      "/images/product/product-2-large-1.webp"
+    ],
+    "color": "yellow",
+    "colorCode": "#ECB018",
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ],
+    "gender": "men",
+    "new": true,
+    "sale": false,
+    "category": "men",
+    "material": "cotton",
+    "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
+    "price": {
+      "listPrice": 50,
+      "salesPrice": 0,
+      "embroideryLogoPrice": 10,
+      "embroiderySleevePrice": 8,
+      "A3Price": 15,
+      "A4Price": 20
+    },
+    "available": true,
+    "inStock": 10,
+    "sold": 12,
+    "quantity": 100,
+    "quantityPurchase": 1,
+    "isCustom": false,
+    "options": {
+      "frontprint": {
+        "selected": false
+      },
+      "backprint": {
+        "selected": false
+      }
+    },
+    "action": "add to cart",
+    "slug": "cotton-shirt",
+    "createdAt": {
+      "$date": "2024-04-24T08:03:20.905Z"
+    },
+    "updatedAt": {
+      "$date": "2024-04-24T08:03:20.905Z"
+    },
+    "productType": "tshirts"
+  },
+  {
+    "objectID": "SKU010_1",
+    "id": "SKU010_1",
+    "name": "cotton tshirt",
+    "master": false,
+    "parentProduct": "SKU010",
+    "skuId": "SKU010_1",
+    "variation": [],
+    "images": [
+      "/images/product/product-1-large.webp",
+      "/images/product/product-1-large-1.webp",
+      "/images/product/product-1-large-2.webp",
+      "/images/product/product-2-large-1.webp"
+    ],
+    "color": "red",
+    "colorCode": "#DB4444",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "gender": "men",
+    "new": true,
+    "sale": false,
+    "category": "men",
+    "material": "cotton",
+    "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
+    "price": {
+      "listPrice": 45,
+      "salesPrice": 0,
+      "embroideryLogoPrice": 10,
+      "embroiderySleevePrice": 8,
+      "A3Price": 15,
+      "A4Price": 20
+    },
+    "available": true,
+    "inStock": 10,
+    "sold": 12,
+    "quantity": 100,
+    "quantityPurchase": 1,
+    "isCustom": false,
+    "options": {
+      "frontprint": {
+        "selected": false
+      },
+      "backprint": {
+        "selected": false
+      }
+    },
+    "action": "add to cart",
+    "slug": "cotton-shirt",
+    "createdAt": {
+      "$date": "2024-04-24T08:03:20.906Z"
+    },
+    "updatedAt": {
+      "$date": "2024-04-24T08:03:20.906Z"
+    },
+    "productType": "tshirts"
+  },
+  {
+    "objectID": "SKU010_2",
+    "id": "SKU010_2",
+    "name": "cotton tshirt",
+    "master": false,
+    "parentProduct": "SKU010",
+    "skuId": "SKU010_2",
+    "variation": [],
+    "images": [
+      "/images/product/product-1-large.webp",
+      "/images/product/product-1-large-1.webp",
+      "/images/product/product-1-large-2.webp",
+      "/images/product/product-2-large-1.webp"
+    ],
+    "color": "yellow",
+    "colorCode": "#ECB018",
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ],
+    "gender": "men",
+    "new": true,
+    "sale": false,
+    "category": "men",
+    "material": "cotton",
+    "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
+    "price": {
+      "listPrice": 50,
+      "salesPrice": 0,
+      "embroideryLogoPrice": 10,
+      "embroiderySleevePrice": 8,
+      "A3Price": 15,
+      "A4Price": 20
+    },
+    "available": true,
+    "inStock": 10,
+    "sold": 12,
+    "quantity": 100,
+    "quantityPurchase": 1,
+    "isCustom": false,
+    "options": {
+      "frontprint": {
+        "selected": false
+      },
+      "backprint": {
+        "selected": false
+      }
+    },
+    "action": "add to cart",
+    "slug": "cotton-shirt",
+    "createdAt": {
+      "$date": "2024-04-24T08:03:20.906Z"
+    },
+    "updatedAt": {
+      "$date": "2024-04-24T08:03:20.906Z"
+    },
+    "productType": "tshirts"
+  },
+  {
+    "objectID": "SKU011_1",
+    "id": "SKU011_1",
+    "name": "cotton tshirt",
+    "master": false,
+    "parentProduct": "SKU011",
+    "skuId": "SKU011_1",
+    "variation": [],
+    "images": [
+      "/images/product/product-1-large.webp",
+      "/images/product/product-1-large-1.webp",
+      "/images/product/product-1-large-2.webp",
+      "/images/product/product-2-large-1.webp"
+    ],
+    "color": "red",
+    "colorCode": "#DB4444",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "gender": "men",
+    "new": true,
+    "sale": false,
+    "category": "men",
+    "material": "cotton",
+    "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
+    "price": {
+      "listPrice": 45,
+      "salesPrice": 0,
+      "embroideryLogoPrice": 10,
+      "embroiderySleevePrice": 8,
+      "A3Price": 15,
+      "A4Price": 20
+    },
+    "available": true,
+    "inStock": 10,
+    "sold": 12,
+    "quantity": 100,
+    "quantityPurchase": 1,
+    "isCustom": false,
+    "options": {
+      "frontprint": {
+        "selected": false
+      },
+      "backprint": {
+        "selected": false
+      }
+    },
+    "action": "add to cart",
+    "slug": "cotton-shirt",
+    "createdAt": {
+      "$date": "2024-04-24T08:03:20.907Z"
+    },
+    "updatedAt": {
+      "$date": "2024-04-24T08:03:20.907Z"
+    },
+    "productType": "tshirts"
+  },
+  {
+    "objectID": "SKU011_2",
+    "id": "SKU011_2",
+    "name": "cotton tshirt",
+    "master": false,
+    "parentProduct": "SKU011",
+    "skuId": "SKU011_2",
+    "variation": [],
+    "images": [
+      "/images/product/product-1-large.webp",
+      "/images/product/product-1-large-1.webp",
+      "/images/product/product-1-large-2.webp",
+      "/images/product/product-2-large-1.webp"
+    ],
+    "color": "yellow",
+    "colorCode": "#ECB018",
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ],
+    "gender": "men",
+    "new": true,
+    "sale": false,
+    "category": "men",
+    "material": "cotton",
+    "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
+    "price": {
+      "listPrice": 50,
+      "salesPrice": 0,
+      "embroideryLogoPrice": 10,
+      "embroiderySleevePrice": 8,
+      "A3Price": 15,
+      "A4Price": 20
+    },
+    "available": true,
+    "inStock": 10,
+    "sold": 12,
+    "quantity": 100,
+    "quantityPurchase": 1,
+    "isCustom": false,
+    "options": {
+      "frontprint": {
+        "selected": false
+      },
+      "backprint": {
+        "selected": false
+      }
+    },
+    "action": "add to cart",
+    "slug": "cotton-shirt",
+    "createdAt": {
+      "$date": "2024-04-24T08:03:20.907Z"
+    },
+    "updatedAt": {
+      "$date": "2024-04-24T08:03:20.907Z"
+    },
+    "productType": "tshirts"
+  },
+  {
+    "objectID": "SKU012_1",
+    "id": "SKU012_1",
+    "name": "cotton dress",
+    "master": false,
+    "parentProduct": "SKU012",
+    "skuId": "SKU012_1",
+    "variation": [],
+    "images": [
+      "/images/product/product-1-large.webp",
+      "/images/product/product-1-large-1.webp",
+      "/images/product/product-1-large-2.webp",
+      "/images/product/product-2-large-1.webp"
+    ],
+    "color": "red",
+    "colorCode": "#DB4444",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "gender": "women",
+    "new": true,
+    "sale": false,
+    "category": "women",
+    "material": "cotton",
+    "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
+    "price": {
+      "listPrice": 45,
+      "salesPrice": 0,
+      "embroideryLogoPrice": 10,
+      "embroiderySleevePrice": 8,
+      "A3Price": 15,
+      "A4Price": 20
+    },
+    "available": true,
+    "inStock": 10,
+    "sold": 12,
+    "quantity": 100,
+    "quantityPurchase": 1,
+    "isCustom": false,
+    "options": {
+      "frontprint": {
+        "selected": false
+      },
+      "backprint": {
+        "selected": false
+      }
+    },
+    "action": "add to cart",
+    "slug": "cotton-shirt",
+    "createdAt": {
+      "$date": "2024-04-24T08:03:20.907Z"
+    },
+    "updatedAt": {
+      "$date": "2024-04-24T08:03:20.907Z"
+    },
+    "productType": "tops"
+  },
+  {
+    "objectID": "SKU012_2",
+    "id": "SKU012_2",
+    "name": "cotton dress",
+    "master": false,
+    "parentProduct": "SKU012",
+    "skuId": "SKU012_2",
+    "variation": [],
+    "images": [
+      "/images/product/product-1-large.webp",
+      "/images/product/product-1-large-1.webp",
+      "/images/product/product-1-large-2.webp",
+      "/images/product/product-2-large-1.webp"
+    ],
+    "color": "yellow",
+    "colorCode": "#ECB018",
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ],
+    "gender": "women",
+    "new": true,
+    "sale": false,
+    "category": "women",
+    "material": "cotton",
+    "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
+    "price": {
+      "listPrice": 50,
+      "salesPrice": 0,
+      "embroideryLogoPrice": 10,
+      "embroiderySleevePrice": 8,
+      "A3Price": 15,
+      "A4Price": 20
+    },
+    "available": true,
+    "inStock": 10,
+    "sold": 12,
+    "quantity": 100,
+    "quantityPurchase": 1,
+    "isCustom": false,
+    "options": {
+      "frontprint": {
+        "selected": false
+      },
+      "backprint": {
+        "selected": false
+      }
+    },
+    "action": "add to cart",
+    "slug": "cotton-shirt",
+    "createdAt": {
+      "$date": "2024-04-24T08:03:20.907Z"
+    },
+    "updatedAt": {
+      "$date": "2024-04-24T08:03:20.907Z"
+    },
+    "productType": "tops"
+  },
+  {
+    "objectID": "SKU005",
+    "id": "SKU005",
+    "name": "cotton top",
+    "master": true,
+    "skuId": "SKU005",
+    "variation": [
+      {
+        "skuId": "SKU005_1",
+        "color": "red",
+        "colorCode": "#DB4444",
+        "colorImage": "",
+        "image": "/images/product/product-2-large-2.webp",
+        "_id": {
+          "$oid": "6628bcc845364b9b8b2b8f6a"
+        }
+      },
+      {
+        "skuId": "SKU005_2",
+        "color": "yellow",
+        "colorCode": "#ECB018",
+        "colorImage": "",
+        "image": "/images/product/product-2-large-2.webp",
+        "_id": {
+          "$oid": "6628bcc845364b9b8b2b8f6b"
+        }
+      }
+    ],
+    "images": [
+      "/images/product/product-1-large.webp",
+      "/images/product/product-1-large-1.webp",
+      "/images/product/product-1-large-2.webp",
+      "/images/product/product-2-large-1.webp"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "gender": "women",
+    "new": true,
+    "sale": false,
+    "category": "women",
+    "material": "cotton",
+    "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
+    "price": {
+      "listPrice": 45,
+      "salesPrice": 0,
+      "embroideryLogoPrice": 10,
+      "embroiderySleevePrice": 8,
+      "A3Price": 15,
+      "A4Price": 20
+    },
+    "available": false,
+    "inStock": 10,
+    "sold": 12,
+    "quantity": 100,
+    "quantityPurchase": 1,
+    "isCustom": false,
+    "options": {
+      "frontprint": {
+        "selected": false
+      },
+      "backprint": {
+        "selected": false
+      }
+    },
+    "action": "add to cart",
+    "slug": "cotton-shirt",
+    "createdAt": {
+      "$date": "2024-04-24T08:03:20.964Z"
+    },
+    "updatedAt": {
+      "$date": "2024-04-24T08:03:20.964Z"
+    },
+    "productType": "tops"
+  },
+  {
+    "objectID": "SKU006",
+    "id": "SKU006",
+    "name": "cotton tshirt",
+    "master": true,
+    "skuId": "SKU006",
+    "variation": [
+      {
+        "skuId": "SKU005_1",
+        "color": "red",
+        "colorCode": "#DB4444",
+        "colorImage": "",
+        "image": "/images/product/product-2-large-2.webp",
+        "_id": {
+          "$oid": "6628bcc845364b9b8b2b8f6f"
+        }
+      },
+      {
+        "skuId": "SKU005_2",
+        "color": "yellow",
+        "colorCode": "#ECB018",
+        "colorImage": "",
+        "image": "/images/product/product-2-large-2.webp",
+        "_id": {
+          "$oid": "6628bcc845364b9b8b2b8f70"
+        }
+      }
+    ],
+    "images": [
+      "/images/product/product-1-large.webp",
+      "/images/product/product-1-large-1.webp",
+      "/images/product/product-1-large-2.webp",
+      "/images/product/product-2-large-1.webp"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "gender": "men",
+    "new": true,
+    "sale": false,
+    "category": "men",
+    "material": "cotton",
+    "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
+    "price": {
+      "listPrice": 45,
+      "salesPrice": 0,
+      "embroideryLogoPrice": 10,
+      "embroiderySleevePrice": 8,
+      "A3Price": 15,
+      "A4Price": 20
+    },
+    "available": false,
+    "inStock": 10,
+    "sold": 12,
+    "quantity": 100,
+    "quantityPurchase": 1,
+    "isCustom": false,
+    "options": {
+      "frontprint": {
+        "selected": false
+      },
+      "backprint": {
+        "selected": false
+      }
+    },
+    "action": "add to cart",
+    "slug": "cotton-shirt",
+    "createdAt": {
+      "$date": "2024-04-24T08:03:20.965Z"
+    },
+    "updatedAt": {
+      "$date": "2024-04-24T08:03:20.965Z"
+    },
+    "productType": "tshirts"
+  },
+  {
+    "objectID": "SKU007",
+    "id": "SKU007",
+    "name": "cotton tshirt",
+    "master": true,
+    "skuId": "SKU007",
+    "variation": [
+      {
+        "skuId": "SKU007_1",
+        "color": "red",
+        "colorCode": "#DB4444",
+        "colorImage": "",
+        "image": "/images/product/product-2-large-2.webp",
+        "_id": {
+          "$oid": "6628bcc845364b9b8b2b8f74"
+        }
+      },
+      {
+        "skuId": "SKU007_2",
+        "color": "yellow",
+        "colorCode": "#ECB018",
+        "colorImage": "",
+        "image": "/images/product/product-2-large-2.webp",
+        "_id": {
+          "$oid": "6628bcc845364b9b8b2b8f75"
+        }
+      }
+    ],
+    "images": [
+      "/images/product/product-1-large.webp",
+      "/images/product/product-1-large-1.webp",
+      "/images/product/product-1-large-2.webp",
+      "/images/product/product-2-large-1.webp"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "gender": "men",
+    "new": true,
+    "sale": false,
+    "category": "men",
+    "material": "cotton",
+    "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
+    "price": {
+      "listPrice": 45,
+      "salesPrice": 0,
+      "embroideryLogoPrice": 10,
+      "embroiderySleevePrice": 8,
+      "A3Price": 15,
+      "A4Price": 20
+    },
+    "available": false,
+    "inStock": 10,
+    "sold": 12,
+    "quantity": 100,
+    "quantityPurchase": 1,
+    "isCustom": false,
+    "options": {
+      "frontprint": {
+        "selected": false
+      },
+      "backprint": {
+        "selected": false
+      }
+    },
+    "action": "add to cart",
+    "slug": "cotton-shirt",
+    "createdAt": {
+      "$date": "2024-04-24T08:03:20.965Z"
+    },
+    "updatedAt": {
+      "$date": "2024-04-24T08:03:20.965Z"
+    },
+    "productType": "tshirts"
+  },
+  {
+    "objectID": "SKU006_2",
+    "id": "SKU006_2",
+    "name": "cotton tshirt",
+    "master": false,
+    "parentProduct": "SKU006",
+    "skuId": "SKU006_2",
+    "variation": [],
+    "images": [
+      "/images/product/product-1-large.webp",
+      "/images/product/product-1-large-1.webp",
+      "/images/product/product-1-large-2.webp",
+      "/images/product/product-2-large-1.webp"
+    ],
+    "color": "yellow",
+    "colorCode": "#ECB018",
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ],
+    "gender": "men",
+    "new": true,
+    "sale": false,
+    "category": "men",
+    "material": "cotton",
+    "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
+    "price": {
+      "listPrice": 50,
+      "salesPrice": 0,
+      "embroideryLogoPrice": 10,
+      "embroiderySleevePrice": 8,
+      "A3Price": 15,
+      "A4Price": 20
+    },
+    "available": true,
+    "inStock": 10,
+    "sold": 12,
+    "quantity": 100,
+    "quantityPurchase": 1,
+    "isCustom": false,
+    "options": {
+      "frontprint": {
+        "selected": false
+      },
+      "backprint": {
+        "selected": false
+      }
+    },
+    "action": "add to cart",
+    "slug": "cotton-shirt",
+    "createdAt": {
+      "$date": "2024-04-24T08:03:20.905Z"
+    },
+    "updatedAt": {
+      "$date": "2024-04-24T08:03:20.905Z"
+    },
+    "productType": "tshirts"
+  },
+  {
+    "objectID": "SKU011",
+    "id": "SKU011",
+    "name": "cotton top",
+    "master": true,
+    "skuId": "SKU011",
+    "variation": [
+      {
+        "skuId": "SKU011_1",
+        "color": "red",
+        "colorCode": "#DB4444",
+        "colorImage": "",
+        "image": "/images/product/product-2-large-2.webp",
+        "_id": {
+          "$oid": "6628bcc845364b9b8b2b8f88"
+        }
+      },
+      {
+        "skuId": "SKU011_2",
+        "color": "yellow",
+        "colorCode": "#ECB018",
+        "colorImage": "",
+        "image": "/images/product/product-2-large-2.webp",
+        "_id": {
+          "$oid": "6628bcc845364b9b8b2b8f89"
+        }
+      }
+    ],
+    "images": [
+      "/images/product/product-1-large.webp",
+      "/images/product/product-1-large-1.webp",
+      "/images/product/product-1-large-2.webp",
+      "/images/product/product-2-large-1.webp"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "gender": "women",
+    "new": true,
+    "sale": false,
+    "category": "women",
+    "material": "cotton",
+    "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
+    "price": {
+      "listPrice": 45,
+      "salesPrice": 0,
+      "embroideryLogoPrice": 10,
+      "embroiderySleevePrice": 8,
+      "A3Price": 15,
+      "A4Price": 20
+    },
+    "available": false,
+    "inStock": 10,
+    "sold": 12,
+    "quantity": 100,
+    "quantityPurchase": 1,
+    "isCustom": false,
+    "options": {
+      "frontprint": {
+        "selected": false
+      },
+      "backprint": {
+        "selected": false
+      }
+    },
+    "action": "add to cart",
+    "slug": "cotton-shirt",
+    "createdAt": {
+      "$date": "2024-04-24T08:03:20.966Z"
+    },
+    "updatedAt": {
+      "$date": "2024-04-24T08:03:20.966Z"
+    },
+    "productType": "tops"
+  },
+  {
+    "objectID": "SKU051",
+    "id": "SKU051",
+    "name": "cotton dress",
+    "master": true,
+    "skuId": "SKU051",
+    "variation": [
+      {
+        "color": "black",
+        "colorCode": "#1F1F1F",
+        "colorImage": "",
+        "image": "/images/product/product-2-large-2.webp",
+        "_id": {
+          "$oid": "6614ceb72b7dee6aad364e70"
+        },
+        "skuId": "SKU051_1"
+      },
+      {
+        "color": "yellow",
+        "colorCode": "#ECB018",
+        "colorImage": "",
+        "image": "/images/product/product-2-large-2.webp",
+        "_id": {
+          "$oid": "6614ceb72b7dee6aad364e71"
+        },
+        "skuId": "SKU051_2"
+      }
+    ],
+    "images": [
+      "/images/product/product-1-large.webp",
+      "/images/product/product-1-large-1.webp",
+      "/images/product/product-2-large-2.webp"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "gender": "women",
+    "new": true,
+    "sale": true,
+    "category": "sale",
+    "material": "cotton",
+    "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
+    "price": {
+      "listPrice": 100,
+      "salesPrice": 75,
+      "embroideryLogoPrice": 12,
+      "embroiderySleevePrice": 9,
+      "A3Price": 18,
+      "A4Price": 22
+    },
+    "available": true,
+    "inStock": 100,
+    "sold": 21,
+    "quantity": 100,
+    "quantityPurchase": 1,
+    "isCustom": false,
+    "options": {
+      "frontprint": {
+        "selected": false
+      },
+      "backprint": {
+        "selected": false
+      }
+    },
+    "action": "quick shop",
+    "slug": "cotton-shirt",
+    "reviews": [],
+    "createdAt": {
+      "$date": "2024-04-09T05:14:31.299Z"
+    },
+    "updatedAt": {
+      "$date": "2024-04-09T05:14:31.299Z"
+    },
+    "productType": "tops"
+  },
+  {
+    "objectID": "SKU051_1",
+    "id": "SKU051_1",
+    "name": "cotton top",
+    "master": false,
+    "parentProduct": "SKU002",
+    "skuId": "SKU051_1",
+    "variation": [],
+    "images": [
+      "/images/product/product-1-large.webp",
+      "/images/product/product-1-large-1.webp",
+      "/images/product/product-1-large-2.webp",
+      "/images/product/product-2-large-1.webp"
+    ],
+    "color": "yellow",
+    "colorCode": "#ECB018",
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ],
+    "gender": "women",
+    "new": true,
+    "sale": true,
+    "category": "sale",
+    "material": "cotton",
+    "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
+    "price": {
+      "listPrice": 100,
+      "salesPrice": 75,
+      "embroideryLogoPrice": 10,
+      "embroiderySleevePrice": 8,
+      "A3Price": 15,
+      "A4Price": 20
+    },
+    "available": true,
+    "inStock": 10,
+    "sold": 12,
+    "quantity": 100,
+    "quantityPurchase": 1,
+    "isCustom": false,
+    "options": {
+      "frontprint": {
+        "selected": false
+      },
+      "backprint": {
+        "selected": false
+      }
+    },
+    "action": "add to cart",
+    "slug": "cotton-shirt",
+    "reviews": [],
+    "createdAt": {
+      "$date": "2024-04-09T05:14:31.282Z"
+    },
+    "updatedAt": {
+      "$date": "2024-04-09T05:14:31.282Z"
+    },
+    "productType": "tops"
+  },
+  {
+    "objectID": "SKU051_2",
+    "id": "SKU051_2",
+    "name": "cotton dress",
+    "master": false,
+    "parentProduct": "SKU051",
+    "skuId": "SKU051_2",
+    "variation": [],
+    "images": [
+      "/images/product/product-1-large.webp",
+      "/images/product/product-1-large-1.webp",
+      "/images/product/product-1-large-2.webp",
+      "/images/product/product-2-large-1.webp"
+    ],
+    "color": "purple",
+    "colorCode": "#8684D4",
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ],
+    "gender": "women",
+    "new": true,
+    "sale": true,
+    "category": "women",
+    "material": "cotton",
+    "description": "Keep your home organized, yet elegant with storage cabinets by Onita Patio Furniture. Traditionally designed, they are perfect to be used in the any place where you need to store.",
+    "price": {
+      "listPrice": 100,
+      "salesPrice": 75,
+      "embroideryLogoPrice": 10,
+      "embroiderySleevePrice": 8,
+      "A3Price": 15,
+      "A4Price": 20
+    },
+    "available": true,
+    "inStock": 10,
+    "sold": 12,
+    "quantity": 100,
+    "quantityPurchase": 1,
+    "isCustom": false,
+    "options": {
+      "frontprint": {
+        "selected": false
+      },
+      "backprint": {
+        "selected": false
+      }
+    },
+    "action": "add to cart",
+    "slug": "cotton-shirt",
+    "reviews": [],
+    "createdAt": {
+      "$date": "2024-04-09T05:14:31.282Z"
+    },
+    "updatedAt": {
+      "$date": "2024-04-09T05:14:31.282Z"
+    },
+    "productType": "tops"
+  }
+]

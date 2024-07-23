@@ -1,0 +1,22 @@
+/* tab-features-block */
+.tab-features-block .section-swiper-navigation .swiper-button-prev,
+.tab-features-block .section-swiper-navigation .swiper-button-next {
+  width: 44px;
+  height: 44px;
+}
+
+.section-swiper-navigation .swiper-button-prev::after,
+.section-swiper-navigation .swiper-button-next::after {
+  font-size: 18px;
+}
+
+.style-watch {
+  .product-item {
+    .list-color,
+    .list-color-image {
+      .color-item.active {
+        border-color: var(--white);
+      }
+    }
+  }
+}

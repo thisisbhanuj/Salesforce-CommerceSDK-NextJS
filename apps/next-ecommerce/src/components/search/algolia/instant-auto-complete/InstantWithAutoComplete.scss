@@ -1,0 +1,54 @@
+/* Autocomplete */
+
+.aa-Panel {
+  position: fixed;
+}
+
+.algolia-instant-container {
+  margin-top: 3.5rem;
+  padding: 1.5rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+/* InstantSearch */
+
+.hit {
+  align-items: center;
+  display: grid;
+  gap: 1rem;
+}
+
+.hit h1 {
+  font-size: 1rem;
+}
+
+.hit p {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+.hit-image {
+  align-items: center;
+  display: flex;
+  height: 300px;
+  justify-content: center;
+}
+
+.ais-HierarchicalMenu-item--selected.ais-HierarchicalMenu-item--parent
+  > div:first-of-type
+  .ais-HierarchicalMenu-label {
+  font-weight: bold;
+}
+
+.ais-HierarchicalMenu-item--selected:not(.ais-HierarchicalMenu-item--parent)
+  .ais-HierarchicalMenu-label {
+  font-weight: bold;
+}
+
+.ais-Pagination {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}

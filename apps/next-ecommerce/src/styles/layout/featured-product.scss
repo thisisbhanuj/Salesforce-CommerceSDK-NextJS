@@ -1,0 +1,150 @@
+/* best-sale-prd */
+.best-sale-prd .product-infor .desc {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.5;
+  max-height: 3em;
+  position: relative;
+}
+
+/* Popular product */
+.popular-product,
+.lookbook {
+  .dots:hover span {
+    background-color: var(--green);
+  }
+
+  .item {
+    .product-infor {
+      position: absolute;
+      width: max-content;
+      top: 47px;
+      left: 50%;
+      transform: translate(-50%, 10px);
+      opacity: 0;
+      visibility: hidden;
+      transition: all ease 0.3s;
+      box-shadow: 0px 10px 25px 0px rgba(43, 52, 74, 0.12);
+
+      &::before {
+        content: '';
+        position: absolute;
+        background-color: var(--white);
+        width: 24px;
+        height: 24px;
+        top: 0px;
+        left: calc(50% - 4px);
+        transform: rotate(45deg) translateX(-50%);
+        z-index: -1;
+      }
+    }
+
+    .dots.bottom-dot .product-infor::before {
+      top: unset;
+      bottom: -20px;
+    }
+  }
+
+  .dots {
+    &.bottom-dot .product-infor {
+      transform: translate(-50%, -10px);
+      bottom: calc(100% + 20px);
+      top: unset;
+    }
+
+    &:hover .product-infor {
+      transform: translate(-50%, 0);
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+// Featured Product Home Underwear
+.featured-product.underwear {
+  .list-img {
+    position: relative;
+  }
+
+  .mySwiper {
+    position: unset;
+    cursor: pointer;
+
+    .swiper-wrapper {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      flex-direction: column;
+      gap: 12px;
+      width: fit-content;
+
+      .swiper-slide {
+        width: 100px !important;
+        border: 1px solid #a0a0a0;
+        border-radius: 12px;
+        overflow: hidden;
+        opacity: 0.5;
+
+        &.swiper-slide-thumb-active {
+          opacity: 1;
+          border-color: var(--black);
+        }
+
+        @media (max-width: 1024px) {
+          width: 60px !important;
+        }
+      }
+    }
+  }
+
+  .quantity-block {
+    .disabled {
+      color: var(--secondary2);
+      cursor: default;
+    }
+  }
+}
+
+.best-sale-prd {
+  .quantity-block {
+    .disabled {
+      color: var(--secondary2);
+      cursor: default;
+    }
+  }
+}
+
+.popular-product.watch {
+  @media (max-width: 640px) {
+    .list-feature-right {
+      .icon {
+        svg {
+          width: 18px;
+        }
+      }
+    }
+  }
+}
+
+.featured-product.style-watch {
+  .list-action .choose-size {
+    .size-item {
+      background-color: var(--black);
+      color: var(--white);
+
+      &.active {
+        background-color: var(--white);
+        color: var(--black);
+        border-color: var(--white);
+      }
+    }
+  }
+
+  .button-block .button-main {
+    &:hover {
+      background-color: var(--green);
+      color: var(--black);
+    }
+  }
+}

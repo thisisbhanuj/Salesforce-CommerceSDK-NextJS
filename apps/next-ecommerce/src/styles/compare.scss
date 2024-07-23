@@ -1,0 +1,56 @@
+.compare-block {
+  .list-product {
+    .right {
+      .product-item {
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+        &:last-child {
+          border-right: none;
+        }
+
+        .compare-image {
+          &:hover {
+            transition: all ease-in-out 0.5s;
+            transform: scale(1.04);
+            overflow: clip;
+          }
+        }
+      }
+    }
+  }
+
+  .compare-table {
+    .left {
+      .item {
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+
+    .right {
+      .size {
+        p {
+          &:last-child {
+            span {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 767.98px) {
+    .content-main {
+      overflow-x: auto;
+
+      > div {
+        max-width: 700px;
+        width: 700px;
+        overflow-x: auto;
+      }
+    }
+  }
+}

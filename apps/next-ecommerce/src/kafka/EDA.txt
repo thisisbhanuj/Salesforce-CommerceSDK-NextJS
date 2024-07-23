@@ -1,0 +1,49 @@
+## Kafka Consumer for Order Processing (Event-Driven Approach)
+
+This document describes a NodeJS serverless function that implements an event-driven approach for processing order confirmation emails using Apache Kafka.
+
+**Functionality:**
+
+- Consumes messages from a Kafka topic (`order-topic`).
+- Decodes messages using a schema registry.
+- Triggers processing logic based on the message content (currently, sending order confirmation emails).
+- Provides a configuration mechanism to map topics to processing functions.
+
+**Benefits:**
+
+- **Asynchronous Processing:** Improves responsiveness by sending emails asynchronously, allowing the consumer to continue processing other messages.
+- **Decoupled Logic:** Processing logic is separated from message consumption, promoting maintainability and reusability.
+- **Scalability:** The consumer can be scaled horizontally to handle increased message volumes.
+
+**Usage:**
+
+1. **Configuration:**
+    - Define processing functions for different topics in the `consumerConfiguration` object.
+    - Each configuration object should include `groupId`, `topic`, and a `processor` function that handles the decoded data.
+2. **Execution:**
+    - Call the `kafkaConsumer` function, passing the appropriate configuration object.
+
+**Requirements:**
+
+- Kafka server and schema registry running.
+- `kafkajs` library installed (`yarn add kafkajs`).
+
+**Code Structure:**
+
+- `consumerConfiguration.ts`: Defines the configuration object for topic-specific processing functions.
+- `kafkaConsumer.ts`: Implements the consumer logic, subscribing to the topic, decoding messages, and triggering processing based on configuration.
+- `kafkaProducer.ts` (Optional): Provides a function to publish data to a Kafka topic (not intended for Next.js middlewares due to Node.js runtime limitations).
+
+**Documentation:**
+
+- Each function includes JSDoc comments for better code understanding.
+
+**Deployment:**
+
+- This code can be deployed as a serverless function in a Node.js environment.
+
+**Next Steps:**
+
+- Consider implementing additional processing functions for different message types.
+- Explore error handling strategies for message processing failures.
+- Integrate with any email service provider for email delivery.

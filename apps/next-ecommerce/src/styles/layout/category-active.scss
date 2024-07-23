@@ -1,0 +1,70 @@
+.menu-tab {
+  .tab-item {
+    white-space: nowrap;
+    border-radius: 16px;
+    cursor: pointer;
+
+    &.active {
+      color: var(--black);
+      background-color: var(--white);
+      box-shadow: 0px 2px 2px 0px rgba(28, 36, 51, 0.1);
+    }
+  }
+
+  @media (max-width: 767.98px) {
+    max-width: max-content;
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  &.style-pet {
+    .tab-item {
+      &.active {
+        color: var(--white);
+        background-color: var(--black);
+        box-shadow: 0px 2px 2px 0px rgba(28, 36, 51, 0.1);
+      }
+    }
+  }
+}
+
+.tab-features-block {
+  &.style-underwear {
+    .menu-tab {
+      .tab-item {
+        &.active {
+          background-color: var(--black);
+          color: var(--white);
+        }
+      }
+    }
+  }
+
+  &.style-watch {
+    .menu-tab {
+      .tab-item {
+        &.active {
+          background: var(--surface1);
+          color: var(--white);
+        }
+      }
+    }
+  }
+}
+
+// video-tutorial-block
+.video-tutorial-block {
+  .list-category {
+    overflow: hidden;
+
+    .item {
+      position: relative;
+      transform: translateX(-36px);
+      transition: all ease 0.4s;
+
+      &.active {
+        transform: translateX(0);
+      }
+    }
+  }
+}

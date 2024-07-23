@@ -1,0 +1,23 @@
+{
+  "extends": "@repo/typescript-config/nextjs.json",
+  "target": "es2017", // For AWS SES
+  "compilerOptions": {
+      "incremental": true,
+      "plugins": [
+        {
+          "name": "next"
+        }
+      ],
+      "paths": {
+      "@/*": ["./src/*", "./types/*"]
+    }
+  },
+  "include": [
+    "next-env.d.ts",  
+    "next.config.js", 
+    "**/*.ts", 
+    "**/*.tsx", 
+    ".next/types/**/*.ts"
+  ],
+  "exclude": ["node_modules"]
+}
