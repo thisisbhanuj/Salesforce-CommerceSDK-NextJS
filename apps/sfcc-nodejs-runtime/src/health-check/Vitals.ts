@@ -1,4 +1,4 @@
-import { getGuestUserAuthToken } from "../commerce/slas/slas";
+import { getGuestUserAuthToken } from "../helpers/private/privateSLASHelpers";
 
 export default async function healthCheck() {
   let data = {} as any;

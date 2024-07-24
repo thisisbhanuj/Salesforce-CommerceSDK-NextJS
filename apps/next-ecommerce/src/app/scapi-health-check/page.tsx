@@ -1,4 +1,4 @@
-import healthCheck from '@repo/sfcc-bff/vitals';
+import healthCheck from '@repo/sfcc-nodejs-runtime/vitals';
 
 const SCAPIHealthCheck = async () => {
   let data = {} as any;
