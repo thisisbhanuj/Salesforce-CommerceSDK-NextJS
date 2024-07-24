@@ -1,9 +1,8 @@
 {
-  "name": "@repo/sfcc-bff",
+  "name": "@repo/sfcc-nodejs-runtime",
   "version": "0.1.0",
   "private": true,
   "exports": {
-    "./slas": "./src/commerce/slas/slas.ts",
     "./vitals": "./src/health-check/Vitals.ts"
   },
   "scripts": {
