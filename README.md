@@ -12,7 +12,7 @@ This Turborepo includes the following packages/apps:
         1. Salesforce Commerce SDK React:  It is a collection of react-query hooks for fetching, caching and mutating data from the Salesforce B2C Commerce Shopper API (SCAPI).
         2. Salesforce Isomorphic SDK : This SDK provides a Browser & Node.js JavaScript client for calling B2C Commerce Shopper APIs.
 - `sfcc-nodejs-runtime` : Salesforce Commerce Cloud Backend using Commerce-SDK for NodeJS Runtime,
-- `sfcc-mach` : Salesforce Commerce Cloud API (SCAPI) implementations for truly MACH (Microservices-APIFirst-Composable-Headless) Architecture. The APIs can be Shopper/Admin/Custom APIs and can be called from Browser and NodeJS.
+- `sfcc-scapi` : Salesforce Commerce Cloud API (SCAPI) implementations for truly MACH (Microservices-APIFirst-Composable-Headless) Architecture. The APIs can be Shopper/Admin/Custom APIs and can be called from Browser and NodeJS.
 - `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
 - `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
 
