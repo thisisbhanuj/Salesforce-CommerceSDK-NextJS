@@ -1,24 +1,18 @@
-# Turborepo starter
+### IDEA
+Headless and Composable E-Commerce Application using NextJS and Salesforce Commerce Cloud. Blend of API First and Modular Approach, not a Microservices architecture but prgresively aspired.
 
-This is an official starter Turborepo.
-
-## Using this example
-
-Run the following command:
-
-```sh
-npx create-turbo@latest
-```
-
-## What's inside?
-
-This Turborepo includes the following packages/apps:
+## How it Begin?
+It started as Modular Monolithic Approach, with NextJS as FrontEnd; utilizing Vercel for deployment and managing node runtime to execute APIs.
 
 ### Apps and Packages
+This Turborepo includes the following packages/apps:
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
+- `next-ecommerce`: E-Commerce Web Application using [Next.js](https://nextjs.org/). 
+    It leverages following -
+        1. Salesforce Commerce SDK React:  It is a collection of react-query hooks for fetching, caching and mutating data from the Salesforce B2C Commerce Shopper API (SCAPI).
+        2. Salesforce Isomorphic SDK : This SDK provides a Browser & Node.js JavaScript client for calling B2C Commerce Shopper APIs.
+- `sfcc-nodejs-runtime` : Salesforce Commerce Cloud Backend using Commerce-SDK for NodeJS Runtime,
+- `sfcc-mach` : Salesforce Commerce Cloud API (SCAPI) implementations for truly MACH (Microservices-APIFirst-Composable-Headless) Architecture. The APIs can be Shopper/Admin/Custom APIs and can be called from Browser and NodeJS.
 - `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
 - `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
 
@@ -37,17 +31,15 @@ This Turborepo has some additional tools already setup for you:
 To build all apps and packages, run the following command:
 
 ```
-cd my-turborepo
-pnpm build
+yarn build
 ```
 
-### Develop
+### Run
 
-To develop all apps and packages, run the following command:
+To run e-commerce application in local, run the following command:
 
 ```
-cd my-turborepo
-pnpm dev
+yarn dev
 ```
 
 ### Remote Caching
@@ -57,7 +49,6 @@ Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo
 By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
 
 ```
-cd my-turborepo
 npx turbo login
 ```
 
