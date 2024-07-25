@@ -2682,7 +2682,7 @@ axe-core@^4.9.1:
 
 axios@^1.7.2:
   version "1.7.2"
-  resolved "https://registry.npmjs.org/axios/-/axios-1.7.2.tgz"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-1.7.2.tgz#b625db8a7051fbea61c35a3cbb3a1daa7b9c7621"
   integrity sha512-2A8QhOMrbomlDuiLeK9XibIBzuHeRcqqNOHp0Cyp5EoJ1IFDh+XZH3A6BkXtv0K4gFGCI0Y4BM7B1wOEi0Rmgw==
   dependencies:
     follow-redirects "^1.15.6"
@@ -3006,7 +3006,7 @@ commander@~12.1.0:
 
 commerce-sdk@^4.0.0:
   version "4.0.0"
-  resolved "https://registry.npmjs.org/commerce-sdk/-/commerce-sdk-4.0.0.tgz"
+  resolved "https://registry.yarnpkg.com/commerce-sdk/-/commerce-sdk-4.0.0.tgz#16b09092d3e9e0226ad3c646bab4e07ccd102f13"
   integrity sha512-UJyHrpe8VwZvviLhLDjB04nwLETTDSzLdCobL2xLDEyTvHPVc9Lp9jOoUEFr+X4jIQudzb/q9BoOPR5pPbXnMw==
   dependencies:
     "@commerce-apps/core" "^1.7.0"
