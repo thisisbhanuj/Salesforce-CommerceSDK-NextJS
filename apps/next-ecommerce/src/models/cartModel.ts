@@ -109,7 +109,7 @@ const cartSchema: Schema<ICart> = new Schema(
     shippingPrice: { type: Number, required: false },
     shippingDiscount: { type: Number, required: false },
     taxPrice: { type: Number, required: false },
-    totalPrice: { type: Number, required: false, default: 0},
+    totalPrice: { type: Number, required: false, default: 0 },
     totalDiscount: { type: Number, required: false },
     orderDiscount: { type: Number, required: false },
     prorationFactor: { type: Number, required: false },

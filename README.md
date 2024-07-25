@@ -1,16 +1,18 @@
 ### IDEA
+
 Headless and Composable E-Commerce Application using NextJS and Salesforce Commerce Cloud. Blend of API First and Modular Approach, not a Microservices architecture but prgresively aspired.
 
 ## How it Begin?
+
 It started as Modular Monolithic Approach, with NextJS as FrontEnd; utilizing Vercel for deployment and managing node runtime to execute APIs.
 
 ### Apps and Packages
+
 This Turborepo includes the following packages/apps:
 
-- `next-ecommerce`: E-Commerce Web Application using [Next.js](https://nextjs.org/). 
-    It leverages following -
-        1. Salesforce Commerce SDK React:  It is a collection of react-query hooks for fetching, caching and mutating data from the Salesforce B2C Commerce Shopper API (SCAPI).
-        2. Salesforce Isomorphic SDK : This SDK provides a Browser & Node.js JavaScript client for calling B2C Commerce Shopper APIs.
+- `next-ecommerce`: E-Commerce Web Application using [Next.js](https://nextjs.org/).
+  It leverages following - 1. Salesforce Commerce SDK React: It is a collection of react-query hooks for fetching, caching and mutating data from the Salesforce B2C Commerce Shopper API (SCAPI). 2. Salesforce Isomorphic SDK : This SDK provides a Browser & Node.js JavaScript client for calling B2C Commerce Shopper APIs.
+- `sfcc-isomorphic-scapi` : Repo holds the code for Salesforce Commerce SDK React & Salesforce Isomorphic SDK, integration.
 - `sfcc-nodejs-runtime` : Salesforce Commerce Cloud Backend using Commerce-SDK for NodeJS Runtime,
 - `sfcc-scapi` : Salesforce Commerce Cloud API (SCAPI) implementations for truly MACH (Microservices-APIFirst-Composable-Headless) Architecture. The APIs can be Shopper/Admin/Custom APIs and can be called from Browser and NodeJS.
 - `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)

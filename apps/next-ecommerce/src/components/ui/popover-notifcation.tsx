@@ -15,7 +15,7 @@ const PopoverNotiifcation: React.FC<ContentProps> = ({
     <div
       className={`popover-content mt-2 items-center justify-center ${customClass}`}
     >
-      <p className="text-gray-700 flex gap-2 text-nowrap capitalize">
+      <p className="flex gap-2 text-nowrap capitalize text-gray-700">
         {message} <Icon.X size={15} className="popover-close cursor-pointer" />
       </p>
     </div>

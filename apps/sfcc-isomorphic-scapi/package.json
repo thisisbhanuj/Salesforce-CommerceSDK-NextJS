@@ -1,10 +1,7 @@
 {
-  "name": "@repo/sfcc-nodejs-runtime",
+  "name": "@repo/sfcc-isomorphic-scapi",
   "version": "0.1.0",
   "private": true,
-  "exports": {
-    "./vitals": "./src/health-check/Vitals.ts"
-  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -12,19 +9,21 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "commerce-sdk": "^4.0.0",
+    "@salesforce/commerce-sdk-react": "^2.0.2",
+    "@tanstack/react-query": "^5.51.11",
+    "commerce-sdk-isomorphic": "^3.0.0",
+    "next": "14.2.5",
     "react": "^18",
-    "react-dom": "^18",
-    "next": "14.2.5"
+    "react-dom": "^18"
   },
   "devDependencies": {
     "@repo/typescript-config": "*",
-    "typescript": "^5",
+    "@repo/eslint-config": "*",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "14.2.5",
-    "typescript-eslint": "^7.13.0"
+    "typescript": "^5"
   }
 }

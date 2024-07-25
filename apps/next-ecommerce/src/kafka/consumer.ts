@@ -39,7 +39,6 @@ export default async function kafkaConsumer(config: KafkaConsumerConfig) {
           }
           await configuration.processor(decodedValue);
           messages.push({ message: decodedValue, status: 'success' });
-
         } catch (decodeError) {
           console.error('Error decoding message:', decodeError);
         }

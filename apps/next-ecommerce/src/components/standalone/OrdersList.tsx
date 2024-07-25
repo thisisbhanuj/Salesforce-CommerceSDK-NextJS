@@ -94,7 +94,7 @@ const OrdersList = () => {
                   <li key={order.orderId}>
                     <div
                       key={order.orderId}
-                      className="list-orders bg-gray-100 mb-4 mt-5 flex flex-shrink-0 rounded p-4 shadow sm:mt-7"
+                      className="list-orders mb-4 mt-5 flex flex-shrink-0 rounded bg-gray-100 p-4 shadow sm:mt-7"
                     >
                       <div className="w-full">
                         <div className="total-orders">
@@ -111,7 +111,7 @@ const OrdersList = () => {
                           </span>
                           {order.mode}
                         </div>
-                        <hr className="border-gray-100 mb-1 mt-1 border" />
+                        <hr className="mb-1 mt-1 border border-gray-100" />
 
                         <div className="flex">
                           <div className="w-1/2">

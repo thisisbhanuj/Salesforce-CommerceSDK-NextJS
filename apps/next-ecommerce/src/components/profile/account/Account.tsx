@@ -150,7 +150,7 @@ const Account: React.FC<Props> = ({ cartContent }) => {
               {addressesState?.success ? (
                 <div className="addresses">
                   <div className="heading5 mb-10 pb-4">Shipping Address</div>
-                  {addressesState?.data?.length ?? 0 > 0 ? (
+                  {(addressesState?.data?.length ?? 0 > 0) ? (
                     addressesState?.data?.map((address) => (
                       <ProfileAddressForm
                         key={address.id}

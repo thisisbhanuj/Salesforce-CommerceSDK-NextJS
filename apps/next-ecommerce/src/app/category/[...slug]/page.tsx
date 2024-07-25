@@ -37,7 +37,10 @@ export default async function ProductLandingPage({
   const productType = (params.slug as string[])[1] ?? 'all';
   let noProducts = false;
   // eslint-disable-next-line prettier/prettier
-  const productModelCollection = await cachedFetchCategoryProducts(category, productType);
+  const productModelCollection = await cachedFetchCategoryProducts(
+    category,
+    productType,
+  );
   if (!productModelCollection) {
     console.error(`No products found for ${category}/${productType}`);
     noProducts = true;

@@ -16,6 +16,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@repo/sfcc-isomorphic-scapi": "*",
     "@repo/sfcc-nodejs-runtime" : "*",
     "@repo/sfcc-scapi": "*",
     "@algolia/autocomplete-js": "^1.17.2",
@@ -83,6 +84,7 @@
   },
   "devDependencies": {
     "@repo/typescript-config": "*",
+    "@repo/eslint-config": "*",
     "@eslint/js": "^9.5.0",
     "@next/bundle-analyzer": "^14.2.4",
     "@types/node": "^20.14.2",

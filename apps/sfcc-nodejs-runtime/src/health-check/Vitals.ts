@@ -5,13 +5,13 @@ export default async function healthCheck() {
   try {
     data = await getGuestUserAuthToken();
     if (!data.access_token) {
-      throw new Error('Token not found');
+      throw new Error("Token not found");
     }
   } catch (error) {
     console.log(`Error fetching token for the guest user: ${error}`);
   }
 
   return {
-    access_token: JSON.stringify(data.access_token)
+    access_token: JSON.stringify(data.access_token),
   };
-};
+}

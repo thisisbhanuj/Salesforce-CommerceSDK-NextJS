@@ -22,7 +22,7 @@ const Promotions: React.FC<PageProps> = ({
   totalCart,
   existingCouponCode,
   existingDiscount,
-  isAuthenticated
+  isAuthenticated,
 }) => {
   const [appliedVoucher, setAppliedVoucher] = useState<Voucher | null>(null);
   const [discountAmount, setDiscountAmount] = useState(0);

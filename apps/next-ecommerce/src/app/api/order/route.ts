@@ -109,7 +109,7 @@ export async function POST(request: NextRequest) {
       if (updatedOrder) {
         console.debug('Order SUBMITTED : ', updatedOrder);
 
-        // Event Producer: The kafkaProducer function acts as an event producer. 
+        // Event Producer: The kafkaProducer function acts as an event producer.
         // It publishes order confirmation data to the Kafka topic (order-topic).
         console.debug('Publishing Order Confirmation Email event to Kafka');
         kafkaProducer(

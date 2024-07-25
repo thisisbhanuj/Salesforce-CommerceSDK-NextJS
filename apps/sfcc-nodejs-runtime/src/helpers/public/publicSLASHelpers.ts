@@ -1,4 +1,4 @@
-'use server'
+"use server";
 /**
  * Examples on how to use the SLAS helpers using a public client:
  *  - Get authorization token for a guest user
@@ -11,12 +11,12 @@
 
 import { ClientConfig, Customer, slasHelpers } from "commerce-sdk";
 
-const CLIENT_ID = process.env.SLAS_PRIVATE_CLIENT_ID ?? '';
-const CLIENT_SECRET = process.env.SLAS_CLIENT_SECRET ?? '';
-const ORG_ID = process.env.COMMERCE_CLIENT_ORG_ID ?? '';
-const SHORT_CODE = process.env.COMMERCE_CLIENT_SHORT_CODE ?? '';
-const SITE_ID = process.env.SITE_ID ?? '';
-const redirectURI = process.env.SLAS_REDIRECT_URI ?? '';
+const CLIENT_ID = process.env.SLAS_PRIVATE_CLIENT_ID ?? "";
+const CLIENT_SECRET = process.env.SLAS_CLIENT_SECRET ?? "";
+const ORG_ID = process.env.COMMERCE_CLIENT_ORG_ID ?? "";
+const SHORT_CODE = process.env.COMMERCE_CLIENT_SHORT_CODE ?? "";
+const SITE_ID = process.env.SITE_ID ?? "";
+const redirectURI = process.env.SLAS_REDIRECT_URI ?? "";
 
 const clientConfig: ClientConfig = {
   parameters: {
@@ -49,41 +49,43 @@ export async function getGuestUserAuthToken(): Promise<Customer.ShopperLogin.Tok
 }
 
 export async function loginGuestUser(): Promise<Customer.ShopperLogin.TokenResponse> {
-    let guestTokenResponse: any = null;
-    try {
-        guestTokenResponse = await slasHelpers.loginGuestUser(slasClient, 
-            { redirectURI: redirectURI }
-        );
-        if (!guestTokenResponse) {
-            throw new Error("Failed to get guest token");
-        }
-    } catch (error) {
-        console.log("Error fetching token for guest login: ", error);
+  let guestTokenResponse: any = null;
+  try {
+    guestTokenResponse = await slasHelpers.loginGuestUser(slasClient, {
+      redirectURI: redirectURI,
+    });
+    if (!guestTokenResponse) {
+      throw new Error("Failed to get guest token");
     }
+  } catch (error) {
+    console.log("Error fetching token for guest login: ", error);
+  }
 
-    return guestTokenResponse;
+  return guestTokenResponse;
 }
 
-export async function loginRegisteredUser(shopper: { 
-    username: string, password: string 
+export async function loginRegisteredUser(shopper: {
+  username: string;
+  password: string;
 }): Promise<Customer.ShopperLogin.TokenResponse> {
-    let registeredUserTokenResponse: any = null;
-    try {
-        registeredUserTokenResponse = await slasHelpers.
-            loginRegisteredUserB2C(slasClient, 
-                { 
-                    username: shopper.username, 
-                    password: shopper.password
-                },
-                { redirectURI });
-        if (!registeredUserTokenResponse) {
-            throw new Error("Failed to get registered user token");
-        }
-    } catch (error) {
-        console.log("Error fetching token for registered user login: ", error);
+  let registeredUserTokenResponse: any = null;
+  try {
+    registeredUserTokenResponse = await slasHelpers.loginRegisteredUserB2C(
+      slasClient,
+      {
+        username: shopper.username,
+        password: shopper.password,
+      },
+      { redirectURI },
+    );
+    if (!registeredUserTokenResponse) {
+      throw new Error("Failed to get registered user token");
     }
+  } catch (error) {
+    console.log("Error fetching token for registered user login: ", error);
+  }
 
-    return registeredUserTokenResponse;
+  return registeredUserTokenResponse;
 }
 
 /**
@@ -92,30 +94,34 @@ export async function loginRegisteredUser(shopper: {
  * @param refreshToken - Valid refresh token
  * @returns New token with updated expiry time
  */
-export async function refreshAccessToken(refreshToken: string): 
-    Promise<Customer.ShopperLogin.TokenResponse> 
-{
-    let refreshTokenResponse: any = null;
-    try {
-        refreshTokenResponse = await slasHelpers.refreshAccessToken(
-            slasClient, { refreshToken });
-        if (!refreshTokenResponse) {
-            throw new Error("Failed to get refresh token");
-        }
-    } catch (error) {
-        console.log("Error refreshing token: ", error);
+export async function refreshAccessToken(
+  refreshToken: string,
+): Promise<Customer.ShopperLogin.TokenResponse> {
+  let refreshTokenResponse: any = null;
+  try {
+    refreshTokenResponse = await slasHelpers.refreshAccessToken(slasClient, {
+      refreshToken,
+    });
+    if (!refreshTokenResponse) {
+      throw new Error("Failed to get refresh token");
     }
+  } catch (error) {
+    console.log("Error refreshing token: ", error);
+  }
 
-    return refreshTokenResponse;
-};
+  return refreshTokenResponse;
+}
 
-export async function logout(accessToken: string, refreshToken: string): Promise<void> {
-    try {
-        await slasHelpers.logout(slasClient, { 
-            accessToken, 
-            refreshToken
-        });
-    } catch (error) {
-        console.log("Error logging out: ", error);
-    }
+export async function logout(
+  accessToken: string,
+  refreshToken: string,
+): Promise<void> {
+  try {
+    await slasHelpers.logout(slasClient, {
+      accessToken,
+      refreshToken,
+    });
+  } catch (error) {
+    console.log("Error logging out: ", error);
+  }
 }

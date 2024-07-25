@@ -119,8 +119,8 @@ const CartDetails: React.FC<CartDetailsProps> = ({
                   <div className="text-title text-center">
                     {' '}
                     {product.isCustomized
-                      ? product.totalAmountWithCustomizations ??
-                        0 * product.quantity
+                      ? (product.totalAmountWithCustomizations ??
+                        0 * product.quantity)
                       : product.price * product.quantity}
                   </div>
                 </div>

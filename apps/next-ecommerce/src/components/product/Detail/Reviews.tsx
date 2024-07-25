@@ -322,7 +322,7 @@ const Reviews: React.FC<Props> = () => {
               <div className="rating">
                 <label
                   htmlFor="rating"
-                  className="text-gray-700 block text-sm font-medium"
+                  className="block text-sm font-medium text-gray-700"
                 >
                   Your Rating *
                 </label>
@@ -345,7 +345,7 @@ const Reviews: React.FC<Props> = () => {
               <div className="heading">
                 <label
                   htmlFor="heading"
-                  className="text-gray-700 block text-sm font-medium"
+                  className="block text-sm font-medium text-gray-700"
                 >
                   Heading * (max 50 words)
                 </label>
@@ -362,7 +362,7 @@ const Reviews: React.FC<Props> = () => {
               <div className="review col-span-full">
                 <label
                   htmlFor="review"
-                  className="text-gray-700 block text-sm font-medium"
+                  className="block text-sm font-medium text-gray-700"
                 >
                   Your review * (max 1000 words)
                 </label>

@@ -1,4 +1,4 @@
-//  It is a way to run logic before accessing any page, even when they are static. 
+//  It is a way to run logic before accessing any page, even when they are static.
 // On platforms like Vercel, Middleware is run at the Edge.
 
 import { withAuth } from 'next-auth/middleware';

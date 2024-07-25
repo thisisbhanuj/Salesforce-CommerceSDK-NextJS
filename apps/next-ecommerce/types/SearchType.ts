@@ -31,12 +31,12 @@ export type ProductHit = ProductType &
         matchedWords: string[];
       };
     };
-};
+  };
 
 export interface SearchComponentType {
   configuration: SearchConfig;
   params: Record<string, string>;
-};
+}
 
 export interface SearchProviderComponent {
   config: SearchConfig;

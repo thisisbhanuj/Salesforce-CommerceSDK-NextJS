@@ -13,9 +13,9 @@ Here's how you can integrate the Kafka consumer logic within Next.js application
 
 - If you want to update the user interface in real-time based on order confirmation, you can leverage a mechanism for the consumer to notify your Next.js application.
 - Options include:
-    - **WebSockets:** The consumer can establish a WebSocket connection with your Next.js application and send messages when an order is confirmed.
-    - **Server-Sent Events (SSE):** Similar to WebSockets, the consumer can use SSE to push notifications about confirmed orders to the Next.js application.
-    - **Polling:** The Next.js application can periodically poll an API endpoint that the consumer updates with confirmed orders. While less efficient than real-time options, polling can work for simple scenarios.
+  - **WebSockets:** The consumer can establish a WebSocket connection with your Next.js application and send messages when an order is confirmed.
+  - **Server-Sent Events (SSE):** Similar to WebSockets, the consumer can use SSE to push notifications about confirmed orders to the Next.js application.
+  - **Polling:** The Next.js application can periodically poll an API endpoint that the consumer updates with confirmed orders. While less efficient than real-time options, polling can work for simple scenarios.
 
 **4. Consumer Logic with Notification (Example):**
 
@@ -46,25 +46,26 @@ Assuming you choose WebSockets, here's a high-level overview:
 
 Remember to choose the approach that best aligns with your specific use case, real-time requirements, and application architecture.
 
------------------------------------------------------------------------------------------------------------------
+---
 
-***AWS Lambda / Google Cloud Functions***
+**_AWS Lambda / Google Cloud Functions_**
 
 Where you have a separate Node.js server running the Kafka consumer, there's no need to implement Server-Sent Events (SSE) for fetching data from the topic. Here's why:
 
 - **Kafka Pull vs. SSE Push:**
-    - Kafka uses a pull-based approach. The consumer actively pulls messages from the topic at regular intervals. This is efficient for scenarios where your application needs to react to new data as soon  as it's available.
-    - SSE is a push-based technology. The server continuously pushes updates to the client whenever there's new data. This can be useful for real-time UI updates where the client doesn't need to actively poll for changes.
+
+  - Kafka uses a pull-based approach. The consumer actively pulls messages from the topic at regular intervals. This is efficient for scenarios where your application needs to react to new data as soon as it's available.
+  - SSE is a push-based technology. The server continuously pushes updates to the client whenever there's new data. This can be useful for real-time UI updates where the client doesn't need to actively poll for changes.
 
 - **Consumer as Data Source:**
-    - With the Kafka consumer running on a separate server, it becomes the primary source of data for your application. You can integrate this consumer with your application logic to access and process the received messages.
-    - SSE would be more appropriate if the Kafka topic is acting as a central message bus for multiple clients (e.g., frontend applications) that need to receive updates in real-time.
+  - With the Kafka consumer running on a separate server, it becomes the primary source of data for your application. You can integrate this consumer with your application logic to access and process the received messages.
+  - SSE would be more appropriate if the Kafka topic is acting as a central message bus for multiple clients (e.g., frontend applications) that need to receive updates in real-time.
 
-**Overall, SSE is not necessary in this specific use case where you have a dedicated Kafka consumer server actively pulling data from Upstash Kafka.  The consumer server acts as the data source for your application logic.**
+**Overall, SSE is not necessary in this specific use case where you have a dedicated Kafka consumer server actively pulling data from Upstash Kafka. The consumer server acts as the data source for your application logic.**
 
------------------------------------------------------------------------------------------------------------------
+---
 
-***SSE Impl***
+**_SSE Impl_**
 
 If you choose to use Server-Sent Events (SSE) for your application, you wouldn't necessarily need a separate Kafka consumer server. Here's how an SSE-based design might look:
 
@@ -88,20 +89,20 @@ If you choose to use Server-Sent Events (SSE) for your application, you wouldn't
 
 **Benefits of SSE:**
 
-- Real-time UI updates:  Clients receive updates as soon as they become available in Kafka, providing a more responsive user experience.
+- Real-time UI updates: Clients receive updates as soon as they become available in Kafka, providing a more responsive user experience.
 - Reduced server load: The server doesn't need to continuously poll Kafka for new messages. It only sends updates when they arrive.
 
 **Drawbacks of SSE:**
 
-- Client-side complexity:  The client needs to implement SSE functionality to handle connections and events.
+- Client-side complexity: The client needs to implement SSE functionality to handle connections and events.
 - Single point of failure: If the server-side SSE endpoint fails, clients won't receive updates until it's back online.
-- Potential scalability limitations:  Managing a large number of long-lived connections can impact server performance.
+- Potential scalability limitations: Managing a large number of long-lived connections can impact server performance.
 
 **Comparison with Dedicated Consumer:**
 
 - A dedicated Kafka consumer server offers advantages like:
-    - Scalability: You can easily add more consumer instances to handle increased message volumes.
-    - Decoupling: The consumer logic becomes independent of your main application, improving maintainability.
+  - Scalability: You can easily add more consumer instances to handle increased message volumes.
+  - Decoupling: The consumer logic becomes independent of your main application, improving maintainability.
 - SSE can be a good choice for real-time updates where the number of clients is limited and simplicity is desired.
 
 **Choosing the Right Approach:**
@@ -111,24 +112,24 @@ The decision between a dedicated consumer server and SSE depends on your specifi
 - For real-time UI updates with a moderate number of clients, SSE can be a viable option.
 - When scalability and decoupling are crucial, a dedicated consumer server using Kafka's pull-based approach is a better choice.
 
------------------------------------------------------------------------------------------------------------------------------------------------------
+---
 
-***Introducing an API Gateway in the scenario might not be the most efficient approach. Here's a breakdown of why and potential alternatives***
+**_Introducing an API Gateway in the scenario might not be the most efficient approach. Here's a breakdown of why and potential alternatives_**
 
 **Current Setup:**
 
 - Separate Node.js consumer pulling data from Kafka.
 - Consumer can potentially:
-    - Directly call your Vercel Next.js API endpoint for sending emails (Option 1).
-    - Publish events to an event bus like AWS EventBridge (Option 2).
+  - Directly call your Vercel Next.js API endpoint for sending emails (Option 1).
+  - Publish events to an event bus like AWS EventBridge (Option 2).
 
 **Adding API Gateway:**
 
 1. **Consumer Posts to API Gateway:**
-    - The consumer would publish the processed message data to your API Gateway instead of directly calling the Next.js API or publishing to EventBridge.
+   - The consumer would publish the processed message data to your API Gateway instead of directly calling the Next.js API or publishing to EventBridge.
 2. **API Gateway Integration:**
-    - Configure API Gateway to integrate with your Next.js app (potentially via Lambda function).
-    - This integration would likely invoke the same API endpoint as the direct call.
+   - Configure API Gateway to integrate with your Next.js app (potentially via Lambda function).
+   - This integration would likely invoke the same API endpoint as the direct call.
 
 **Drawbacks of Using API Gateway:**
 
@@ -139,10 +140,11 @@ The decision between a dedicated consumer server and SSE depends on your specifi
 **Alternatives:**
 
 1. **Direct HTTP Request (Option 1):**
-    - This remains a viable approach, especially for simpler setups.
+
+   - This remains a viable approach, especially for simpler setups.
 
 2. **Event Bridge with Lambda Function (Option 2):**
-    - This is a more robust and scalable option, especially for complex systems or those handling high message volumes. EventBridge offers features like retries, dead-letter queues, and fan-out for reliable event processing.
+   - This is a more robust and scalable option, especially for complex systems or those handling high message volumes. EventBridge offers features like retries, dead-letter queues, and fan-out for reliable event processing.
 
 **Conclusion:**
 
@@ -153,7 +155,7 @@ In oour scenario, using API Gateway adds unnecessary complexity and potential co
 
 It's best to choose the approach that best suits your specific requirements and priorities.
 
------------------------------------------------------------------------------------------------------------------------------------------------------
+---
 
 There are situations where API Gateways like Mulesoft Anypoint Platform offer significant advantages despite potential drawbacks. Here are some scenarios where they shine:
 
@@ -167,18 +169,18 @@ There are situations where API Gateways like Mulesoft Anypoint Platform offer si
 **2. API Integration and Transformation:**
 
 - **Protocol Translation:** API Gateway can handle requests and responses in different formats (e.g., JSON to XML) for seamless communication between diverse backend services or clients.
-- **Data Transformation:**  Transform and manipulate data between APIs to ensure compatibility and meet specific requirements.
-- **API Composition:**  Combine multiple APIs into a single, unified API for easier consumption by clients.
+- **Data Transformation:** Transform and manipulate data between APIs to ensure compatibility and meet specific requirements.
+- **API Composition:** Combine multiple APIs into a single, unified API for easier consumption by clients.
 
 **3. Microservices Architecture:**
 
-- **API Facade Pattern:**  API Gateway acts as a facade, hiding the complexity of your microservices architecture and exposing a well-defined set of APIs to external consumers.
-- **Service Discovery:**  Help clients discover and access services within your microservices ecosystem.
+- **API Facade Pattern:** API Gateway acts as a facade, hiding the complexity of your microservices architecture and exposing a well-defined set of APIs to external consumers.
+- **Service Discovery:** Help clients discover and access services within your microservices ecosystem.
 
 **4. Developer Experience:**
 
 - **API Documentation and Discovery:** Provide centralized documentation and self-service discovery for your APIs, improving developer experience.
-- **Developer Portal:**  Offer a developer portal where users can register, access API keys, and explore your API offerings.
+- **Developer Portal:** Offer a developer portal where users can register, access API keys, and explore your API offerings.
 
 **In summary, consider using an API Gateway when:**
 
@@ -187,7 +189,7 @@ There are situations where API Gateways like Mulesoft Anypoint Platform offer si
 - You're implementing a microservices architecture and need a facade or service discovery.
 - You want to improve developer experience by providing a clear and documented interface to your APIs.
 
-**Remember:** 
+**Remember:**
 
 - Weigh the benefits against the potential drawbacks like complexity and cost.
 - Evaluate whether simpler solutions like direct calls or event buses can achieve your goals.

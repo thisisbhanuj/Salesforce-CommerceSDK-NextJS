@@ -56,11 +56,11 @@ const CacheEvictionForm: React.FC = () => {
         <h1 className="mb-4 text-3xl font-bold">
           Clear Application Server Cache
         </h1>
-        <p className="text-muted-foreground mb-8">
+        <p className="mb-8 text-muted-foreground">
           This page allows you to clear the cache for specific pages on your
           application server.
         </p>
-        <div className="bg-muted mb-8 rounded-lg p-6">
+        <div className="mb-8 rounded-lg bg-muted p-6">
           <h2 className="mb-4 text-xl font-bold">
             Select pages to clear cache:
           </h2>
@@ -70,10 +70,11 @@ const CacheEvictionForm: React.FC = () => {
                 <Checkbox
                   id={`page-${page.pageId}`}
                   checked={selectedPages.has(page.pageId)}
-                  onCheckedChange={() => 
+                  onCheckedChange={() =>
                     handleCheckboxChange(
-                      page.pageId, 
-                      !selectedPages.has(page.pageId))
+                      page.pageId,
+                      !selectedPages.has(page.pageId),
+                    )
                   }
                 />
                 <Label

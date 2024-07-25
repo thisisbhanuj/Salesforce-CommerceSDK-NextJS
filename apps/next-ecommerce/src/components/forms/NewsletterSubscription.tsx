@@ -62,7 +62,7 @@ const NewsletterSubscription = () => {
       {isModalVisible && (
         <div className={`newsletter-popup ${isModalVisible ? 'open' : ''}`}>
           <div className="newsletter-popup-content rounded-lg bg-white p-8 shadow-md">
-            <p className="text-gray-700 capitalize">
+            <p className="capitalize text-gray-700">
               {isSubscribed
                 ? "You're now subscribed to our newsletter. Get ready for exclusive offers and updates!"
                 : message}

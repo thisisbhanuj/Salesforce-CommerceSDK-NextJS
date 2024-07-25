@@ -104,7 +104,6 @@ export async function applyVoucherOnCart(
   }
 }
 
-
 /**
  * Creates a new cart for the specified user.
  * It is intended to be used when a user logs in and may not have a cart.

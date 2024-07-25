@@ -21,4 +21,4 @@ export async function registerSchema(schema: string) {
     type: SchemaType.AVRO,
     schema,
   });
-};
+}
