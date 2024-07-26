@@ -19,6 +19,7 @@
     "@repo/sfcc-isomorphic-scapi": "*",
     "@repo/sfcc-nodejs-runtime" : "*",
     "@repo/sfcc-scapi": "*",
+    "@repo/constants-config": "*",
     "@algolia/autocomplete-js": "^1.17.2",
     "@algolia/autocomplete-plugin-query-suggestions": "^1.17.2",
     "@algolia/autocomplete-plugin-recent-searches": "^1.17.2",

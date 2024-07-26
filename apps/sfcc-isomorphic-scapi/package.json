@@ -12,6 +12,7 @@
     "@salesforce/commerce-sdk-react": "^2.0.2",
     "@tanstack/react-query": "^5.51.11",
     "commerce-sdk-isomorphic": "^3.0.0",
+    "@repo/constants-config": "*",
     "next": "14.2.5",
     "react": "^18",
     "react-dom": "^18"
