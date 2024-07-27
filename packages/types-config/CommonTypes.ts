@@ -1,10 +1,29 @@
-type CurrencyType = "USD" | "EUR" | "GBP";
+export type CurrencyType = "USD" | "EUR" | "GBP";
 
-type ShopperLoginPathParameters = {
+export interface ApiRequestOptions {
+  method?: "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
+  headers?: HeadersInit;
+  body?: any;
+}
+
+export type ShopperLoginPathParameters = {
   readonly organizationId: string;
 };
 
-type ShopperLoginQueryParameters = {
+export type TokenResponse = Partial<{
+  access_token: string;
+  id_token: string;
+  refresh_token: string;
+  expires_in: number;
+  refresh_token_expires_in: any;
+  token_type: string;
+  usid: string;
+  customer_id: string;
+  enc_user_id: string;
+  idp_access_token: string;
+} & Record<string, any>>;
+
+export type ShopperLoginQueryParameters = {
   readonly clientId: string;
   readonly siteId: string;
   refresh_token?: string;
@@ -21,24 +40,24 @@ type ShopperLoginQueryParameters = {
   idp_origin?: string;
 };
 
-type BaseUriParameters = {
+export type BaseUriParameters = {
   readonly shortCode: string;
   version?: string;
 };
 
-type ShopperLoginParameters = ShopperLoginPathParameters &
+export type ShopperLoginParameters = ShopperLoginPathParameters &
   ShopperLoginQueryParameters &
   BaseUriParameters &
   Record<string, unknown>;
 
-type ShopperClientConfig = Readonly<{
+export type ShopperClientConfig = Readonly<{
   clientId: string;
   organizationId: string;
   shortCode: string;
   siteId: string;
 }>;
 
-type AuthHeaderConfigurations = Partial<{
+export type AuthHeaderConfigurations = Partial<{
   shopper: {
     username: string;
     password: string;
@@ -49,7 +68,7 @@ type AuthHeaderConfigurations = Partial<{
   };
 }>;
 
-type RedisSessionKVConfig = Partial<{
+export type RedisSessionKVConfig = Partial<{
   readonly sessionId: string;
   usid: string;
   refresh_token: string;
@@ -59,20 +78,3 @@ type RedisSessionKVConfig = Partial<{
   readonly idp_access_token: string;
   readonly idp_refresh_token: string;
 }>;
-
-interface ApiRequestOptions {
-  method?: "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
-  headers?: HeadersInit;
-  body?: any;
-}
-
-export type {
-  CurrencyType,
-  AuthHeaderConfigurations,
-  BaseUriParameters,
-  ShopperLoginQueryParameters,
-  ShopperLoginParameters,
-  ShopperClientConfig,
-  RedisSessionKVConfig,
-  ApiRequestOptions,
-};
