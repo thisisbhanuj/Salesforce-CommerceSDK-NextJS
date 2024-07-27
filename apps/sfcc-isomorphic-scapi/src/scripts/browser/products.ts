@@ -1,5 +1,6 @@
-import { ShopperSearch } from "commerce-sdk-isomorphic";
+import { ClientConfigInit, ShopperSearch } from "commerce-sdk-isomorphic";
 import { fetchGuestAccessToken, fetchRegisteredAccessToken } from "./auth";
+import { ShopperClientConfig } from "@repo/types-config/CommonTypes";
 
 /**
  * Search for products using the ShopperSearch API.
@@ -12,7 +13,7 @@ import { fetchGuestAccessToken, fetchRegisteredAccessToken } from "./auth";
 async function searchProducts(
   query: string,
   isAutheticated: boolean,
-  clientConfig: any,
+  clientConfig: ClientConfigInit<ShopperClientConfig>,
 ) {
   try {
     const accessToken = isAutheticated
