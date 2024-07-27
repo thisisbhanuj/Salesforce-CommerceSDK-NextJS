@@ -3,7 +3,7 @@
 import { kv } from "@vercel/kv";
 import { RedisSessionKVConfig } from "@repo/types-config/CommonTypes";
 
-export async function getAccessTokenFromKV(sessionId: string) {
+export async function getAccessTokenFromVercelKV(sessionId: string) {
   try {
     const accessToken = await kv.hget(sessionId, "access_token");
     return accessToken;
@@ -13,7 +13,7 @@ export async function getAccessTokenFromKV(sessionId: string) {
   }
 }
 
-export async function setUserSessionInKV(data: RedisSessionKVConfig) {
+export async function setUserSessionInVercelKV(data: RedisSessionKVConfig) {
   try {
     if (!data.sessionId) {
       throw new Error("Missing sessionId");
@@ -28,7 +28,7 @@ export async function setUserSessionInKV(data: RedisSessionKVConfig) {
   }
 }
 
-export async function deleteSessionFromKV(sessionId: string) {
+export async function deleteSessionFromVercelKV(sessionId: string) {
   try {
     await kv.del(sessionId);
   } catch (error) {

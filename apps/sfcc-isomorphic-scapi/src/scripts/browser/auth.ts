@@ -1,28 +1,12 @@
-import {
-  ClientConfigInit,
-  helpers,
-  ShopperLogin,
-} from "commerce-sdk-isomorphic";
+import { helpers, ShopperLogin } from "commerce-sdk-isomorphic";
 import {
   AuthHeaderConfigurations,
-  ShopperClientConfig,
   ShopperLoginParameters,
+  TokenResponse,
 } from "@repo/types-config/CommonTypes";
-
-const CLIENT_ID = process.env.SLAS_PRIVATE_CLIENT_ID!;
-const CLIENT_SECRET = process.env.SLAS_CLIENT_SECRET!;
-const ORG_ID = process.env.COMMERCE_CLIENT_ORG_ID!;
-const SHORT_CODE = process.env.COMMERCE_CLIENT_SHORT_CODE!;
-const SITE_ID = process.env.SITE_ID!;
-
-export const clientConfig: ClientConfigInit<ShopperClientConfig> = {
-  parameters: {
-    clientId: CLIENT_ID,
-    organizationId: ORG_ID,
-    shortCode: SHORT_CODE,
-    siteId: SITE_ID,
-  },
-};
+import { setUserSessionInVercelKV } from "../nodejs-runtime/kvSDKHelper";
+import { createSessionId } from "@/utility/kvUtils";
+import PrivateClientConfigSingleton from "@/clients/PrivateClientConfigSingleton";
 
 /**
  * Fetch an access token for Guest User.
@@ -31,12 +15,28 @@ export const clientConfig: ClientConfigInit<ShopperClientConfig> = {
  */
 export async function fetchGuestAccessToken() {
   try {
-    const { access_token } = await helpers.loginGuestUserPrivate(
-      new ShopperLogin<ShopperLoginParameters>(clientConfig),
-      { usid: "guest" },
-      { clientSecret: CLIENT_SECRET },
+    const clientConfigInstance = PrivateClientConfigSingleton.getInstance();
+    const tokenResponse: TokenResponse = await helpers.loginGuestUserPrivate(
+      new ShopperLogin<ShopperLoginParameters>(
+        clientConfigInstance.getClientConfig(),
+      ),
+      { usid: undefined },
+      { clientSecret: clientConfigInstance.getClientSecret() },
     );
-    return access_token;
+
+    if (!tokenResponse.access_token) {
+      throw new Error("Failed to fetch access token");
+    }
+
+    await setUserSessionInVercelKV({
+      sessionId: createSessionId(),
+      access_token: tokenResponse.access_token,
+      refresh_token: tokenResponse.refresh_token,
+      customer_id: tokenResponse.customer_id,
+      usid: tokenResponse.usid,
+    });
+
+    return tokenResponse.access_token;
   } catch (error) {
     if (error instanceof Error) {
       throw new Error(`Error fetching access token: ${error.message}`);
@@ -48,24 +48,44 @@ export async function fetchGuestAccessToken() {
 
 /**
  * Fetch an access token for Registered User.
+ *
+ * @param username - The username.
+ * @param password - The password.
  * @returns The access token.
  * @throws Error if the login fails.
  */
-export async function fetchRegisteredAccessToken() {
+export async function fetchRegisteredAccessToken(
+  username: string,
+  password: string,
+) {
   try {
-    const { access_token } = await helpers.loginRegisteredUserB2C(
-      new ShopperLogin<ShopperLoginParameters>(clientConfig),
+    const clientConfigInstance = PrivateClientConfigSingleton.getInstance();
+    const tokenResponse: TokenResponse = await helpers.loginRegisteredUserB2C(
+      new ShopperLogin<ShopperLoginParameters>(
+        clientConfigInstance.getClientConfig(),
+      ),
       {
-        username: "testuser",
-        password: "testpassword",
-        clientSecret: CLIENT_SECRET,
+        username: username,
+        password: password,
+        clientSecret: clientConfigInstance.getClientSecret(),
       },
       {
         redirectURI: "testuser",
         usid: "testuser",
       },
     );
-    return access_token;
+
+    if (!tokenResponse.access_token) {
+      throw new Error("Failed to fetch access token");
+    }
+
+    await setUserSessionInVercelKV({
+      sessionId: createSessionId(),
+      access_token: tokenResponse.access_token,
+      refresh_token: tokenResponse.refresh_token,
+      customer_id: tokenResponse.customer_id,
+      usid: tokenResponse.usid,
+    });
   } catch (error) {
     if (error instanceof Error) {
       throw new Error(`Error fetching access token: ${error.message}`);
