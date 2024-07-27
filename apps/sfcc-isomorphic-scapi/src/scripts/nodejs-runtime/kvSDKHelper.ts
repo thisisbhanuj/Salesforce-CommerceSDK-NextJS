@@ -1,57 +1,38 @@
 "use server";
 
 import { kv } from "@vercel/kv";
-import { NextResponse } from "next/server";
+import { RedisSessionKVConfig } from "@repo/types-config/CommonTypes";
 
-async function getAccessTokenFromKV(user: string) {
+export async function getAccessTokenFromKV(sessionId: string) {
   try {
-    const accessToken = await kv.hget(`tokens:${user}`, "accessToken");
-    return NextResponse.json(accessToken);
+    const accessToken = await kv.hget(sessionId, "access_token");
+    return accessToken;
   } catch (error) {
     console.error("Error fetching access token:", error);
-    return NextResponse.json(
-      { error: "Failed to fetch access token" },
-      { status: 500 },
-    );
+    throw new Error("Failed to fetch access token");
   }
 }
 
-async function getTokensFromKV(user: string) {
+export async function setUserSessionInKV(data: RedisSessionKVConfig) {
   try {
-    const tokens = await kv.hgetall(`tokens:${user}`);
-    return NextResponse.json(tokens);
-  } catch (error) {
-    console.error("Error fetching tokens:", error);
-    return NextResponse.json(
-      { error: "Failed to fetch tokens" },
-      { status: 500 },
-    );
-  }
-}
+    if (!data.sessionId) {
+      throw new Error("Missing sessionId");
+    }
 
-async function setTokensInKV({
-  accessToken,
-  refreshToken,
-  user,
-}: {
-  accessToken: string;
-  refreshToken: string;
-  user: string;
-}) {
-  try {
-    await kv.hset(`tokens:${user}`, {
-      accessToken,
-      refreshToken,
-      user,
+    await kv.hset(data.sessionId, {
+      ...data,
     });
-    return NextResponse.json({ message: "Tokens Set" });
   } catch (error) {
     console.error("Error setting tokens:", error);
-    return NextResponse.json(
-      { error: "Failed to set tokens" },
-      { status: 500 },
-    );
+    throw new Error("Failed to set user session");
   }
 }
 
-export { getAccessTokenFromKV, getTokensFromKV, setTokensInKV };
+export async function deleteSessionFromKV(sessionId: string) {
+  try {
+    await kv.del(sessionId);
+  } catch (error) {
+    console.error("Error deleting session:", error);
+    throw new Error("Failed to delete session");
+  }
+}
