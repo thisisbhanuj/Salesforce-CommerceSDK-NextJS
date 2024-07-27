@@ -58,7 +58,7 @@ export async function getGuestUserAuthToken(): Promise<Customer.ShopperLogin.Tok
  *
  * @returns authorization token
  */
-export async function getRegisteredShopperToken(shopper: {
+export async function getRegisteredShopperTokenFromIDP(shopper: {
   username: string;
   password: string;
 }): Promise<ShopperToken<Customer.ShopperCustomers.Customer>> {
