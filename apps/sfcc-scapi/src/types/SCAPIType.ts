@@ -12,8 +12,8 @@ interface SCAPIRestClientInterface {
 export default SCAPIRestClientInterface;
 
 export type ClientConfig = {
+  shopperApiVersion: string;
   parameters: {
-    base64EncodedCredentials: string;
     accessToken?: string;
     clientId: string;
     secret: string;
@@ -39,3 +39,31 @@ export interface SCAPIResponse<T> {
   usid?: string;
   config: AxiosRequestConfig;
 }
+export interface SetUserSessionResponse {
+  message: string;
+}
+
+export interface GetUserSessionResponse {
+  userSession: string;
+}
+
+export type SCAPITokenResponse = {
+  access_token: string;
+  expires_in: number;
+  token_type: string;
+  id_token?: string;
+  refresh_token_expires_in: number;
+  refresh_token: string;
+  usid: string;
+  customer_id: string;
+  enc_user_id: string;
+  idp_access_token?: string;
+  idp_refresh_token?: string;
+};
+
+export type GuestB2CTokenResponse = Pick<
+  SCAPITokenResponse,
+  "access_token" | "refresh_token" | "usid" | "customer_id"
+> & {
+  sessionId: string;
+};

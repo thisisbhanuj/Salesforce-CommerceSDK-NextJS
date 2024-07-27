@@ -6,20 +6,24 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "lint:strict": "next lint */**/*.{js,jsx,ts,tsx}"
   },
   "dependencies": {
+    "@repo/constants-config": "*",
+    "@repo/types-config": "*",
     "@salesforce/commerce-sdk-react": "^2.0.2",
     "@tanstack/react-query": "^5.51.11",
+    "@vercel/kv": "^2.0.0",
     "commerce-sdk-isomorphic": "^3.0.0",
-    "@repo/constants-config": "*",
     "next": "14.2.5",
     "react": "^18",
     "react-dom": "^18"
   },
   "devDependencies": {
-    "@repo/typescript-config": "*",
     "@repo/eslint-config": "*",
+    "@repo/typescript-config": "*",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
