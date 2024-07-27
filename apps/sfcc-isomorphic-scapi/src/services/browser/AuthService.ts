@@ -1,3 +1,5 @@
+"use server";
+
 import { helpers, ShopperLogin } from "commerce-sdk-isomorphic";
 import {
   AuthHeaderConfigurations,
@@ -10,33 +12,21 @@ import PrivateClientConfigSingleton from "@/clients/PrivateClientConfigSingleton
 
 /**
  * Fetch an access token for Guest User.
+ *
+ * To effectively handle the SCAPI request and bypass CORS restrictions,
+ * we created a serverless function in Next.js. That function will act as a proxy,
+ * forwarding request to SCAPI endpoint & returning the response to the client.
+ *
  * @returns The access token.
  * @throws Error if the login fails.
  */
 export async function fetchGuestAccessToken() {
   try {
-    const clientConfigInstance = PrivateClientConfigSingleton.getInstance();
-    const tokenResponse: TokenResponse = await helpers.loginGuestUserPrivate(
-      new ShopperLogin<ShopperLoginParameters>(
-        clientConfigInstance.getClientConfig(),
-      ),
-      { usid: undefined },
-      { clientSecret: clientConfigInstance.getClientSecret() },
+    // Serverless function will act as reverse proxy to SCAPI endpoint
+    const tokenResponse = await fetch(
+      `${process.env.NEXT_PUBLIC_URL_API}/authnz`,
     );
-
-    if (!tokenResponse.access_token) {
-      throw new Error("Failed to fetch access token");
-    }
-
-    await setUserSessionInVercelKV({
-      sessionId: createSessionId(),
-      access_token: tokenResponse.access_token,
-      refresh_token: tokenResponse.refresh_token,
-      customer_id: tokenResponse.customer_id,
-      usid: tokenResponse.usid,
-    });
-
-    return tokenResponse.access_token;
+    return tokenResponse.json();
   } catch (error) {
     if (error instanceof Error) {
       throw new Error(`Error fetching access token: ${error.message}`);
