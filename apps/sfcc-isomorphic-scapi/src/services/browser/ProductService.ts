@@ -1,5 +1,8 @@
 import { ClientConfigInit, ShopperSearch } from "commerce-sdk-isomorphic";
-import { fetchGuestAccessToken, fetchRegisteredAccessToken } from "./auth";
+import {
+  fetchGuestAccessToken,
+  fetchRegisteredAccessToken,
+} from "./AuthService";
 import { ShopperClientConfig } from "@repo/types-config/CommonTypes";
 
 /**

@@ -4,7 +4,7 @@ import {
   ShopperLoginParameters,
   TokenResponse,
 } from "@repo/types-config/CommonTypes";
-import { setUserSessionInVercelKV } from "../nodejs-runtime/kvSDKHelper";
+import { setUserSessionInVercelKV } from "../nodejs-runtime/kvSDKService";
 import { createSessionId } from "@/utility/kvUtils";
 import PrivateClientConfigSingleton from "@/clients/PrivateClientConfigSingleton";
 
