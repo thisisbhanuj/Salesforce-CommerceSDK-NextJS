@@ -2,10 +2,6 @@
 import { RedisSessionKVConfig } from "@repo/types-config/CommonTypes";
 import { handleApiError } from "@/helpers/errorHelpers";
 import { genericApiRequest } from "@/scapi/APIMgr";
-import {
-  SetUserSessionResponse,
-  GetUserSessionResponse,
-} from "@/types/SCAPIType";
 
 const KV_REST_API_URL = process.env.KV_REST_API_URL!;
 const KV_REST_API_TOKEN = process.env.KV_REST_API_TOKEN!;
@@ -19,8 +15,12 @@ const KV_REST_API_TOKEN = process.env.KV_REST_API_TOKEN!;
  */
 export async function setUserSession(userSessionData: RedisSessionKVConfig) {
   try {
-    const response = await genericApiRequest<SetUserSessionResponse>(
-      `${KV_REST_API_URL}/set/userSession`,
+    if (!userSessionData.sessionId) {
+      throw new Error('Missing sessionId');
+    }
+
+    const response = await genericApiRequest<RedisSessionKVConfig>(
+      `${KV_REST_API_URL}/set/${userSessionData.sessionId}`,
       {
         method: "POST",
         headers: {
@@ -29,7 +29,6 @@ export async function setUserSession(userSessionData: RedisSessionKVConfig) {
         body: JSON.stringify(userSessionData),
       },
     );
-
     return response;
   } catch (error) {
     if (error instanceof Error) {
@@ -38,6 +37,7 @@ export async function setUserSession(userSessionData: RedisSessionKVConfig) {
     throw error;
   }
 }
+
 
 /**
  * Gets a user session from the KV store.
@@ -51,7 +51,7 @@ export async function getUserSession(
 ): Promise<RedisSessionKVConfig> {
   try {
     const response = await genericApiRequest<RedisSessionKVConfig>(
-      `${KV_REST_API_URL}/get/userSession/${sessionId}`,
+      `${KV_REST_API_URL}/get/${sessionId}`,
       {
         method: "GET",
         headers: {

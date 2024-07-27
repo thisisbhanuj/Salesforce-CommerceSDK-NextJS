@@ -51,11 +51,11 @@ type AuthHeaderConfigurations = Partial<{
 
 type RedisSessionKVConfig = Partial<{
   readonly sessionId: string;
-  readonly usid: string;
-  readonly refresh_token: string;
-  readonly access_token: string;
+  usid: string;
+  refresh_token: string;
+  access_token: string;
   readonly code_challenge: string;
-  readonly customer_id: string;
+  customer_id: string;
   readonly idp_access_token: string;
   readonly idp_refresh_token: string;
 }>;
