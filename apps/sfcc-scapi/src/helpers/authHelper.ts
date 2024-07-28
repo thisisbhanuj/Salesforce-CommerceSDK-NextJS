@@ -1,6 +1,6 @@
 "use server";
 
-import { getUserSession } from "@/kv/kvRestAPIManager";
+import { getUserSessionFormVercelKV } from "@/kv/kvRestAPIManager";
 import { ClientConfig } from "@/types/SCAPIType";
 
 export async function generateAuthHeader(
@@ -20,29 +20,11 @@ export async function generateAuthHeader(
 export async function findAccessTokenInRedisKV(
   sessionId: string,
 ): Promise<string | undefined> {
-  const userSession = await getUserSession(sessionId);
+  const userSession = await getUserSessionFormVercelKV(sessionId);
 
   if (!userSession) {
     throw new Error("User session not found");
   }
 
   return userSession.access_token;
-}
-
-export function findAccessTokenInClientConfig(
-  clientConfig: ClientConfig,
-): string | undefined {
-  return clientConfig?.parameters?.accessToken ?? undefined;
-}
-
-export async function findAccessToken(
-  clientConfig: ClientConfig,
-  sessionId: string,
-): Promise<string | undefined> {
-  const accessToken = findAccessTokenInClientConfig(clientConfig);
-  if (accessToken) {
-    return accessToken;
-  }
-
-  return findAccessTokenInRedisKV(sessionId);
 }

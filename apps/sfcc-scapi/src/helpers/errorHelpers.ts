@@ -3,7 +3,7 @@
 import { SetUserSessionError } from "@/error/Errors";
 import { SET_USER_SESSION_ERROR_CODES } from "@repo/constants-config/constants";
 
-export function handleApiError(error: Error, origin: string) {
+export async function handleApiError(error: Error, origin: string) {
   if (error instanceof Error) {
     const handler = `${origin}ErrorHandler`;
     console.error(`Error: ${error.message}`);
@@ -16,7 +16,7 @@ export function handleApiError(error: Error, origin: string) {
  * Handle the SetUserSessionError.
  * @param error - The error.
  */
-export function userSessionErrorHandler(error: SetUserSessionError) {
+export async function userSessionErrorHandler(error: SetUserSessionError) {
   if (error) {
     const apiError = error as SetUserSessionError;
     switch (apiError.code) {
