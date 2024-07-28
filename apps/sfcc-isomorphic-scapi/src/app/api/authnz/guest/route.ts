@@ -32,17 +32,6 @@ export async function GET() {
 
     const sessionId = createSessionId();
 
-    // if (cookies().has("session_id")) {
-    //   cookies().delete("session_id");
-    // }
-
-    // cookies().set("session_id", sessionId, {
-    //   httpOnly: true,
-    //   secure: true,
-    //   sameSite: "strict",
-    //   maxAge: 1800,
-    // });
-
     await setUserSessionInVercelKV({
       sessionId: sessionId,
       access_token: tokenResponse.access_token,
