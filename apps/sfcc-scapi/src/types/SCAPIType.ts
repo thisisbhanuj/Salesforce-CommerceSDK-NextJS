@@ -67,3 +67,9 @@ export type GuestB2CTokenResponse = Pick<
 > & {
   sessionId: string;
 };
+
+export type RestAPIConfiguration = {
+  siteId: string;
+  fetchToken: boolean;
+  sessionId: string;
+};

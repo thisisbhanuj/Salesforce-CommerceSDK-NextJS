@@ -5,122 +5,54 @@ import axios, {
 } from "axios";
 import SCAPIRestClientInterface, {
   ClientConfig,
-  GuestB2CTokenResponse,
-  SCAPITokenResponse,
+  RestAPIConfiguration,
 } from "@/types/SCAPIType";
 import { SCAPIError } from "./SCAPIError";
-import { generateAuthHeader, findAccessToken } from "@/helpers/authHelper";
-import { setUserSession } from "@/kv/kvRestAPIManager";
+import { findAccessTokenInRedisKV } from "@/helpers/authHelper";
+import PrivateClientConfigSingleton from "./PrivateClientConfigSingleton";
 
 export class SCAPIRestClient implements SCAPIRestClientInterface {
   private client: AxiosInstance;
   private clientConfig: ClientConfig;
 
-  private defaultErrorHandler: (error: any) => void = (error) => {
-    console.error("SCAPI Error:", error);
-  };
+  constructor(config: RestAPIConfiguration) {
+    const clientConfigInstance = PrivateClientConfigSingleton.getInstance(
+      config.siteId,
+    ).getClientConfig();
+    this.clientConfig = clientConfigInstance;
+    this.client = axios.create({ baseURL: this.clientConfig.baseUrl });
 
-  constructor(clientConfig: ClientConfig) {
-    this.client = axios.create({ baseURL: clientConfig.baseUrl });
-    this.clientConfig = clientConfig;
-
-    if (!clientConfig.fetchToken) {
+    if (!config.fetchToken) {
       // Only add the Authorization Bearer, if we are not fetching the token
-      findAccessToken(clientConfig, clientConfig.parameters.usid!).then(
-        (accessToken) => {
-          if (!!accessToken) {
-            this.client.interceptors.request.use(
-              (config: InternalAxiosRequestConfig) => {
-                config.headers.Authorization = `Bearer ${accessToken}`;
-                return config;
-              },
-              (error) => {
-                return Promise.reject(
-                  new SCAPIError(
-                    "Request Error",
-                    error.response?.status,
-                    error.response?.data,
-                  ),
-                );
-              },
-            );
-          }
-        },
-      );
+      findAccessTokenInRedisKV(config.sessionId).then((accessToken) => {
+        if (!!accessToken) {
+          this.client.interceptors.request.use(
+            (config: InternalAxiosRequestConfig) => {
+              config.headers.Authorization = `Bearer ${accessToken}`;
+              config.headers["Content-Type"] = "application/json";
+              return config;
+            },
+            (error) => {
+              return Promise.reject(
+                new SCAPIError(
+                  "Request Error",
+                  error.response?.status,
+                  error.response?.data,
+                ),
+              );
+            },
+          );
+        }
+      });
     }
   }
 
-  async fetchAuthTokensForGuest(): Promise<GuestB2CTokenResponse> {
-    const headers = {
-      Authorization: await generateAuthHeader(this.clientConfig, true),
-      "Content-Type": "application/x-www-form-urlencoded",
-    };
-
-    const urlencoded = new URLSearchParams();
-    urlencoded.append("grant_type", "client_credentials");
-    urlencoded.append("redirect_uri", this.clientConfig.redirectUri);
-
-    const response = await fetch(
-      `${this.clientConfig.baseUrl}
-        /shopper/auth/${this.clientConfig.shopperApiVersion}
-        /organizations/${this.clientConfig.parameters.organizationId}
-        /oauth2/token`,
-      {
-        method: "POST",
-        headers,
-        body: urlencoded,
-        redirect: "follow",
-      },
-    );
-
-    const data: SCAPITokenResponse = await response.json();
-    // This allows for caching the token and potentially avoids
-    // unnecessary token fetching on subsequent requests within the same session
-    // or multiple api calls in same request
-    this.clientConfig.parameters.accessToken = data.access_token;
-    // Set the user session in the KV store
-    await setUserSession({
-      access_token: data.access_token,
-      refresh_token: data.refresh_token,
-      sessionId: data.usid,
-      usid: data.usid,
-      customer_id: data.customer_id,
-    });
-
-    return {
-      access_token: data.access_token,
-      refresh_token: data.refresh_token,
-      usid: data.usid,
-      customer_id: data.customer_id,
-      sessionId: data.usid,
-    };
-  }
-
-  async fetchAuthTokenForRegisteredShopper(): Promise<string> {
-    const headers = {
-      Authorization: await generateAuthHeader(this.clientConfig, false),
-      "Content-Type": "application/x-www-form-urlencoded",
-    };
-
-    const urlencoded = new URLSearchParams();
-    urlencoded.append("grant_type", "credentials");
-    urlencoded.append("username", this.clientConfig.shopper?.username!);
-    urlencoded.append("password", this.clientConfig.shopper?.password!);
-    urlencoded.append("channel_id", this.clientConfig.parameters.channelId);
-    urlencoded.append("usid", this.clientConfig.parameters.usid!);
-    urlencoded.append("redirect_uri", this.clientConfig.redirectUri);
-
-    const response = await fetch(
-      `${this.clientConfig.baseUrl}/shopper/auth/v1/organizations/f_ecom_zzrl_009/oauth2/token`,
-      { method: "POST", headers, body: urlencoded, redirect: "follow" },
-    );
-
-    const data = await response.json();
-    // This allows for caching the token and potentially avoids
-    // unnecessary token fetching on subsequent requests within the same session
-    // or multiple api calls in same request
-    this.clientConfig.parameters.accessToken = data.access_token;
-    return data.access_token;
+  public getClientConfig(): ClientConfig {
+    const clientConfigInstance = PrivateClientConfigSingleton.getInstance(
+      process.env.SITE_ID!,
+    ).getClientConfig();
+    this.clientConfig = clientConfigInstance;
+    return this.clientConfig;
   }
 
   async request<T, D = any>(
@@ -130,7 +62,7 @@ export class SCAPIRestClient implements SCAPIRestClientInterface {
     config?: AxiosRequestConfig,
   ): Promise<T> {
     try {
-      const accessToken = this.clientConfig.parameters.accessToken;
+      const accessToken = findAccessTokenInRedisKV(config?.params?.sessionId);
       if (accessToken) {
         config = {
           ...config,
@@ -154,6 +86,10 @@ export class SCAPIRestClient implements SCAPIRestClientInterface {
       );
     }
   }
+
+  private defaultErrorHandler: (error: any) => void = (error) => {
+    console.error("SCAPI Error:", error);
+  };
 
   setDefaultErrorHandler(handler: (error: any) => void) {
     this.defaultErrorHandler = handler;

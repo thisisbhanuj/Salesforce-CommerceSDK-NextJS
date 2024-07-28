@@ -80,3 +80,9 @@ export type RedisSessionKVConfig = Partial<{
   readonly idp_access_token: string;
   readonly idp_refresh_token: string;
 }>;
+
+export type Variant = {
+  productId: string;
+  variationValues: Record<string, string>;
+  price: number;
+};

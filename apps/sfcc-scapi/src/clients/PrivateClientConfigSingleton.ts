@@ -1,7 +1,7 @@
 import { ClientConfig } from "@/types/SCAPIType";
 
-class ClientConfigSingleton {
-  private static instances: Record<string, ClientConfigSingleton> = {};
+class PrivateClientConfigSingleton {
+  private static instances: Record<string, PrivateClientConfigSingleton> = {};
   private clientConfig: ClientConfig;
 
   private static CLIENT_ID = process.env.SLAS_PRIVATE_CLIENT_ID!;
@@ -15,27 +15,26 @@ class ClientConfigSingleton {
     this.clientConfig = {
       shopperApiVersion: "v1",
       fetchToken: true,
-      baseUrl: ClientConfigSingleton.BASE_URL,
+      baseUrl: PrivateClientConfigSingleton.BASE_URL,
       parameters: {
         accessToken: undefined,
-        clientId: ClientConfigSingleton.CLIENT_ID,
-        secret: ClientConfigSingleton.CLIENT_SECRET,
-        organizationId: ClientConfigSingleton.ORG_ID,
-        shortCode: ClientConfigSingleton.SHORT_CODE,
-        siteId: ClientConfigSingleton.SITE_ID,
+        clientId: PrivateClientConfigSingleton.CLIENT_ID,
+        secret: PrivateClientConfigSingleton.CLIENT_SECRET,
+        organizationId: PrivateClientConfigSingleton.ORG_ID,
+        shortCode: PrivateClientConfigSingleton.SHORT_CODE,
+        siteId: PrivateClientConfigSingleton.SITE_ID,
         channelId: channel_id,
       },
       redirectUri: process.env.SLAS_REDIRECT_URI ?? "",
     };
   }
 
-  public static getInstance(channelId: string): ClientConfigSingleton {
-    if (!ClientConfigSingleton.instances[channelId]) {
-      ClientConfigSingleton.instances[channelId] = new ClientConfigSingleton(
-        channelId,
-      );
+  public static getInstance(channelId: string): PrivateClientConfigSingleton {
+    if (!PrivateClientConfigSingleton.instances[channelId]) {
+      PrivateClientConfigSingleton.instances[channelId] =
+        new PrivateClientConfigSingleton(channelId);
     }
-    return ClientConfigSingleton.instances[channelId];
+    return PrivateClientConfigSingleton.instances[channelId];
   }
 
   public getClientConfig(): ClientConfig {
@@ -43,4 +42,4 @@ class ClientConfigSingleton {
   }
 }
 
-export default ClientConfigSingleton;
+export default PrivateClientConfigSingleton;

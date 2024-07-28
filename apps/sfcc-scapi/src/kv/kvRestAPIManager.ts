@@ -13,7 +13,9 @@ const KV_REST_API_TOKEN = process.env.KV_REST_API_TOKEN!;
  * @returns A Promise that resolves when the session is set successfully.
  * @throws An error if the operation fails.
  */
-export async function setUserSession(userSessionData: RedisSessionKVConfig) {
+export async function setUserSessionInVercelKV(
+  userSessionData: RedisSessionKVConfig,
+) {
   try {
     if (!userSessionData.sessionId) {
       throw new Error("Missing sessionId");
@@ -45,7 +47,7 @@ export async function setUserSession(userSessionData: RedisSessionKVConfig) {
  * @returns The user session data.
  * @throws An error if the operation fails.
  */
-export async function getUserSession(
+export async function getUserSessionFormVercelKV(
   sessionId: string,
 ): Promise<RedisSessionKVConfig> {
   try {
@@ -61,7 +63,7 @@ export async function getUserSession(
     return response;
   } catch (error) {
     if (error instanceof Error) {
-      handleApiError(error, "userSession");
+      await handleApiError(error, "userSession");
     }
     throw error;
   }
