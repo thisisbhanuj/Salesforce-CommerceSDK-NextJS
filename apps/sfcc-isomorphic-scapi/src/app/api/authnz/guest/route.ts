@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import { HttpStatusCode } from "axios";
+import { helpers, ShopperLogin } from "commerce-sdk-isomorphic";
+
 import PrivateClientConfigSingleton from "@/clients/PrivateClientConfigSingleton";
 import { setUserSessionInVercelKV } from "@/services/nodejs-runtime/kvSDKService";
 import { createSessionId } from "@/utility/kvUtils";
@@ -7,8 +9,12 @@ import {
   TokenResponse,
   ShopperLoginParameters,
 } from "@repo/types-config/CommonTypes";
-import { helpers, ShopperLogin } from "commerce-sdk-isomorphic";
 
+/**
+ * Get access token for guest user using the ShopperLogin API.
+ * @returns The access token.
+ * @throws Error if the access token is missing.
+ */
 export async function GET() {
   try {
     const clientConfigInstance = PrivateClientConfigSingleton.getInstance();
@@ -24,8 +30,21 @@ export async function GET() {
       throw new Error("Failed to fetch access token");
     }
 
+    const sessionId = createSessionId();
+
+    // if (cookies().has("session_id")) {
+    //   cookies().delete("session_id");
+    // }
+
+    // cookies().set("session_id", sessionId, {
+    //   httpOnly: true,
+    //   secure: true,
+    //   sameSite: "strict",
+    //   maxAge: 1800,
+    // });
+
     await setUserSessionInVercelKV({
-      sessionId: createSessionId(),
+      sessionId: sessionId,
       access_token: tokenResponse.access_token,
       refresh_token: tokenResponse.refresh_token,
       customer_id: tokenResponse.customer_id,
@@ -33,7 +52,7 @@ export async function GET() {
     });
 
     return NextResponse.json(
-      { accessToken: tokenResponse.access_token },
+      { accessToken: tokenResponse.access_token, sessionId },
       { status: HttpStatusCode.Ok },
     );
   } catch (error) {

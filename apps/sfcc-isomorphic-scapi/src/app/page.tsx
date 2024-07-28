@@ -4,7 +4,10 @@ import TestPage from "../testfns/page";
 export default function Home() {
   return (
     <main className={styles.main}>
-      <div className={styles.center}>SFCC Isomorphic SCAPI Repo</div>
+      <div>
+        <h1 className={styles.center}>SFCC Isomorphic SCAPI Repo</h1>
+        <h1>Page to test Serverless Functions / API calls</h1>
+      </div>
       <TestPage />
     </main>
   );

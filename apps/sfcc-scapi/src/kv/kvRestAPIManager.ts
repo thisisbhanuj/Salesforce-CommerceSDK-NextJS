@@ -16,7 +16,7 @@ const KV_REST_API_TOKEN = process.env.KV_REST_API_TOKEN!;
 export async function setUserSession(userSessionData: RedisSessionKVConfig) {
   try {
     if (!userSessionData.sessionId) {
-      throw new Error('Missing sessionId');
+      throw new Error("Missing sessionId");
     }
 
     const response = await genericApiRequest<RedisSessionKVConfig>(
@@ -37,7 +37,6 @@ export async function setUserSession(userSessionData: RedisSessionKVConfig) {
     throw error;
   }
 }
-
 
 /**
  * Gets a user session from the KV store.

@@ -1,42 +1,35 @@
-import { ClientConfigInit, ShopperSearch } from "commerce-sdk-isomorphic";
-import {
-  fetchGuestAccessToken,
-  fetchRegisteredAccessToken,
-} from "./AuthService";
-import { ShopperClientConfig } from "@repo/types-config/CommonTypes";
+"use server";
 
 /**
- * Search for products using the ShopperSearch API.
- * @param query - The search query.
- * @param isAutheticated - Whether the user is authenticated.
- * @param clientConfig - The client configuration.
- * @returns The search result.
+ * Search for product details using the ShopperProducts API.
+ * @param productId - Product ID.
+ * @param sessionId - The session ID.
+ * @returns The product details.
  * @throws Error if the search fails.
  */
-async function searchProducts(
-  query: string,
-  isAutheticated: boolean,
-  clientConfig: ClientConfigInit<ShopperClientConfig>,
-) {
+export async function productDetails(
+  productId: string,
+  sessionId: string,
+): Promise<Record<string, unknown>> {
   try {
-    const accessToken = isAutheticated
-      ? await fetchRegisteredAccessToken("username", "password") // Dummy for now
-      : await fetchGuestAccessToken();
-    const shopperSearch = new ShopperSearch({
-      ...clientConfig,
-      headers: { authorization: `Bearer ${accessToken}` },
-    });
-    const searchResult = await shopperSearch.productSearch({
-      parameters: { q: query },
-    });
-    return searchResult;
+    // Serverless function will act as reverse proxy to SCAPI endpoint
+    const productDetailsResponse = await fetch(
+      `${process.env.NEXT_PUBLIC_URL_API}/product/${productId}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          sessionId: `${sessionId ?? ""}`,
+        },
+      },
+    );
+    const productDetailsObj = await productDetailsResponse.json();
+    return productDetailsObj.productModel;
   } catch (error) {
     if (error instanceof Error) {
-      throw new Error(`Error searching products: ${error.message}`);
+      throw new Error(`Error searching product: ${error.message}`);
     } else {
-      throw new Error("Unexpected error while searching products");
+      throw new Error("Unexpected error while searching product");
     }
   }
 }
-
-export { searchProducts };
