@@ -17,14 +17,14 @@ import PrivateClientConfigSingleton from "@/clients/PrivateClientConfigSingleton
  * we created a serverless function in Next.js. That function will act as a proxy,
  * forwarding request to SCAPI endpoint & returning the response to the client.
  *
- * @returns The access token.
+ * @returns The access token and session id.
  * @throws Error if the login fails.
  */
 export async function fetchGuestAccessToken() {
   try {
     // Serverless function will act as reverse proxy to SCAPI endpoint
     const tokenResponse = await fetch(
-      `${process.env.NEXT_PUBLIC_URL_API}/authnz`,
+      `${process.env.NEXT_PUBLIC_URL_API}/authnz/guest`,
     );
     return tokenResponse.json();
   } catch (error) {

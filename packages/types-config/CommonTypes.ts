@@ -10,18 +10,20 @@ export type ShopperLoginPathParameters = {
   readonly organizationId: string;
 };
 
-export type TokenResponse = Partial<{
-  access_token: string;
-  id_token: string;
-  refresh_token: string;
-  expires_in: number;
-  refresh_token_expires_in: any;
-  token_type: string;
-  usid: string;
-  customer_id: string;
-  enc_user_id: string;
-  idp_access_token: string;
-} & Record<string, any>>;
+export type TokenResponse = Partial<
+  {
+    access_token: string;
+    id_token: string;
+    refresh_token: string;
+    expires_in: number;
+    refresh_token_expires_in: any;
+    token_type: string;
+    usid: string;
+    customer_id: string;
+    enc_user_id: string;
+    idp_access_token: string;
+  } & Record<string, any>
+>;
 
 export type ShopperLoginQueryParameters = {
   readonly clientId: string;

@@ -2,27 +2,60 @@
 
 import { useState } from "react";
 import { fetchGuestAccessToken } from "@/services/browser/AuthService";
+import { searchProducts } from "@/services/browser/SearchService";
 
 export default function TestPage() {
-  const [accessToken, setAccessToken] = useState<string | null>(null);
+  const [accessObject, setAccessObject] = useState<Record<string, string>>({
+    accessToken: "",
+    sessionId: "",
+  });
+  const [productData, setProductData] = useState<number>(0);
 
   const handleGuestLogin = async () => {
     try {
       const response = await fetchGuestAccessToken();
-      if (response?.accessToken) {
-        setAccessToken(response.accessToken);
+      console.log("response", response);
+      if (response?.accessToken && response?.sessionId) {
+        setAccessObject(response);
       }
     } catch (error) {
       console.error("Error fetching guest access token:", error);
     }
   };
 
+  const handleProductSearch = async () => {
+    if (!accessObject.sessionId) {
+      console.error("Session Id not found");
+      return;
+    }
+
+    try {
+      const searchModel = await searchProducts("dress", accessObject.sessionId);
+      if (searchModel) {
+        setProductData(Number(searchModel.total));
+      }
+    } catch (error) {
+      console.error("Error searching product:", error);
+    }
+  };
+
   return (
     <>
-      <h1>Test Functionalities Page</h1>
-      <p>Page to test function calls</p>
-      <button onClick={handleGuestLogin}>Guest Login</button>
-      {accessToken && <p className="text-wrap">Access Token: {accessToken}</p>}
+      <button onClick={handleGuestLogin}>Fetch Access Token</button>
+      {!!accessObject.accessToken && (
+        <p className="text-wrap">
+          NextJS Session Id : {accessObject.sessionId}
+        </p>
+      )}
+
+      {!!accessObject.accessToken && !!accessObject.sessionId && (
+        <>
+          <button onClick={handleProductSearch}>Search Products</button>
+          {!!productData && (
+            <p className="text-wrap">Products Count : {productData}</p>
+          )}
+        </>
+      )}
     </>
   );
 }
