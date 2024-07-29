@@ -1,13 +1,13 @@
-"use server";
+'use server';
 
-import { NextResponse } from "next/server";
-import { HttpStatusCode } from "axios";
+import { NextResponse } from 'next/server';
+import { HttpStatusCode } from 'axios';
 
-import PrivateClientConfigSingleton from "../../../../clients/PrivateClientConfigSingleton";
-import { generateAuthHeader } from "../../../../helpers/authHelper";
-import { createSessionId } from "../../../../kv/kvUtils";
-import { setUserSessionInVercelKV } from "../../../../kv/kvRestAPIManager";
-import { ClientConfig } from "../../../../types/SCAPIType";
+import PrivateClientConfigSingleton from '@repo/sfcc-scapi/src/clients/PrivateClientConfigSingleton';
+import { generateAuthHeader } from '@repo/sfcc-scapi/src/helpers/authHelper';
+import { createSessionId } from '@repo/sfcc-scapi/src/kv/kvUtils';
+import { setUserSessionInVercelKV } from '@repo/sfcc-scapi/src/kv/kvRestAPIManager';
+import { ClientConfig } from '@repo/sfcc-scapi/src/types/SCAPIType';
 
 /**
  * Serverless Function to get access token for guest user using the client credentials grant type.
@@ -27,8 +27,8 @@ export async function POST() {
 
     const tokenResponse = await fetch(url, {
       ...requestOptions,
-      redirect: "follow",
-      cache: "no-cache",
+      redirect: 'follow',
+      cache: 'no-cache',
     });
 
     const tokenResponseText = await tokenResponse.text();
@@ -42,11 +42,11 @@ export async function POST() {
     }
 
     const tokenResponseJSON = JSON.parse(tokenResponseText);
-    console.debug("tokenResponseJSON:", tokenResponseJSON);
+    console.debug('tokenResponseJSON:', tokenResponseJSON);
     if (!tokenResponseJSON?.access_token) {
       return NextResponse.json(
         {
-          message: "Failed to fetch access token from tokenResponseJSON",
+          message: 'Failed to fetch access token from tokenResponseJSON',
         },
         { status: HttpStatusCode.InternalServerError },
       );
@@ -75,7 +75,7 @@ export async function POST() {
     if (error instanceof Error) {
       throw new Error(`Error fetching access token: ${error.message}`);
     } else {
-      throw new Error("Unexpected error while fetching access token");
+      throw new Error('Unexpected error while fetching access token');
     }
   }
 }
@@ -91,27 +91,27 @@ async function setupGuestAccessTokenRequestContext(
   clientConfigInstance: ClientConfig,
 ) {
   const headers = new Headers();
-  headers.append("Content-Type", "application/x-www-form-urlencoded");
+  headers.append('Content-Type', 'application/x-www-form-urlencoded');
   headers.append(
-    "Authorization",
+    'Authorization',
     await generateAuthHeader(clientConfigInstance, true),
   );
 
   const urlencoded = new URLSearchParams();
-  urlencoded.append("grant_type", "client_credentials");
-  urlencoded.append("redirect_uri", clientConfigInstance.redirectUri);
+  urlencoded.append('grant_type', 'client_credentials');
+  urlencoded.append('redirect_uri', clientConfigInstance.redirectUri);
 
   const requestContext = {
-    method: "POST",
+    method: 'POST',
     headers: headers,
     body: urlencoded,
   };
 
-  console.debug("**********************************************************");
-  console.debug("Request URL:", url);
-  console.debug("Request Headers:", JSON.stringify([...headers]));
-  console.debug("Request Body:", urlencoded.toString());
-  console.debug("**********************************************************");
+  console.debug('**********************************************************');
+  console.debug('Request URL:', url);
+  console.debug('Request Headers:', JSON.stringify([...headers]));
+  console.debug('Request Body:', urlencoded.toString());
+  console.debug('**********************************************************');
 
   return { requestContext };
 }

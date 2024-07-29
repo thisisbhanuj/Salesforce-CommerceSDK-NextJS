@@ -1,10 +1,12 @@
+"use server";
+
 import { NextResponse } from "next/server";
 import { HttpStatusCode } from "axios";
 import { helpers, ShopperLogin } from "commerce-sdk-isomorphic";
 
-import PrivateClientConfigSingleton from "@/clients/PrivateClientConfigSingleton";
-import { setUserSessionInVercelKV } from "@/services/nodejs-runtime/kvSDKService";
-import { createSessionId } from "@/utility/kvUtils";
+import PrivateClientConfigSingleton from "../../../../clients/PrivateClientConfigSingleton";
+import { setUserSessionInVercelKV } from "../../../../services/nodejs-runtime/kvSDKService";
+import { createSessionId } from "../../../../utility/kvUtils";
 import {
   TokenResponse,
   ShopperLoginParameters,
@@ -27,7 +29,10 @@ export async function GET() {
     );
 
     if (!tokenResponse.access_token) {
-      throw new Error("Failed to fetch access token");
+      return NextResponse.json(
+        `Error fetching access token: ${tokenResponse.error_description}`,
+        { status: HttpStatusCode.BadRequest },
+      );
     }
 
     const sessionId = createSessionId();

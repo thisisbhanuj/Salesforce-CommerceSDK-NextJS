@@ -1,6 +1,6 @@
 "use server";
 
-import { ClientConfig } from "@/types/SCAPIType";
+import { ClientConfig } from "../../types/SCAPIType";
 import { HttpStatusCode } from "axios";
 import { NextResponse } from "next/server";
 

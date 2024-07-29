@@ -48,7 +48,7 @@ const nextConfig = {
   },
   typescript: {
     ignoreBuildErrors: true,
-  },
+  }
 };
 
 module.exports = withBundleAnalyzer(nextConfig);

@@ -2,7 +2,7 @@
   "name": "NextJS-CommerceSDK-MonoRepo",
   "private": true,
   "scripts": {
-  "build": "turbo build",
+    "build": "turbo build",
     "start": "turbo start --filter=@repo/ecommerce",
     "dev": "turbo dev --filter=@repo/ecommerce",
     "lint": "turbo lint",

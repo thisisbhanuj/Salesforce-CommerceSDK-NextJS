@@ -1,20 +1,18 @@
-"use server";
-
-import { getUserSessionFormVercelKV } from "@/kv/kvRestAPIManager";
-import { ClientConfig } from "@/types/SCAPIType";
+import { getUserSessionFormVercelKV } from "../kv/kvRestAPIManager";
+import { ClientConfig } from "../types/SCAPIType";
 
 export async function generateAuthHeader(
   clientConfig: ClientConfig,
   isGuest: boolean,
 ): Promise<string> {
-  const guestTokenObject: any = isGuest
+  const encodedCredentials: string = isGuest
     ? Buffer.from(
         `${clientConfig.parameters.clientId}:${clientConfig.parameters.secret}`,
       ).toString("base64")
     : Buffer.from(
         `${clientConfig.shopper?.username}:${clientConfig.shopper?.password}`,
       ).toString("base64");
-  return `Basic ${guestTokenObject.access_token}`;
+  return `Basic ${encodedCredentials}`;
 }
 
 export async function findAccessTokenInRedisKV(

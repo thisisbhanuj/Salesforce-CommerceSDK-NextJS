@@ -1,12 +1,12 @@
-"use server";
+'use server';
 
-import { NextRequest, NextResponse } from "next/server";
-import { HttpStatusCode } from "axios";
-import PrivateClientConfigSingleton from "../../../../clients/PrivateClientConfigSingleton";
-import { convertJSONToModel } from "../../../../helpers/productHelper";
-import { fetchProductSCAPI } from "../../../../scapi/shopper/ProductService";
-import { findAccessTokenInRedisKV } from "../../../../helpers/authHelper";
-import { getSessionIDfromRequest } from "../../../../helpers/requestHelper";
+import { HttpStatusCode } from 'axios';
+import { NextRequest, NextResponse } from 'next/server';
+import PrivateClientConfigSingleton from '@repo/sfcc-scapi/src/clients/PrivateClientConfigSingleton';
+import { convertJSONToModel } from '@repo/sfcc-scapi/src/helpers/productHelper';
+import { findAccessTokenInRedisKV } from '@repo/sfcc-scapi/src/helpers/authHelper';
+import { getSessionIDfromRequest } from '@repo/sfcc-scapi/src/helpers/requestHelper';
+import { fetchProductSCAPI } from '@repo/sfcc-scapi/src/scapi/shopper/ProductService';
 
 /**
  * Get product details using the ShopperProducts API.
@@ -25,14 +25,15 @@ export async function GET(
   const sessionId = await getSessionIDfromRequest(request);
   if (!sessionId) {
     return NextResponse.json(
-      { error: "Missing session ID" },
+      { error: 'Missing session ID' },
       { status: HttpStatusCode.BadRequest },
     );
   }
+
   const accessToken = await findAccessTokenInRedisKV(sessionId);
   if (!accessToken) {
     return NextResponse.json(
-      { error: "Access token not found" },
+      { error: 'Access token not found' },
       { status: HttpStatusCode.Unauthorized },
     );
   }
@@ -54,7 +55,7 @@ export async function GET(
     if (error instanceof Error) {
       throw new Error(`Error fetching access token: ${error.message}`);
     } else {
-      throw new Error("Unexpected error while fetching access token");
+      throw new Error('Unexpected error while fetching access token');
     }
   }
 }

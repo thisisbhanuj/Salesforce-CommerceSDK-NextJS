@@ -4,8 +4,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { HttpStatusCode } from "axios";
 import { ShopperSearch } from "commerce-sdk-isomorphic";
 
-import PrivateClientConfigSingleton from "@/clients/PrivateClientConfigSingleton";
-import { getAccessTokenFromVercelKV } from "@/services/nodejs-runtime/kvSDKService";
+import PrivateClientConfigSingleton from "../../../../clients/PrivateClientConfigSingleton";
+import { getAccessTokenFromVercelKV } from "../../../../services/nodejs-runtime/kvSDKService";
 
 /**
  * Get products search using the ShopperSearch API.

@@ -1,9 +1,9 @@
-"use server";
+import { GuestAccessTokenResponse } from "@repo/types-config/CommonTypes";
 
 /**
  * Get the guest user auth session data.
  */
-export async function fetchGuestAccessToken() {
+export async function fetchGuestAccessToken(): Promise<GuestAccessTokenResponse> {
   try {
     // Serverless function will act as reverse proxy to SCAPI endpoint
     const tokenResponse = await fetch(
