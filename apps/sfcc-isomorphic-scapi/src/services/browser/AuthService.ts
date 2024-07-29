@@ -7,8 +7,8 @@ import {
   TokenResponse,
 } from "@repo/types-config/CommonTypes";
 import { setUserSessionInVercelKV } from "../nodejs-runtime/kvSDKService";
-import { createSessionId } from "@/utility/kvUtils";
-import PrivateClientConfigSingleton from "@/clients/PrivateClientConfigSingleton";
+import { createSessionId } from "../../utility/kvUtils";
+import PrivateClientConfigSingleton from "../../clients/PrivateClientConfigSingleton";
 
 /**
  * Fetch an access token for Guest User.

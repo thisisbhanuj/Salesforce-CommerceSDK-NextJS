@@ -1,6 +1,6 @@
 "use server";
 
-import { SetUserSessionError } from "@/error/Errors";
+import { SetUserSessionError } from "../error/Errors";
 import { SET_USER_SESSION_ERROR_CODES } from "@repo/constants-config/constants";
 
 export async function handleApiError(error: Error, origin: string) {

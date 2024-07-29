@@ -86,3 +86,17 @@ export type Variant = {
   variationValues: Record<string, string>;
   price: number;
 };
+
+export type GuestAccessTokenResponse = {
+  accessToken: string;
+  sessionId: string;
+  refreshToken: string;
+  usid: string;
+};
+
+export type ShopperSessionSCAPI = {
+  accessToken: string;
+  sessionId: string;
+  refreshToken: string;
+  usid: string;
+};

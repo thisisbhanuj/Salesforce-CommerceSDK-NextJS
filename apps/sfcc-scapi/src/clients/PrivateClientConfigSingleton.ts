@@ -1,4 +1,4 @@
-import { ClientConfig } from "@/types/SCAPIType";
+import { ClientConfig } from "../types/SCAPIType";
 
 class PrivateClientConfigSingleton {
   private static instances: Record<string, PrivateClientConfigSingleton> = {};

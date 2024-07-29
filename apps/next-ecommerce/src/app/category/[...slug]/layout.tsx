@@ -17,7 +17,7 @@ export async function generateMetadata(
   const category = (params.slug as string[])[0] ?? 'men';
   const productType = (params.slug as string[])[1] ?? 'all';
 
-  let response = await fetchCategoryForSEO(category);
+  const response = await fetchCategoryForSEO(category);
   let data = {} as PrimaryCategory;
 
   if (response?.success) {
@@ -57,9 +57,9 @@ export async function generateMetadata(
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
     <section>
       <SpeedInsights />

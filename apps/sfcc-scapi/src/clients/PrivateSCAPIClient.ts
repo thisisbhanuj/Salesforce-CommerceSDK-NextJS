@@ -6,9 +6,9 @@ import axios, {
 import SCAPIRestClientInterface, {
   ClientConfig,
   RestAPIConfiguration,
-} from "@/types/SCAPIType";
+} from "../types/SCAPIType";
 import { SCAPIError } from "./SCAPIError";
-import { findAccessTokenInRedisKV } from "@/helpers/authHelper";
+import { findAccessTokenInRedisKV } from "../helpers/authHelper";
 import PrivateClientConfigSingleton from "./PrivateClientConfigSingleton";
 
 export class SCAPIRestClient implements SCAPIRestClientInterface {

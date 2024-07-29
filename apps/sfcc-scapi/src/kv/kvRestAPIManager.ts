@@ -1,7 +1,7 @@
 "use server";
 import { RedisSessionKVConfig } from "@repo/types-config/CommonTypes";
-import { handleApiError } from "@/helpers/errorHelpers";
-import { genericApiRequest } from "@/scapi/APIMgr";
+import { handleApiError } from "../helpers/errorHelpers";
+import { genericApiRequest } from "../scapi/APIMgr";
 
 const KV_REST_API_URL = process.env.KV_REST_API_URL!;
 const KV_REST_API_TOKEN = process.env.KV_REST_API_TOKEN!;

@@ -13,6 +13,7 @@ import { existingOrNewCart } from '@/actions/cart.actions';
 import { PrimaryCategory } from '@/Category';
 import { CartType } from '@/CartType';
 import { DesignStateType } from '@/DesignStateType';
+import SFCCSessionComponent from '@/components/sfcc/SFCCSessionComponent';
 
 // Allow any cache option to be passed to fetch but
 // if no option is provided then set the cache option to 'force-cache'.
@@ -58,6 +59,7 @@ export default async function Home() {
         />
       </div>
       <PageBuilder name="home" webPageDesignModel={webPageDesignModel} />
+      <SFCCSessionComponent />
     </>
   );
 }
