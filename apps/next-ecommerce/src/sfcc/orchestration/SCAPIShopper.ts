@@ -52,14 +52,16 @@ export const shopperMasterProduct = async (
     if (!sessionId || !productId) {
       throw new Error('Missing session/product ID');
     }
+
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('SESSION_ID', sessionId);
+
     const productResponse = await fetch(
       `${process.env.NEXT_PUBLIC_URL_API}/scapi/shopper/product/${productId}`,
       {
         method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          SESSION_ID: sessionId,
-        },
+        headers: headers,
       },
     );
 
