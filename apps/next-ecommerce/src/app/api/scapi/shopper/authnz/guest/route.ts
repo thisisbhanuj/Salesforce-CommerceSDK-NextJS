@@ -14,18 +14,18 @@ import { ClientConfig } from '@repo/sfcc-scapi/src/types/SCAPIType';
  *
  * NextJS-SCAPI Private Client Integration:
  * *********************************************************************************************
- * For a guest user, get the shopper JWT access token and a refresh token. 
+ * For a guest user, get the shopper JWT access token and a refresh token.
  * This is where a client appplication is able to get an access token for the guest user
  * through the back channel (a trusted server) by passing in the client credentials.
  * *********************************************************************************************
  *
  * OTHER CLIENT INTEGRATIONS USE CASE (Not applicable for this implementation):
  * *********************************************************************************************
- * For a private client, an application is able to get an access token for the shopper 
+ * For a private client, an application is able to get an access token for the shopper
  * through the back channel (a trusted server) by passing in the client credentials and
  * the authorization code retrieved from the authorize endpoint.
  *
- * For a public client using PKCE, an application will pass a PKCE code_verifier that matches 
+ * For a public client using PKCE, an application will pass a PKCE code_verifier that matches
  * the code_challenge that was used to authorize the customer along with the authorization code.
  * *********************************************************************************************
  * @returns The access token.

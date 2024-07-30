@@ -6,7 +6,7 @@ import PrivateClientConfigSingleton from '@repo/sfcc-scapi/src/clients/PrivateCl
 import { convertJSONToModel } from '@repo/sfcc-scapi/src/helpers/productHelper';
 import { findAccessTokenInRedisKV } from '@repo/sfcc-scapi/src/helpers/authHelper';
 import { getSessionIDfromRequest } from '@repo/sfcc-scapi/src/helpers/requestHelper';
-import { fetchProductSCAPI } from '@repo/sfcc-scapi/src/scapi/shopper/ProductService';
+import { fetchProductSCAPI } from '@/sfcc/services/ProductService';
 
 /**
  * Get product details using the ShopperProducts API.
@@ -23,7 +23,9 @@ export async function GET(
   ).getClientConfig();
 
   const sessionId = await getSessionIDfromRequest(request);
+
   if (!sessionId) {
+    console.error('Missing session ID');
     return NextResponse.json(
       { error: 'Missing session ID' },
       { status: HttpStatusCode.BadRequest },
@@ -32,8 +34,9 @@ export async function GET(
 
   const accessToken = await findAccessTokenInRedisKV(sessionId);
   if (!accessToken) {
+    console.error('Access token not found in REDIS KV');
     return NextResponse.json(
-      { error: 'Access token not found' },
+      { error: 'Access token not found in REDIS KV' },
       { status: HttpStatusCode.Unauthorized },
     );
   }
@@ -41,21 +44,29 @@ export async function GET(
   try {
     const productJSON = await fetchProductSCAPI(
       accessToken,
-      params,
+      params.productId,
       clientConfig,
     );
     if (productJSON) {
-      const productModel = convertJSONToModel(productJSON);
+      const productModel = await convertJSONToModel(productJSON);
+      console.debug('Product Model:', productModel);
+
       return NextResponse.json(
         { productModel: productModel },
         { status: HttpStatusCode.Ok },
       );
-    }
-  } catch (error) {
-    if (error instanceof Error) {
-      throw new Error(`Error fetching access token: ${error.message}`);
     } else {
-      throw new Error('Unexpected error while fetching access token');
+      console.error(`Product not found: ${params.productId}`);
+      return NextResponse.json(
+        { error: 'Product not found' },
+        { status: HttpStatusCode.NotFound },
+      );
     }
+  } catch (error: any) {
+    console.error('Error fetching product details:', error);
+    return NextResponse.json(
+      { error: error.message },
+      { status: HttpStatusCode.InternalServerError },
+    );
   }
 }

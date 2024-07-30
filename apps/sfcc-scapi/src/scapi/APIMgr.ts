@@ -10,6 +10,7 @@ export async function genericApiRequest<T>(
     const response = await fetch(url, options);
 
     if (!response.ok) {
+      console.error(`API request failed: ${response}`);
       throw new Error(`API request failed: ${response.statusText}`);
     }
 

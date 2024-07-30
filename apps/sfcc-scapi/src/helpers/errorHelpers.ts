@@ -3,9 +3,29 @@
 import { SetUserSessionError } from "../error/Errors";
 import { SET_USER_SESSION_ERROR_CODES } from "@repo/constants-config/constants";
 
+type ErrorHandlerMappingType = {
+  [key: string]: (error: Error) => Promise<void>;
+};
+
+const ErrorHandlerMapping: ErrorHandlerMappingType = {
+  userSession: userSessionErrorHandler,
+};
+
+/**
+ * Handle the API error.
+ * @param error - The error.
+ * @param origin - The origin of the error.
+ * @returns The error handler.
+ * @throws An error if the operation fails.
+ * */
 export async function handleApiError(error: Error, origin: string) {
   if (error instanceof Error) {
     const handler = `${origin}ErrorHandler`;
+    if (ErrorHandlerMapping[handler]) {
+      ErrorHandlerMapping[handler](error);
+    } else {
+      console.error("Unexpected error:", error);
+    }
     console.error(`Error: ${error.message}`);
   } else {
     console.error("Unexpected error:", error);
@@ -18,7 +38,7 @@ export async function handleApiError(error: Error, origin: string) {
  */
 export async function userSessionErrorHandler(error: SetUserSessionError) {
   if (error) {
-    const apiError = error as SetUserSessionError;
+    const apiError = error;
     switch (apiError.code) {
       case SET_USER_SESSION_ERROR_CODES.AUTH_FAILED:
         // Handle authentication error

@@ -10,10 +10,10 @@ export const useSCAPISession = () => {
   );
 
   /**
-   * Using useRef can help prevent certain code within a useEffect from running multiple times 
+   * Using useRef can help prevent certain code within a useEffect from running multiple times
    * by tracking whether the effect has already been run. This is especially useful in development
    * with React's Strict Mode, where effects might be run twice for the purposes of highlighting side effects.
-   * 
+   *
    * Here's how useRef helps in detail:
    * useRef is a hook that allows you to persist values across renders without causing re-renders when the value changes.
    * It returns a mutable ref object whose .current property can be set to any value.

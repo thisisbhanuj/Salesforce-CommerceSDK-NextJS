@@ -40,11 +40,11 @@ export async function GET(
   try {
     const productJSON = await fetchProductSCAPI(
       accessToken,
-      params,
+      params.productId,
       clientConfig,
     );
     if (productJSON) {
-      const productModel = convertJSONToModel(productJSON);
+      const productModel = await convertJSONToModel(productJSON);
       return NextResponse.json(
         { productModel: productModel },
         { status: HttpStatusCode.Ok },
