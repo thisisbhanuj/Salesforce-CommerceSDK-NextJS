@@ -3,7 +3,6 @@
   "private": true,
   "scripts": {
     "build": "turbo build",
-    "start": "turbo start --filter=@repo/ecommerce",
     "dev": "turbo dev --filter=@repo/ecommerce",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""

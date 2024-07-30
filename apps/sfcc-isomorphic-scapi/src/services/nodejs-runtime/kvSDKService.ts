@@ -58,12 +58,25 @@ export async function getAccessTokenFromVercelKV(
 
 /**
  * Delete user session from Vercel KV.
+ * 
  * @param sessionId - Session ID.
  * @throws Error if the session deletion fails.
+ * 
+ * Now, `DEL` is a blocking command. That means it can create latency, especially
+ * when deleting large keys or multiple keys. It's because this operation halts 
+ * any other operations on the Redis instance until it completes.
+ * `UNLINK`, on the other hand, introduces less latency because it operates in a 
+ * non-blocking manner. This is because it deletes keys in a separate "background" 
+ * operation while allowing the process to handle other commands simultaneously.
+ * When UNLINK is called, the keys are unlinked from the keyspace immediately. 
+ * This makes them inaccessible to any further read or write operations.
+ * The actual memory freeing happens in the background.
+ * 
+ * READ : [https://redis.io/blog/the-little-known-feature-of-redis-4-0-that-will-speed-up-your-applications/]
  */
 export async function deleteSessionFromVercelKV(sessionId: string) {
   try {
-    await kv.del(sessionId);
+    await kv.unlink(sessionId);
   } catch (error) {
     console.error("Error deleting session:", error);
     throw new Error("Failed to delete session");
