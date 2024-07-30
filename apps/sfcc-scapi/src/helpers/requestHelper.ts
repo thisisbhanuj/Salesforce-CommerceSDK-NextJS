@@ -9,6 +9,6 @@
 export async function getSessionIDfromRequest(
   request: Request,
 ): Promise<string> {
-  const sessionId = request.headers.get("session_id")!;
+  const sessionId = request.headers.get("SESSION_ID")!;
   return sessionId;
 }

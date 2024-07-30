@@ -3,8 +3,9 @@ import { RedisSessionKVConfig } from "@repo/types-config/CommonTypes";
 import { handleApiError } from "../helpers/errorHelpers";
 import { genericApiRequest } from "../scapi/APIMgr";
 
-const KV_REST_API_URL = process.env.KV_REST_API_URL!;
-const KV_REST_API_TOKEN = process.env.KV_REST_API_TOKEN!;
+interface KVResponse {
+  result: string;
+}
 
 /**
  * Sets a user session in the KV store.
@@ -18,19 +19,25 @@ export async function setUserSessionInVercelKV(
 ) {
   try {
     if (!userSessionData.sessionId) {
-      throw new Error("Missing sessionId");
+      throw new Error("setUserSessionInVercelKV : Missing sessionId");
     }
 
-    const response = await genericApiRequest<RedisSessionKVConfig>(
-      `${KV_REST_API_URL}/set/${userSessionData.sessionId}`,
+    const response = await genericApiRequest<any>(
+      `${process.env.KV_REST_API_URL}/set/${userSessionData.sessionId}`,
       {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${KV_REST_API_TOKEN}`,
+          Authorization: `Bearer ${process.env.KV_REST_API_TOKEN}`,
         },
         body: JSON.stringify(userSessionData),
       },
     );
+
+    if (!response) {
+      throw new Error(`setUserSessionInVercelKV : Failed to set KV`);
+    }
+    console.info("setUserSessionInVercelKV : ", response);
+
     return response;
   } catch (error) {
     if (error instanceof Error) {
@@ -51,16 +58,20 @@ export async function getUserSessionFormVercelKV(
   sessionId: string,
 ): Promise<RedisSessionKVConfig> {
   try {
-    const response = await genericApiRequest<RedisSessionKVConfig>(
-      `${KV_REST_API_URL}/get/${sessionId}`,
+    const response: KVResponse = await genericApiRequest<any>(
+      `${process.env.KV_REST_API_URL}/get/${sessionId}`,
       {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${KV_REST_API_TOKEN}`,
+          Authorization: `Bearer ${process.env.KV_REST_API_TOKEN}`,
         },
       },
     );
-    return response;
+
+    const sessionKV: RedisSessionKVConfig = JSON.parse(response.result);
+    console.debug("getUserSessionFormVercelKV : ", sessionKV);
+
+    return sessionKV;
   } catch (error) {
     if (error instanceof Error) {
       await handleApiError(error, "userSession");

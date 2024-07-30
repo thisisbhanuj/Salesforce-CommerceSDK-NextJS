@@ -6,7 +6,6 @@ import {
   cachedFetchMasterProduct,
   cachedDetchPageDesign,
 } from '@/cachefns/cachefns';
-import { PrimaryCategory } from '@/Category';
 import { DesignStateType } from '@/DesignStateType';
 
 // Allow any cache option to be passed to fetch but
@@ -23,24 +22,19 @@ export const fetchCache = 'default-cache';
  */
 export default async function ProductDisplayPage({
   params,
-}: {
+}: Readonly<{
   params: { skuId: string };
-}) {
+}>) {
   const skuId = params.skuId;
-
-  let navModel: PrimaryCategory[] = [];
-  const navigation = await cachedFetchNavigationCategories();
-  if (navigation?.categories) {
-    navModel = navigation.categories;
-  }
+  const navModel = await cachedFetchNavigationCategories();
 
   let masterProduct = null;
-  const response = await cachedFetchMasterProduct(skuId);
+  const response: any = await cachedFetchMasterProduct(skuId);
   if (response?.masterProduct) {
     masterProduct = response.masterProduct;
   }
 
-  let webPageDesignModel: DesignStateType = await cachedDetchPageDesign(
+  const webPageDesignModel: DesignStateType = await cachedDetchPageDesign(
     'pdp',
     false,
   );

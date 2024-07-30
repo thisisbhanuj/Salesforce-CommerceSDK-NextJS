@@ -9,6 +9,8 @@ import { PrimaryCategory } from '@/Category';
 
 import { usePDPStore } from '@/zustand/context/usePDPStore';
 import { DesignStateType } from '@/DesignStateType';
+import { useSCAPISession } from '@/hooks/useSCAPISession';
+import { shopperMasterProduct } from '@/sfcc/orchestration/SCAPIShopper';
 
 interface Props {
   webPageDesignModel: DesignStateType;
@@ -25,6 +27,29 @@ const Display: React.FC<Props> = ({
   if (masterProduct && masterProduct !== state.productMain) {
     state.setProduct(masterProduct);
   }
+
+  const sessionData = useSCAPISession();
+
+  // HArdcoded call to fetch product data from SCAPI
+  // **************************************************
+  React.useEffect(() => {
+    async function fetchData() {
+      if (!sessionData?.sessionId) {
+        return;
+      }
+      const productData = await shopperMasterProduct(
+        '25686544M',
+        sessionData.sessionId,
+      );
+
+      console.log('productData', productData);
+
+      return productData;
+    }
+
+    fetchData();
+  }, [sessionData?.sessionId]);
+  // **************************************************
 
   return (
     <>

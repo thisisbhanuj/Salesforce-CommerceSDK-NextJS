@@ -27,7 +27,7 @@ export async function GET(request: NextRequest) {
 
   let accessToken = undefined;
 
-  const sessionId = request.headers.get("sessionId");
+  const sessionId = request.headers.get("SESSION_ID");
   if (sessionId) {
     console.debug("Session ID from request headers: ", sessionId);
     // Fetch access token from Vercel KV

@@ -22,7 +22,7 @@ export async function GET(
 
   let accessToken = undefined;
 
-  const sessionId = request.headers.get("session_id");
+  const sessionId = request.headers.get("SESSION_ID");
 
   if (sessionId) {
     accessToken = await getAccessTokenFromVercelKV(sessionId);

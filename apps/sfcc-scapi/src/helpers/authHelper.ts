@@ -21,7 +21,9 @@ export async function findAccessTokenInRedisKV(
   const userSession = await getUserSessionFormVercelKV(sessionId);
 
   if (!userSession) {
-    throw new Error("User session not found");
+    throw new Error(
+      "findAccessTokenInRedisKV: User session not found in REDIS KV",
+    );
   }
 
   return userSession.access_token;
