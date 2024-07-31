@@ -1,12 +1,13 @@
 'use server';
 
 import { HttpStatusCode } from 'axios';
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import PrivateClientConfigSingleton from '@repo/sfcc-scapi/src/clients/PrivateClientConfigSingleton';
 import { convertJSONToModel } from '@repo/sfcc-scapi/src/helpers/productHelper';
-import { findAccessTokenInRedisKV } from '@repo/sfcc-scapi/src/helpers/authHelper';
-import { getSessionIDfromRequest } from '@repo/sfcc-scapi/src/helpers/requestHelper';
 import { fetchProductSCAPI } from '@/sfcc/services/ProductService';
+import applyMiddlewares from '@/middlewares/applyMiddleware';
+import { validateShopperTokenMiddleware } from '@/middlewares/validateShopperTokenMiddleware';
+import { AugmentedNextRequest } from '@repo/types-config/CommonTypes';
 
 /**
  * Get product details using the ShopperProducts API.
@@ -15,38 +16,33 @@ import { fetchProductSCAPI } from '@/sfcc/services/ProductService';
  * @throws Error if the product details are missing.
  */
 export async function GET(
-  request: NextRequest,
+  request: AugmentedNextRequest,
   { params }: { params: { productId: string } },
 ) {
-  const clientConfig = PrivateClientConfigSingleton.getInstance(
-    process.env.SITE_ID!,
-  ).getClientConfig();
+  // Apply the validateShopperTokenMiddleware middleware.
+  await applyMiddlewares(request, undefined, [validateShopperTokenMiddleware]);
 
-  const sessionId = await getSessionIDfromRequest(request);
-
-  if (!sessionId) {
-    console.error('Missing session ID');
+  const shopperToken = request.custom.shopperToken;
+  if (!shopperToken) {
+    console.error('Missing Shopper Token');
     return NextResponse.json(
-      { error: 'Missing session ID' },
-      { status: HttpStatusCode.BadRequest },
-    );
-  }
-
-  const accessToken = await findAccessTokenInRedisKV(sessionId);
-  if (!accessToken) {
-    console.error('Access token not found in REDIS KV');
-    return NextResponse.json(
-      { error: 'Access token not found in REDIS KV' },
+      { error: 'Unauthorized' },
       { status: HttpStatusCode.Unauthorized },
     );
   }
 
+  const clientConfig = PrivateClientConfigSingleton.getInstance(
+    process.env.SITE_ID!,
+  ).getClientConfig();
+
   try {
+    // Fetch the product details from the SCAPI.
     const productJSON = await fetchProductSCAPI(
-      accessToken,
+      shopperToken,
       params.productId,
       clientConfig,
     );
+
     if (productJSON) {
       const productModel = await convertJSONToModel(productJSON);
       console.debug('Product Model:', productModel);

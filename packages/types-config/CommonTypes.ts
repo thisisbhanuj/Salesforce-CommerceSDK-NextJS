@@ -1,4 +1,18 @@
+import { NextRequest, NextResponse } from "next/server";
+
 export type CurrencyType = "USD" | "EUR" | "GBP";
+
+export type Middleware = (
+  req: AugmentedNextRequest,
+  res: NextResponse | undefined,
+  next: (error?: any) => void
+) => void | Promise<unknown>;
+
+export interface RequestHandlerConfig {
+  method: string;
+  middlewares: Middleware[];
+  handler: (req: NextRequest, res: NextResponse, params: { params: Record<string, any> | undefined }) => Promise<unknown>;
+}
 
 export interface ApiRequestOptions {
   method?: "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
@@ -100,3 +114,9 @@ export type ShopperSessionSCAPI = {
   refreshToken: string;
   usid: string;
 };
+export interface AugmentedNextRequest extends NextRequest {
+  custom: {
+    sessionId?: string;
+    shopperToken?: string;
+  }
+}
