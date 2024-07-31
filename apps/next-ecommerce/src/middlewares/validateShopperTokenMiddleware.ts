@@ -5,7 +5,7 @@ import {
   Middleware,
   ShopperSessionSCAPI,
 } from '@repo/types-config/CommonTypes';
-import { NextResponse } from 'next/server'; 
+import { NextResponse } from 'next/server';
 
 /**
  * Validate the shopper token.
@@ -18,6 +18,11 @@ export const validateShopperTokenMiddleware: Middleware = async (
   res: NextResponse | undefined,
   next: (error?: Error) => void,
 ) => {
+  // Add the custom object to the request object if it does not exist.
+  if (!req.custom) {
+    req.custom = {};
+  }
+
   try {
     const headerCookieObj = req.headers.get('cookie');
     if (headerCookieObj) {
@@ -25,8 +30,8 @@ export const validateShopperTokenMiddleware: Middleware = async (
         .split(';')
         .find((c) => c.trim().startsWith('sfccSessionData='));
 
-      let sfccSessionData = {} as ShopperSessionSCAPI;
       if (sfccSessionDataCookieObj) {
+        let sfccSessionData = {} as ShopperSessionSCAPI;
         const jsonString = sfccSessionDataCookieObj.split('=')[1];
         try {
           if (jsonString && jsonString !== '{}') {
@@ -49,7 +54,12 @@ export const validateShopperTokenMiddleware: Middleware = async (
             }
 
             // Add the session ID and shopper token to the request object.
-            req.custom.sessionId = sessionId;
+            if (userSession.sessionId) {
+              req.custom.sessionId = userSession.sessionId;
+            } else {
+              console.error('Missing sessionId');
+              return next(new Error('Unauthorized'));
+            }
             req.custom.shopperToken = userSession.access_token;
           }
         } catch (e) {
