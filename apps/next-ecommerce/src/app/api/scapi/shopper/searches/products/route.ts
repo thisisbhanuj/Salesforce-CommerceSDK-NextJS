@@ -1,12 +1,13 @@
 'use server';
 
 import { HttpStatusCode } from 'axios';
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import PrivateClientConfigSingleton from '@repo/sfcc-scapi/src/clients/PrivateClientConfigSingleton';
 import { convertJSONToModel } from '@repo/sfcc-scapi/src/helpers/searchHelper';
-import { findAccessTokenInRedisKV } from '@repo/sfcc-scapi/src/helpers/authHelper';
-import { getSessionIDfromRequest } from '@repo/sfcc-scapi/src/helpers/requestHelper';
 import { fetchProductsSearchSCAPI } from '@repo/sfcc-scapi/src/scapi/shopper/SearchService';
+import applyMiddlewares from '@/middlewares/applyMiddleware';
+import { validateShopperTokenMiddleware } from '@/middlewares/validateShopperTokenMiddleware';
+import { AugmentedNextRequest } from '@repo/types-config/CommonTypes';
 
 /**
  * Get products search using the ShopperSearch API.
@@ -14,7 +15,7 @@ import { fetchProductsSearchSCAPI } from '@repo/sfcc-scapi/src/scapi/shopper/Sea
  * @returns Search results.
  * @throws Error if the search fails.
  */
-export async function GET(request: NextRequest) {
+export async function GET(request: AugmentedNextRequest) {
   const searchQuery = request.nextUrl.searchParams.get('query');
   if (!searchQuery) {
     return NextResponse.json(
@@ -27,15 +28,11 @@ export async function GET(request: NextRequest) {
     process.env.SITE_ID!,
   ).getClientConfig();
 
-  const sessionId = await getSessionIDfromRequest(request);
-  if (!sessionId) {
-    return NextResponse.json(
-      { error: 'Missing session ID' },
-      { status: HttpStatusCode.BadRequest },
-    );
-  }
-  const accessToken = await findAccessTokenInRedisKV(sessionId);
-  if (!accessToken) {
+  // Apply the validateShopperTokenMiddleware middleware.
+  await applyMiddlewares(request, undefined, [validateShopperTokenMiddleware]);
+
+  const shopperToken = request.custom.shopperToken;
+  if (!shopperToken) {
     return NextResponse.json(
       { error: 'Access token not found' },
       { status: HttpStatusCode.Unauthorized },
@@ -44,7 +41,7 @@ export async function GET(request: NextRequest) {
 
   try {
     const searchJSON = await fetchProductsSearchSCAPI(
-      accessToken,
+      shopperToken,
       { query: searchQuery },
       clientConfig,
     );
