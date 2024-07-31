@@ -1,3 +1,4 @@
+import PrivateClientConfigSingleton from "@repo/sfcc-scapi/src/clients/PrivateClientConfigSingleton";
 import { NextRequest, NextResponse } from "next/server";
 
 export type CurrencyType = "USD" | "EUR" | "GBP";
@@ -5,14 +6,26 @@ export type CurrencyType = "USD" | "EUR" | "GBP";
 export type Middleware = (
   req: AugmentedNextRequest,
   res: NextResponse | undefined,
-  next: (error?: any) => void
+  next: (error?: any) => void,
 ) => void | Promise<unknown>;
 
-export interface RequestHandlerConfig {
+export interface RequestHandlerConfig<T extends Record<string, any> = {}> {
   method: string;
   middlewares: Middleware[];
-  handler: (req: NextRequest, res: NextResponse, params: { params: Record<string, any> | undefined }) => Promise<unknown>;
+  handler: (
+    req: AugmentedNextRequest,
+    res: NextResponse,
+    config: T & { params?: Record<string, any> },
+  ) => Promise<unknown>;
 }
+
+export type ExtendedConfig<T> = T & {
+  shopperToken: string;
+  sessionId: string;
+  clientConfig: ReturnType<
+    typeof PrivateClientConfigSingleton.prototype.getClientConfig
+  >;
+};
 
 export interface ApiRequestOptions {
   method?: "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
@@ -118,5 +131,5 @@ export interface AugmentedNextRequest extends NextRequest {
   custom: {
     sessionId?: string;
     shopperToken?: string;
-  }
+  };
 }

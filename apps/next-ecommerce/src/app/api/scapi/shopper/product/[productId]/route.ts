@@ -66,3 +66,11 @@ export async function GET(
     );
   }
 }
+
+// const getRouteHandler: RequestHandlerConfig<ExtendedConfig<any>> = {
+//   method: 'GET',
+//   middlewares: [validateShopperTokenMiddleware],
+//   handler: productHandler,
+// };
+
+// export const GET = createRequestHandler(getRouteHandler);

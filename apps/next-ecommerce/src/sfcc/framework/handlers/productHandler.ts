@@ -1,17 +1,21 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { HttpStatusCode } from 'axios';
 import { fetchProductSCAPI } from '@/sfcc/services/ProductService';
 import { convertJSONToModel } from '@repo/sfcc-scapi/src/helpers/productHelper';
-import PrivateClientConfigSingleton from '@repo/sfcc-scapi/src/clients/PrivateClientConfigSingleton';
-import { getSessionIDfromRequest } from '@repo/sfcc-scapi/src/helpers/requestHelper';
-import { findAccessTokenInRedisKV } from '@repo/sfcc-scapi/src/helpers/authHelper';
+import {
+  AugmentedNextRequest,
+  ExtendedConfig,
+} from '@repo/types-config/CommonTypes';
 
-export const getProductHandler = async (
-  req: NextRequest,
+export const productHandler = async (
+  req: AugmentedNextRequest,
   res: NextResponse,
-  params: { params: Record<string, any> | undefined }
+  config: ExtendedConfig<Record<string, any>>,
 ) => {
-  const productId = params?.params?.productId;
+  // Extract productId from the URL
+  const url = new URL(req.url);
+  const productId = url.pathname.split('/').pop();
+
   if (!productId) {
     return NextResponse.json(
       { error: 'Product ID is required' },
@@ -19,34 +23,11 @@ export const getProductHandler = async (
     );
   }
 
-  const clientConfig = PrivateClientConfigSingleton.getInstance(
-    process.env.SITE_ID!,
-  ).getClientConfig();
-
-  const sessionId = await getSessionIDfromRequest(req);
-
-  if (!sessionId) {
-    console.error('Missing session ID');
-    return NextResponse.json(
-      { error: 'Missing session ID' },
-      { status: HttpStatusCode.BadRequest },
-    );
-  }
-
-  const accessToken = await findAccessTokenInRedisKV(sessionId);
-  if (!accessToken) {
-    console.error('Access token not found in REDIS KV');
-    return NextResponse.json(
-      { error: 'Access token not found in REDIS KV' },
-      { status: HttpStatusCode.Unauthorized },
-    );
-  }
-
   try {
     const productJSON = await fetchProductSCAPI(
-      accessToken,
+      config.shopperToken,
       productId,
-      clientConfig,
+      config.clientConfig,
     );
     if (productJSON) {
       const productModel = await convertJSONToModel(productJSON);
