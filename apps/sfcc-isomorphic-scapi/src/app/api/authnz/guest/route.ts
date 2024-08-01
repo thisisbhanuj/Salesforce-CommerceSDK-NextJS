@@ -8,7 +8,7 @@ import PrivateClientConfigSingleton from "../../../../clients/PrivateClientConfi
 import { setUserSessionInVercelKV } from "../../../../services/nodejs-runtime/kvSDKService";
 import { createSessionId } from "../../../../utility/kvUtils";
 import {
-  TokenResponse,
+  ShopperTokenResponse,
   ShopperLoginParameters,
 } from "@repo/types-config/CommonTypes";
 
@@ -20,13 +20,14 @@ import {
 export async function GET() {
   try {
     const clientConfigInstance = PrivateClientConfigSingleton.getInstance();
-    const tokenResponse: TokenResponse = await helpers.loginGuestUserPrivate(
-      new ShopperLogin<ShopperLoginParameters>(
-        clientConfigInstance.getClientConfig(),
-      ),
-      { usid: undefined },
-      { clientSecret: clientConfigInstance.getClientSecret() },
-    );
+    const tokenResponse: ShopperTokenResponse =
+      await helpers.loginGuestUserPrivate(
+        new ShopperLogin<ShopperLoginParameters>(
+          clientConfigInstance.getClientConfig(),
+        ),
+        { usid: undefined },
+        { clientSecret: clientConfigInstance.getClientSecret() },
+      );
 
     if (!tokenResponse.access_token) {
       return NextResponse.json(

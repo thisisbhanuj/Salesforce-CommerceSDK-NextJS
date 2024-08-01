@@ -8,53 +8,71 @@
  * [https://developer.salesforce.com/docs/commerce/commerce-api/guide/slas-private-client.html]
  */
 
-import { ClientConfig, Customer, slasHelpers } from "commerce-sdk";
+import { Customer, slasHelpers } from "commerce-sdk";
 import {
   getObjectFromResponse,
   ResponseError,
   ShopperToken,
   stripBearer,
 } from "@commerce-apps/core";
-
-const CLIENT_ID = process.env.SLAS_PRIVATE_CLIENT_ID ?? "";
-const CLIENT_SECRET = process.env.SLAS_CLIENT_SECRET ?? "";
-const ORG_ID = process.env.COMMERCE_CLIENT_ORG_ID ?? "";
-const SHORT_CODE = process.env.COMMERCE_CLIENT_SHORT_CODE ?? "";
-const SITE_ID = process.env.SITE_ID ?? "";
-const redirectURI = process.env.SLAS_REDIRECT_URI ?? "";
-
-const clientConfig: ClientConfig = {
-  parameters: {
-    clientId: CLIENT_ID,
-    organizationId: ORG_ID,
-    shortCode: SHORT_CODE,
-    siteId: SITE_ID,
-  },
-};
-
-const slasClient = new Customer.ShopperLogin(clientConfig);
+import PrivateClientConfigSingleton from "../../clients/PrivateClientConfigSingleton";
+import { ShopperTokenResponse } from "@repo/types-config/CommonTypes";
 
 /**
- * Get the guest JWT/access token along with a refresh token,
- * using client credentials
+ * Get the shopper or guest JWT access token and a refresh token. 
+ * This is the second step of the OAuth 2.1 authorization code flow.
+ * 
+ * For a private client, an application is able to get an access token
+ * for the shopper through the back channel (a trusted server) 
+ * by passing in the client credentials and the authorization code 
+ * retrieved from the `authorize` endpoint.
+ * 
+ * For a guest user, get the shopper JWT access token and a refresh token. 
+ * This is where a client appplication is able to get an access token for 
+ * the guest user through the back channel (a trusted server) 
+ * by passing in the client credentials.
  *
  * @returns guest user authorization token
  */
-export async function getGuestUserAuthToken(): Promise<Customer.ShopperLogin.TokenResponse> {
-  const credentials = CLIENT_ID + ":" + CLIENT_SECRET;
-  const base64data = Buffer.from(credentials).toString("base64");
-  const headers = { Authorization: `Basic ${base64data}` };
+export async function getGuestUserAuthToken(): Promise<ShopperTokenResponse | void> {
+  const clientInstance = await PrivateClientConfigSingleton.getInstance();
+  const slasClient = new Customer.ShopperLogin(clientInstance.getClientConfig());
 
-  return await slasClient.getAccessToken({
-    headers,
-    body: {
-      grant_type: "client_credentials",
-    },
-  });
+  try{
+    const guestAuthTokenResponse: ShopperTokenResponse = await slasClient.getAccessToken({
+      headers: {
+        "Authorization": clientInstance.getBasicAuthHeaderForGuest(),
+      },
+      body: {
+        grant_type: "client_credentials",
+        channel_id: clientInstance.getChannelId(),
+      },
+      fetchOptions: {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      },
+    });
+
+    if (!guestAuthTokenResponse) {
+      throw new Error("getGuestUserAuthToken: Failed to get guest token");
+    }
+
+    return guestAuthTokenResponse;
+
+  } catch (error) {
+    console.log("getGuestUserAuthToken: Error fetching token for guest login: ", error);
+    throw new Error("getGuestUserAuthToken : Failed to get guest token");
+  }
 }
 
 /**
- * Get token for the registered customer
+ * Get an authorization code after authenticating a user against an identity provider (IDP). 
+ * This is the first step of the OAuth 2.1 authorization code flow,
+ * where a user can log in via federation to the IDP configured for the client. 
+ * After successfully logging in, the user gets an authorization code via a redirect URI.
+ * 
+ * This endpoint can be called from the front channel (the browser)
  *
  * @returns authorization token
  */
@@ -66,6 +84,9 @@ export async function getRegisteredShopperTokenFromIDP(shopper: {
   const buff = Buffer.from(credentials);
   const base64data = buff.toString("base64");
   const headers = { Authorization: `Basic ${base64data}` };
+
+  const clientInstance = await PrivateClientConfigSingleton.getInstance();
+  const slasClient = new Customer.ShopperLogin(clientInstance.getClientConfig());
 
   const response = await slasClient.authorizeCustomer(
     {
@@ -90,27 +111,45 @@ export async function getRegisteredShopperTokenFromIDP(shopper: {
   );
 }
 
-export async function loginGuestUser(): Promise<Customer.ShopperLogin.TokenResponse> {
-  let guestTokenResponse: any = null;
+/**
+ * A single function to execute the ShopperLogin Private Client Guest Login
+ *
+ * @returns Response from the server
+ */
+export async function loginGuestUser(): Promise<ShopperTokenResponse | void> {
+  const clientInstance = await PrivateClientConfigSingleton.getInstance();
+  const slasClient = new Customer.ShopperLogin(clientInstance.getClientConfig());
+
+  let guestTokenResponse: ShopperTokenResponse;
   try {
     guestTokenResponse = await slasHelpers.loginGuestUserPrivate(slasClient, {
-      clientSecret: CLIENT_SECRET,
+      clientSecret: clientInstance.getClientSecret(),
     });
     if (!guestTokenResponse) {
-      throw new Error("Failed to get guest token");
+      throw new Error("loginGuestUser: Failed to get guest token");
     }
-  } catch (error) {
-    console.log("Error fetching token for guest login: ", error);
-  }
 
-  return guestTokenResponse;
+    return guestTokenResponse;
+  } catch (error) {
+    console.log("loginGuestUser : Error fetching token for guest login: ", error);
+    throw new Error("loginGuestUser : Failed to get guest token");
+  }
 }
 
+/**
+ * Login the registered user
+ * @param shopper - Shopper details
+ *
+ * @returns Response from the server
+ */
 export async function loginRegisteredUser(shopper: {
   username: string;
   password: string;
-}): Promise<Customer.ShopperLogin.TokenResponse> {
-  let registeredUserTokenResponse: any = null;
+}): Promise<ShopperTokenResponse | void> {
+  const clientInstance = await PrivateClientConfigSingleton.getInstance();
+  const slasClient = new Customer.ShopperLogin(clientInstance.getClientConfig());
+
+  let registeredUserTokenResponse: ShopperTokenResponse;
   try {
     registeredUserTokenResponse =
       await slasHelpers.loginRegisteredUserB2Cprivate(
@@ -118,50 +157,64 @@ export async function loginRegisteredUser(shopper: {
         {
           username: shopper.username,
           password: shopper.password,
-          clientSecret: CLIENT_SECRET,
+          clientSecret: clientInstance.getClientSecret(),
         },
-        { redirectURI },
+        { redirectURI: clientInstance.getRedirectUri() },
       );
     if (!registeredUserTokenResponse) {
-      throw new Error("Failed to get registered user token");
+      throw new Error("loginRegisteredUser : Failed to get registered user token");
     }
+    return registeredUserTokenResponse;
   } catch (error) {
-    console.log("Error fetching token for registered user login: ", error);
+    console.log("loginRegisteredUser : Error fetching token for registered user login: ", error);
+    throw new Error("loginRegisteredUser : Failed to get registered user token");
   }
-
-  return registeredUserTokenResponse;
 }
 
 /**
- * Get a new auth token using refresh token
+ * Exchange a refresh token for a new access token
  *
  * @param refreshToken - Valid refresh token
  * @returns New token with updated expiry time
  */
 export async function refreshAccessToken(
   refreshToken: string,
-): Promise<Customer.ShopperLogin.TokenResponse> {
-  let refreshTokenResponse: any = null;
+): Promise<ShopperTokenResponse | void> {
+  const clientInstance = await PrivateClientConfigSingleton.getInstance();
+  const slasClient = new Customer.ShopperLogin(clientInstance.getClientConfig());
+
+  let refreshTokenResponse: ShopperTokenResponse;
   try {
     refreshTokenResponse = await slasHelpers.refreshAccessTokenPrivate(
       slasClient,
-      { clientSecret: CLIENT_SECRET },
+      { clientSecret: clientInstance.getClientSecret() },
       { refreshToken },
     );
     if (!refreshTokenResponse) {
-      throw new Error("Failed to get refresh token");
+      throw new Error("refreshAccessToken : Failed to get refresh token");
     }
+  
+    return refreshTokenResponse;
   } catch (error) {
-    console.log("Error refreshing token: ", error);
+    console.log("refreshAccessToken : Error refreshing token: ", error);
   }
-
-  return refreshTokenResponse;
+  
+  return;
 }
 
+/**
+ * Logout the user
+ *
+ * @param accessToken - Access token
+ * @param refreshToken - Refresh token
+ */
 export async function logout(
   accessToken: string,
   refreshToken: string,
 ): Promise<void> {
+  const clientInstance = await PrivateClientConfigSingleton.getInstance();
+  const slasClient = new Customer.ShopperLogin(clientInstance.getClientConfig());
+
   try {
     await slasHelpers.logout(slasClient, {
       accessToken,
@@ -169,5 +222,6 @@ export async function logout(
     });
   } catch (error) {
     console.log("Error logging out: ", error);
+    throw new Error("logout: Failed to logout");
   }
 }
