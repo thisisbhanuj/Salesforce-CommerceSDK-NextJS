@@ -4,7 +4,7 @@ import { helpers, ShopperLogin } from "commerce-sdk-isomorphic";
 import {
   AuthHeaderConfigurations,
   ShopperLoginParameters,
-  TokenResponse,
+  ShopperTokenResponse,
 } from "@repo/types-config/CommonTypes";
 import { setUserSessionInVercelKV } from "../nodejs-runtime/kvSDKService";
 import { createSessionId } from "../../utility/kvUtils";
@@ -50,20 +50,21 @@ export async function fetchRegisteredAccessToken(
 ) {
   try {
     const clientConfigInstance = PrivateClientConfigSingleton.getInstance();
-    const tokenResponse: TokenResponse = await helpers.loginRegisteredUserB2C(
-      new ShopperLogin<ShopperLoginParameters>(
-        clientConfigInstance.getClientConfig(),
-      ),
-      {
-        username: username,
-        password: password,
-        clientSecret: clientConfigInstance.getClientSecret(),
-      },
-      {
-        redirectURI: "testuser",
-        usid: "testuser",
-      },
-    );
+    const tokenResponse: ShopperTokenResponse =
+      await helpers.loginRegisteredUserB2C(
+        new ShopperLogin<ShopperLoginParameters>(
+          clientConfigInstance.getClientConfig(),
+        ),
+        {
+          username: username,
+          password: password,
+          clientSecret: clientConfigInstance.getClientSecret(),
+        },
+        {
+          redirectURI: "testuser",
+          usid: "testuser",
+        },
+      );
 
     if (!tokenResponse.access_token) {
       throw new Error("Failed to fetch access token");
