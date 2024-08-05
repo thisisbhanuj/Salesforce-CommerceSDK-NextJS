@@ -1,27 +1,21 @@
 import { kafka, registry } from './kafka';
 import consumerConfiguration from './ConsumerConfiguration';
 import { KafkaConsumerConfig } from '@/kafkaType';
+import { KafkaJSError } from 'kafkajs';
 
-/**
- * NodeJS Serverless Function that consumes messages from a Kafka topic using the KafkaJS.
- * It processes messages based on the provided configuration.
- *
- * @param config - The configuration object for the Kafka consumer, specifying the key, group ID, and topic.
- * @returns {Promise<{ status: string; messages?: unknown[]; error?: any }>}
- *  - A promise that resolves to an object with status (`success` or `error`),
- *    messages (array of processed messages - optional for success), and error (optional for error).
- */
 export default async function kafkaConsumer(config: KafkaConsumerConfig) {
   const consumer = kafka.consumer({ groupId: config.groupId });
-  await consumer.connect();
-  await consumer.subscribe({
-    topic: config.topic,
-    fromBeginning: true,
-  });
-
-  const messages = [] as unknown[];
 
   try {
+    await consumer.connect();
+    await consumer.subscribe({
+      topic: config.topic,
+      fromBeginning: true,
+    });
+
+    console.log('kafkaConsumer : Consumer connected and subscribed to topic');
+
+    const messages = [] as unknown[];
     await consumer.run({
       eachMessage: async ({ message }) => {
         try {
@@ -33,14 +27,19 @@ export default async function kafkaConsumer(config: KafkaConsumerConfig) {
             ];
           if (!configuration) {
             console.warn(
-              `No processing function found for topic: ${config.topic}`,
+              `kafkaConsumer : No processing function found for topic: ${config.topic}`,
             );
             return;
           }
           await configuration.processor(decodedValue);
-          messages.push({ message: decodedValue, status: 'success' });
+
+          messages.push({ orderId: decodedValue.id, status: 'email sent' });
+          console.log(
+            'kafkaConsumer : Order Confirmation Email sent for :',
+            decodedValue.id,
+          );
         } catch (decodeError) {
-          console.error('Error decoding message:', decodeError);
+          console.error('kafkaConsumer : Error decoding message:', decodeError);
         }
       },
     });
@@ -53,7 +52,18 @@ export default async function kafkaConsumer(config: KafkaConsumerConfig) {
       };
     }, 5000); // Adjust the timeout as needed to fetch messages
   } catch (error) {
-    console.error('Consumer error:', error);
+    console.error('kafkaConsumer : Consumer error:', error);
+
+    // Handle rebalancing error
+    if (
+      (error as KafkaJSError)?.message?.includes('The group is rebalancing')
+    ) {
+      console.warn('kafkaConsumer : Rebalancing detected. Rejoining...');
+      await consumer.disconnect();
+      await consumer.connect();
+      return kafkaConsumer(config); // Re-run the consumer
+    }
+
     return { status: 'error', error };
   }
 }

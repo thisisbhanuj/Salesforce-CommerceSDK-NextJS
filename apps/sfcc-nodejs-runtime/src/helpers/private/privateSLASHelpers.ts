@@ -180,7 +180,7 @@ export async function loginRegisteredUser(shopper: {
 export async function refreshAccessToken(
   refreshToken: string,
 ): Promise<ShopperTokenResponse | void> {
-  const clientInstance = await PrivateClientConfigSingleton.getInstance();
+  const clientInstance = PrivateClientConfigSingleton.getInstance();
   const slasClient = new Customer.ShopperLogin(clientInstance.getClientConfig());
 
   let refreshTokenResponse: ShopperTokenResponse;

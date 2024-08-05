@@ -12,11 +12,17 @@ export class KafkaConsumerService {
   constructor() {
     this.kafka = new Kafka({
       clientId: process.env.KAFKA_CLIENT_ID,
-      brokers: [process.env.KAFKA_REST_ENDPOINT],
+      brokers: [process.env.KAFKA_BROKER],
+      ssl: true,
+      sasl: {
+        mechanism: 'scram-sha-256',
+        username: process.env.KAFKA_USERNAME,
+        password: process.env.KAFKA_PASSWORD,
+      },
       logLevel: logLevel.ERROR,
     });
     this.schemaRegistry = new SchemaRegistry({
-      host: process.env.KAFKA_REGISTRY_ENDPOINT,
+      host: process.env.KAFKA_REGISTRY_URL,
     });
   }
 
@@ -27,17 +33,17 @@ export class KafkaConsumerService {
 
     await consumer.connect();
     await consumer.subscribe({
-      topic: process.env.KAFKA_TOPIC,
+      topic: process.env.KAFKA_ORDER_TOPIC,
       fromBeginning: true,
     });
 
     const schemaId = await this.schemaRegistry.getLatestSchemaId(
-      process.env.KAFKA_REGISTRY_SUBJECT,
+      process.env.KAFKA_REGISTRY_ORDERS_SUBJECT,
     );
 
     await consumer.run({
       eachMessage: async ({ topic, partition, message }) => {
-        if (process.env.KAFKA_TOPIC === topic) {
+        if (process.env.KAFKA_ORDER_TOPIC === topic) {
           try {
             const value = JSON.parse(message.value.toString());
 

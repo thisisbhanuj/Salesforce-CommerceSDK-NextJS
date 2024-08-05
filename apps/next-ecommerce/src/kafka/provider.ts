@@ -32,7 +32,7 @@ export default function kafkaProvider(req: NextRequest, event: NextFetchEvent) {
      */
     _node_serverless: (topic: string) => {
       const body = { params: { ...req.body }, kafka_topic: topic };
-      return RestApiClient.post(`/kafka/produce`, body);
+      return RestApiClient.post(`/kafka/producer/analytics`, body);
     },
   };
 }
