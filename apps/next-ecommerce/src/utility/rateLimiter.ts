@@ -10,7 +10,7 @@ type RateLimitData = {
 
 const ratelimit = new Ratelimit({
   redis: kv,
-  limiter: Ratelimit.slidingWindow(5, '10 s'), // 5 requests from the same IP in 10 seconds
+  limiter: Ratelimit.slidingWindow(30, '10 s'), // 5 requests from the same IP in 10 seconds
 });
 
 export async function rateLimitHandlerUsingVercelKVRedis(request: NextRequest) {
@@ -24,7 +24,7 @@ export async function rateLimitHandlerUsingVercelKVRedis(request: NextRequest) {
       {
         status: 429,
         headers: {
-          'X-RateLimit-Limit': '5',
+          'X-RateLimit-Limit': '30',
           'X-RateLimit-Remaining': remaining.toString(),
           'X-RateLimit-Reset': reset.toString(),
         },
@@ -35,7 +35,7 @@ export async function rateLimitHandlerUsingVercelKVRedis(request: NextRequest) {
   return new NextResponse(JSON.stringify({ success: true }), {
     status: 200,
     headers: {
-      'X-RateLimit-Limit': '5',
+      'X-RateLimit-Limit': '30',
       'X-RateLimit-Remaining': remaining.toString(),
       'X-RateLimit-Reset': reset.toString(),
     },
@@ -46,7 +46,7 @@ const rateLimitMap = new Map<string, RateLimitData>();
 
 export async function rateLimitHandler(request: NextRequest) {
   const ip = findIP(request);
-  const limit: number = 5; // Limiting requests to 5 per minute per IP
+  const limit: number = 30; // Limiting requests to 30 per minute per IP
   const windowMs: number = 10 * 1000; // 10 seconds
 
   if (!rateLimitMap.has(ip)) {

@@ -8,7 +8,7 @@ interface RequestBody {
 }
 
 /**
- * Edge Runtime function that sends a message to a Kafka topic using the KafkaJS.
+ * Edge Runtime function that sends a message to a Kafka topic using the KafkaJS SDK
  * @param {NextFetchEvent} event
  * @returns {Promise<status, error>}
  */
@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
 
   try {
     const schemaId = await registry.getLatestSchemaId(
-      process.env.KAFKA_REGISTRY_ANALYTICS_SUBJECT as string,
+      process.env.UPSTASH_KAFKA_REGISTRY_ANALYTICS_SUBJECT as string,
     );
     const encodedValue = await registry.encode(
       schemaId,
