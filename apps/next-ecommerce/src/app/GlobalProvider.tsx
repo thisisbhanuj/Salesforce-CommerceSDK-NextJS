@@ -10,7 +10,6 @@ import { ModalSearchProvider } from '@/context/ModalSearchContext';
 import { ModalQuickviewProvider } from '@/context/ModalQuickviewContext';
 import { CustomizationProvider } from '@/context/CustomizationContext';
 
-import { existingOrNewCart } from '@/actions/cart.actions';
 import { isAuthenticatd } from '@/lib/session';
 import { CartType } from '@/CartType';
 
@@ -27,9 +26,6 @@ const GlobalProvider: React.FC<{ children: React.ReactNode }> = async ({
   children,
 }) => {
   let cartContent: cartContent = null;
-  if (await isAuthenticatd()) {
-    cartContent = await existingOrNewCart();
-  }
 
   return (
     <CustomizationProvider>

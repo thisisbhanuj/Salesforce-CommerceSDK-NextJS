@@ -2,8 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { Kafka, logLevel } from 'kafkajs';
 import { SchemaRegistry } from '@kafkajs/confluent-schema-registry';
 
-import { orderConfirmationEmail } from '@repo/ecommerce/src/utility/emailHelper';
-
 @Injectable()
 export class KafkaConsumerService {
   private kafka: Kafka;
@@ -58,7 +56,7 @@ export class KafkaConsumerService {
 
             console.debug(`Decoded value: ${JSON.stringify(decodedValue)}`);
 
-            await orderConfirmationEmail(decodedValue);
+            // await orderConfirmationEmail(decodedValue);
           } catch (error) {
             console.error('Error decoding message:', error);
           }
